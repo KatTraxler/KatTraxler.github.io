@@ -8,7 +8,6 @@ logo: false
 paginate: 15
 baseurl: /
 domain_name: "https://kattraxler.github.io/about/"
-google_analytics: "UA-XXXXXXXX-X"
 plugins: [jekyll-paginate]
 
 # Details for the RSS feed generator

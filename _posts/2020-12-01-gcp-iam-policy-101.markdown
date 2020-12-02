@@ -17,4 +17,3 @@ To grant permissions in GCP, you combine the **WHO** and the **WHAT** to create 
 **Resource**: Who, has What Role is applied to a Resource to affect IAM Policy. A Member is assigned a Role which is then bound to a Resource to create an IAM policy.
 In GCP, Each Node of the Organizational Hierarchy is a Resource which can have IAM Policy Bound.  This includes the Organizational Node, Folder and Project Nodes, in addition to all Resources contained within a Project.
 
-Next in the GCP IAM 101 series is the GCP Resource Hierarchy
