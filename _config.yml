@@ -1,0 +1,19 @@
+name: Kat Traxler - Blog
+description: Blogging about GCP Mostly
+meta_description: "Blogging about GCP Mostly"
+
+markdown: kramdown
+highlighter: rouge
+logo: false
+paginate: 15
+baseurl: /about
+domain_name: "https://kattraxler.github.io/about/"
+google_analytics: "UA-XXXXXXXX-X"
+plugins: [jekyll-paginate]
+
+# Details for the RSS feed generator
+url: ""
+author: "Kat Traxler"
+
+# Disqus config
+disqus-shortname: ""
