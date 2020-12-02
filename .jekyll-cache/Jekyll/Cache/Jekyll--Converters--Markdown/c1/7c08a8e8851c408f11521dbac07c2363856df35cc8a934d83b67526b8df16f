@@ -1,4 +1,4 @@
-I"Ü<p>This GCPâ€™s model for managing access to resources has three main parts: <strong>Who, What Role and the Resource.</strong></p>
+I"˜<p>This GCPâ€™s model for managing access to resources has three main parts: <strong>Who, What Role and the Resource.</strong></p>
 
 <p>To grant permissions in GCP, you combine the <strong>WHO</strong> and the <strong>WHAT</strong> to create a policy.  You apply this policy, or Bind the Role to a Resource to create scope.</p>
 
@@ -9,5 +9,4 @@
 <p><strong>Resource</strong>: Who, has What Role is applied to a Resource to affect IAM Policy. A Member is assigned a Role which is then bound to a Resource to create an IAM policy.
 In GCP, Each Node of the Organizational Hierarchy is a Resource which can have IAM Policy Bound.  This includes the Organizational Node, Folder and Project Nodes, in addition to all Resources contained within a Project.</p>
 
-<p>Next in the GCP IAM 101 series is the GCP Resource Hierarchy</p>
 :ET
