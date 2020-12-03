@@ -1,0 +1,2 @@
+I"V<p>Service Accounts are non-human identities used for Infrastructure and Resources.  Service Accounts do not have passwords.  You can optionally generate and export a Private Key for a Service Account. But you’ll only want to do this when you need to enable an external integrations, that is, authenticated API calls to your Resources.</p>
+:ET
