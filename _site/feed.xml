@@ -5,8 +5,8 @@
     <description>A Blog about GCP, mostly</description>
     <link>http://localhost:4000//</link>
     <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 05 Dec 2020 14:02:28 -0600</pubDate>
-    <lastBuildDate>Sat, 05 Dec 2020 14:02:28 -0600</lastBuildDate>
+    <pubDate>Sat, 05 Dec 2020 14:06:59 -0600</pubDate>
+    <lastBuildDate>Sat, 05 Dec 2020 14:06:59 -0600</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
       <item>
@@ -19,19 +19,26 @@ This is a console completely apart from the GCP Cloud Console, &lt;code class=&q
 
 &lt;p&gt;In GCP, you can assign Roles directly to Users however, this pattern is bound to face management and scalability problems.  Instead, consider placing Users in Groups and assigning GCP IAM Roles to the Groups.&lt;/p&gt;
 
-&lt;p&gt;Defaults:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Defaults&lt;/strong&gt;&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- **ANY** Google User or Group in **ANY** domain can be assigned IAM Roles in **ANY** Organization or Project in any domain.
-	* Example: The GCP Organization for ` test.com ` is not limited to only having IAM Roles assigned to Users and Groups with ` test.com ` email addresses.
-	* To limit WHO can have IAM Roles in your GCP Organization, employ the Organizational Policy Constraint `constraints/iam.allowedPolicyMemberDomains` where by you can whitelist allowed domains.
-	
-- If you have a GCP Organization associated to your GSuite Directory, all Users in your Directory can create Projects and configure billing by default.  These permissions are automatically inherited and need to be explicitly disabled in GCP at the Organization level.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;ANY&lt;/strong&gt; Google User or Group in &lt;strong&gt;ANY&lt;/strong&gt; domain can be assigned IAM Roles in &lt;strong&gt;ANY&lt;/strong&gt; Organization or Project in any domain.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Example: The GCP Organization for ` test.com ` is not limited to only having IAM Roles assigned to Users and Groups with ` test.com ` email addresses.&lt;/li&gt;
+  &lt;li&gt;To limit WHO can have IAM Roles in your GCP Organization, employ the Organizational Policy Constraint &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;constraints/iam.allowedPolicyMemberDomains&lt;/code&gt; where by you can whitelist allowed domains.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;References:
-&lt;strong&gt;Side Note&lt;/strong&gt;: GSuite was recently renamed Google Workspace
-https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains
-https://cloud.google.com/resource-manager/docs/default-access-control&lt;/p&gt;
+&lt;p&gt;If you have a GCP Organization associated to your GSuite Directory, all Users in your Directory can create Projects and configure billing by default.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;These permissions are automatically inherited and need to be explicitly disabled in GCP at the Organization level.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;Side Note&lt;/em&gt;: GSuite was recently renamed Google Workspace&lt;/li&gt;
+  &lt;li&gt;https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains&lt;/li&gt;
+  &lt;li&gt;https://cloud.google.com/resource-manager/docs/default-access-control&lt;/li&gt;
+&lt;/ul&gt;
 
 </description>
         <pubDate>Sat, 05 Dec 2020 00:00:00 -0600</pubDate>

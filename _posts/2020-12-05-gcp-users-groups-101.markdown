@@ -14,19 +14,21 @@ This is a console completely apart from the GCP Cloud Console, `console.cloud.go
 
 In GCP, you can assign Roles directly to Users however, this pattern is bound to face management and scalability problems.  Instead, consider placing Users in Groups and assigning GCP IAM Roles to the Groups.
 
-Defaults:
+**Defaults**
 
-	- **ANY** Google User or Group in **ANY** domain can be assigned IAM Roles in **ANY** Organization or Project in any domain.
-		* Example: The GCP Organization for ` test.com ` is not limited to only having IAM Roles assigned to Users and Groups with ` test.com ` email addresses.
-		* To limit WHO can have IAM Roles in your GCP Organization, employ the Organizational Policy Constraint `constraints/iam.allowedPolicyMemberDomains` where by you can whitelist allowed domains.
-		
-	- If you have a GCP Organization associated to your GSuite Directory, all Users in your Directory can create Projects and configure billing by default.  These permissions are automatically inherited and need to be explicitly disabled in GCP at the Organization level.
+**ANY** Google User or Group in **ANY** domain can be assigned IAM Roles in **ANY** Organization or Project in any domain.
+ - Example: The GCP Organization for ` test.com ` is not limited to only having IAM Roles assigned to Users and Groups with ` test.com ` email addresses.
+ - To limit WHO can have IAM Roles in your GCP Organization, employ the Organizational Policy Constraint `constraints/iam.allowedPolicyMemberDomains` where by you can whitelist allowed domains.
+
+If you have a GCP Organization associated to your GSuite Directory, all Users in your Directory can create Projects and configure billing by default.  
+ - These permissions are automatically inherited and need to be explicitly disabled in GCP at the Organization level.
 
 
 
-References:
-**Side Note**: GSuite was recently renamed Google Workspace
-https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains
-https://cloud.google.com/resource-manager/docs/default-access-control
+**References**
+
+- *Side Note*: GSuite was recently renamed Google Workspace
+- https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains
+- https://cloud.google.com/resource-manager/docs/default-access-control
 
 
