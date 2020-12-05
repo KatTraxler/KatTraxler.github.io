@@ -1,0 +1,20 @@
+I"Ï<p>Users and Groups are two types of identities which can be assigned IAM Roles in GCP.  When Users and Groups are members in IAM Policy, they are referenced by their email addresses.</p>
+
+<p>There is no directory in GCP containing Users or Groups.  Instead, Users and Groups live in your the GSuite directory for your registered Google Domain. 
+An inventory of the Users and Groups in your domain is found in their own console,  <code class="language-plaintext highlighter-rouge">admin.google.com/ac/users </code>.<br />
+This is a console completely apart from the GCP Cloud Console, <code class="language-plaintext highlighter-rouge">console.cloud.google.com</code>.</p>
+
+<p>In GCP, you can assign Roles directly to Users however, this pattern is bound to face management and scalability problems.  Instead, consider placing Users in Groups and assigning GCP IAM Roles to the Groups.</p>
+
+<p>Defaults:
+	- <strong>ANY</strong> Google User or Group in <strong>ANY</strong> domain can be assigned IAM Roles in <strong>ANY</strong> Organization or Project in any domain.
+		* Example: The GCP Organization for ` test.com ` is not limited to only having IAM Roles assigned to Users and Groups with ` test.com ` email addresses.
+		* To limit WHO can have IAM Roles in your GCP Organization, employ the Organizational Policy Constraint <code class="language-plaintext highlighter-rouge">constraints/iam.allowedPolicyMemberDomains</code> where by you can whitelist allowed domains.
+	- If you have a GCP Organization associated to your GSuite Directory, all Users in your Directory can create Projects and configure billing by default.  These permissions are automatically inherited and need to be explicitly disabled in GCP at the Organization level.</p>
+
+<p>References:
+<strong>Side Note</strong>: GSuite was recently renamed Google Workspace
+https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains
+https://cloud.google.com/resource-manager/docs/default-access-control</p>
+
+:ET
