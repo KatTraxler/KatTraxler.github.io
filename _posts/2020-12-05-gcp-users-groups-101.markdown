@@ -17,8 +17,8 @@ In GCP, you can assign Roles directly to Users however, this pattern is bound to
 **Defaults**
 
 **ANY** Google User or Group in **ANY** domain can be assigned IAM Roles in **ANY** Organization or Project in any domain.
- - Example: The GCP Organization for ` test.com ` is not limited to only having IAM Roles assigned to Users and Groups with ` test.com ` email addresses.
- - To limit WHO can have IAM Roles in your GCP Organization, employ the Organizational Policy Constraint `constraints/iam.allowedPolicyMemberDomains` where by you can whitelist allowed domains.
+ - Example: The GCP Organization for `test.com` is not limited to only having IAM Roles assigned to Users and Groups with `test.com` email addresses.
+ - To limit **WHO** can have IAM Roles in your GCP Organization, employ the Organizational Policy Constraint `constraints/iam.allowedPolicyMemberDomains` where by you can whitelist allowed domains.
 
 If you have a GCP Organization associated to your GSuite Directory, all Users in your Directory can create Projects and configure billing by default.  
  - These permissions are automatically inherited and need to be explicitly disabled in GCP at the Organization level.
