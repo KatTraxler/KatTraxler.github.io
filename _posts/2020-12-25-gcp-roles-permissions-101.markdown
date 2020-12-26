@@ -5,9 +5,8 @@ date:   2020-12-25
 categories: GCP IAM 101
 ---
 
-
 Its ultimately Cloud IAM Permissions which grant access to resources.  However, in GCP you do **not** and **cannot** assign individual permissions to an Identity. Instead, permissions are grouped together to form Roles. Its the Role, not the permission, that is granted to an Identity.  
-Sometimes a Role will only contain a single permission, other times a Role will contain hunderds of permissions so that the Role can enable some broader functionality.
+Sometimes, a Role will only contain a single permission, other times it will contain hunderds of permissions so that the Role can enable some broader functionality.
 
 **Permissions**
 
