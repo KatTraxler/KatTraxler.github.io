@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "GCP .actAs d-day - How not to remediate"
+title:  "GCP .actAs d-day > How not to remediate"
 date:   2021-01-01
 categories: GCP IAM 101
 
@@ -22,11 +22,11 @@ Well, if you're running these services with the default service account as their
 
 Google PSO published a tool, the [permission-dependency-finder](https://github.com/GoogleCloudPlatform/professional-services/tree/master/tools/permission-discrepancy-finder) which can help identify these conditions in your *projects*. Google will have also notified the contact for your *organization* if this insecure condition exists in any of your *projects*.
 
-**What is the `.actAs` permission**
+**What is the `.actAs` permission ?** 
 
 When an end user has access to some infrastructure, most notably, a *compute instance*,  it follows that they have unauthenticated access to its metadata API and the service account its running as. Naturally, giving an end user access to a service account, its access token and all of its roles and permissions could be a privilege escalation risk.  Therefore, when we need to enable an end user to operate a resource,  we want to be <u>explict.</u>  That's where the `.actAs` permission comes in.
 
-The `.actAs` permission can be thought of as a Gatekeeper permission.  It's a check against IAM which can authorize or deny access to a service account. It **should** be required whenever the possibility exists for an end user to gain access to the metadata API. Accessing the metadata API can be accomplished directly say by SSH-ing into a *compute instance* or indirectly, by controling code which the instance executes.
+The `.actAs` permission can be thought of as a gatekeeper permission.  It's a check against IAM which can authorize or deny access to a service account. It **should** be required whenever the possibility exists for an end user to gain access to the metadata API. Accessing the metadata API can be accomplished directly say by SSH-ing into a *compute instance* or indirectly, by controling code which the instance executes.
 
 When you assign a service account to a *compute instance*, Google requires the end user to have the `.actAs` permission on that service account.  When an end user creates a new Cloud Function, they need the `.actAs` permission on the service account running that Cloud Function.  
 
@@ -64,7 +64,7 @@ This will change on January 27, 2021.
 
  At last, the `.actAs` permission will be required, even when using the default *compute* or default *AppEngine* service accounts as the backing identity.
 
-**How not to remediate**
+**How NOT to remediate**
 
 Google provides a predefined role called `iam.serviceAccountUser` which contains the `.actAs` permission. If you were to bind this role at the *project* level, you would be granting the `.actAs` permission for all service accounts, current and future.
 
@@ -74,7 +74,7 @@ Do not bind the `.actAs` permission at the *project* level.  If this is how an *
 
 Google PSO published a nifty tool called the [**permission-discrepancy-finder**](https://github.com/GoogleCloudPlatform/professional-services/tree/master/tools/permission-discrepancy-finder) . You can use this tool to identiify conditions in your *project* or *organization* where an end user is using one of these PaaS Servcies without the `.actAs` permission on the backing service account.
 
-Once you've identified **who** needs the `.actAs` permission, you can assign them the `iam.serviceAccountUser` role *on* the service account. Binding the roles at the resource-level will confine the `.actAs` permission to that specific service account.
+Once you've identified **who** needs the `.actAs` permission, you can assign them the `iam.serviceAccountUser` role *on* the service account. Binding the role at the resource-level will confine the `.actAs` permission to that specific service account.
 
 Be mindful that when the `.actAs` permission is assigned, you are effectively agreeing to the idea that one identity can assume the roles and permissions of another.  To reduce the blast radius of potential service account abuse,  assign unique customer-managed service accounts to the *compute instance* backing your PaaS Services.  
 
@@ -90,7 +90,7 @@ In Dylan Ayrey's [post](https://security.love/blog/gcp/2020/11/22/lateral-moveme
 
 I've found myself asking the question, how insular must an organization be to make such a miscalcuation of risk?
 
-Google's notification to customers left me with even more questions. The tone of their announcement makes it seem as if the **core security considerations** of their products are still lost on them?
+Google's notification to customers left me with even more questions. The tone of their announcement makes it seem as if the **core security considerations** of their products are still lost on them.
 
 > To make onboarding easier, the following services have used the Compute Engine default service account as the deafult and have relied on product-level IAM permissions without requiring the `iam.serviceAccount.actAs` permission:
 >
