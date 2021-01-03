@@ -6,7 +6,7 @@ categories: GCP IAM 101
 
 ---
 
-On January 27, 2021 a major, potentially breaking change is coming to GCP.  If you're using the default service account as the backing idenity for several of GCP's data science PaaS services, the end user will be required to have the `.actAs` permission on the default service account.
+On January 27, 2021 a major, potentially breaking change is coming to GCP.  If you're using the default service account as the backing identity for several of GCP's data science PaaS services, the end user will be required to have the `.actAs` permission on the default service account.
 
 The PaaS services in question are:
 
