@@ -85,15 +85,16 @@ Trim down the roles and permissions assigned to your service accounts.  While al
 I've done my best to keep any color commentary out of the accounting of the vulnerability.
 This next part is the highly editorizalied portion of the post and <u>should be considered a personal opinion piece.</u>
 
-You may be asking yourself as I did, how could a technical powerhouse like Google design a path for privilege escalation and coditfy it as a pattern? I have no doubt that this debacle wasn't a bug or an egregious oversight but a decision.
+You may be asking yourself as I did, how could a technical powerhouse like Google coditfy a path for privilege escalation as an acceptble pattern? I have no doubt that this debacle wasn't a bug or an egregious oversight but a conscious decision.
 
-In Dylan Ayrey's [post](https://security.love/blog/gcp/2020/11/22/lateral-movement-and-privesc-in-GCP.html), he asks the question 'how did we get here' and describes a scenario where the Google juggernaught may have yielded a disappointing result but ultimately operated correctly.  That is, the Product Managers for Cloud IAM and the data science PaaS products have engaged over the security issues but ultimately each product has chosen a path they feel is best suited for them. The result? Security issues manifested not as result of tech debt or a failed process but as a *byproduct* of the process.
+In Dylan Ayrey's [post](https://security.love/blog/gcp/2020/11/22/lateral-movement-and-privesc-in-GCP.html), he asks the question 'how did we get here' and describes a scenario where the Google juggernaught may have yielded a disappointing result but ultimately operated correctly.  
+That is, the Product Managers for Cloud IAM and the data science PaaS products have engaged over the security issues but ultimately each product has chosen a path they feel is best suited for them. The result? Security issues manifested not as result of tech debt or a failed process but as a *byproduct* of the process.
 
 I've found myself asking the question, how insular must an organization be to make such a miscalcuation of risk?
 
 Google's notification to customers left me with even more questions. The tone of their announcement makes it seem as if the **core security considerations** of their products are still lost on them.
 
-> To make onboarding easier, the following services have used the Compute Engine default service account as the deafult and have relied on product-level IAM permissions without requiring the `iam.serviceAccount.actAs` permission:
+> To make onboarding easier, the following services have used the Compute Engine default service account as the default and have relied on product-level IAM permissions without requiring the `iam.serviceAccount.actAs` permission:
 >
 > * Cloud Composer
 > * Dataflow
