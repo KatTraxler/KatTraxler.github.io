@@ -5,8 +5,8 @@
     <description>A Blog about GCP, mostly</description>
     <link>http://localhost:4000//</link>
     <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 10 Jan 2021 15:14:08 -0600</pubDate>
-    <lastBuildDate>Sun, 10 Jan 2021 15:14:08 -0600</lastBuildDate>
+    <pubDate>Sun, 10 Jan 2021 15:40:44 -0600</pubDate>
+    <lastBuildDate>Sun, 10 Jan 2021 15:40:44 -0600</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
       <item>
@@ -190,23 +190,6 @@ https://cloud.google.com/iam/docs/understanding-roles#primitive_role_definitions
         <pubDate>Fri, 25 Dec 2020 00:00:00 -0600</pubDate>
         <link>http://localhost:4000//gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</link>
         <guid isPermaLink="true">http://localhost:4000//gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</guid>
-        
-        
-        <category>GCP</category>
-        
-        <category>IAM</category>
-        
-        <category>101</category>
-        
-      </item>
-    
-      <item>
-        <title>GCP Defining Scope 101</title>
-        <description>&lt;p&gt;When a Role is assigned to a member in a policy, these two directions, ‘who’ can do ‘what’, does not define a scope.  The policy needs to be bound to a Resource in order to deifne scope.  For example if you were to apply the role &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pubsub.viewer&lt;/code&gt; to a User, that IAM Policy does not&lt;/p&gt;
-</description>
-        <pubDate>Sat, 19 Dec 2020 00:00:00 -0600</pubDate>
-        <link>http://localhost:4000//gcp/iam/101/2020/12/19/gcp-defining-scope-101.html</link>
-        <guid isPermaLink="true">http://localhost:4000//gcp/iam/101/2020/12/19/gcp-defining-scope-101.html</guid>
         
         
         <category>GCP</category>
