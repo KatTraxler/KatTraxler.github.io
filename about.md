@@ -9,8 +9,11 @@ menus: about
 My research reflects my obsessions.
 The attack surface at the confluence of Identity and Cloud Platforms whispers to me in my sleep and keeps me up at night.
 
+I can be found equal parts in the world of infoSec and plant twitter [@nightmareJS](https://twitter.com/NightmareJS)
+
 
 ---
+
 
 Links to Past Talks
 
