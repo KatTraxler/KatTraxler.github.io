@@ -4,7 +4,7 @@ meta_description: "A Blog about GCP, mostly"
 
 markdown: kramdown
 highlighter: rouge
-logo: false
+logo: true
 paginate: 15
 baseurl: /
 domain_name: "https://kattraxler.github.io/about/"
@@ -14,6 +14,7 @@ plugins:
     - jekyll-sitemap
     - jekyll-feed
     - jemoji
+    - jekyll-mentions
 
 # Details for the RSS feed generator
 url: "https://kattraxler.github.io/"
@@ -24,3 +25,6 @@ disqus-shortname: ""
 
 whitelist:
   - jekyll-sitemap
+
+jekyll-mentions:
+  base_url: https://twitter.com
