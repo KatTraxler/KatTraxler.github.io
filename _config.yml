@@ -8,11 +8,19 @@ logo: false
 paginate: 15
 baseurl: /
 domain_name: "https://kattraxler.github.io/about/"
-plugins: [jekyll-paginate]
+twitter_username: nightmareJS
+plugins: 
+    - jekyll-paginate
+    - jekyll-sitemap
+    - jekyll-feed
+    - jemoji
 
 # Details for the RSS feed generator
-url: ""
+url: "https://kattraxler.github.io/"
 author: "Kat Traxler"
 
 # Disqus config
 disqus-shortname: ""
+
+whitelist:
+  - jekyll-sitemap
