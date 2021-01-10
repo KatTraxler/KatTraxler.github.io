@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+    <url>
+      <loc>http://localhost:4000/gcp/iam/101/2021/01/01/gcp-actas-dday.html</loc>
+      
+        <lastmod>2021-01-01T00:00:00-06:00</lastmod>
+      
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</loc>
+      
+        <lastmod>2020-12-25T00:00:00-06:00</lastmod>
+      
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/gcp/iam/101/2020/12/19/gcp-defining-scope-101.html</loc>
+      
+        <lastmod>2020-12-19T00:00:00-06:00</lastmod>
+      
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/gcp/iam/101/2020/12/05/gcp-users-groups-101.html</loc>
+      
+        <lastmod>2020-12-05T00:00:00-06:00</lastmod>
+      
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/gcp/iam/101/2020/12/01/gcp-service-accounts-101.html</loc>
+      
+        <lastmod>2020-12-01T00:00:00-06:00</lastmod>
+      
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html</loc>
+      
+        <lastmod>2020-12-01T00:00:00-06:00</lastmod>
+      
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/gcp/iam/101/2020/12/01/gcp-iam-policy-101.html</loc>
+      
+        <lastmod>2020-12-01T00:00:00-06:00</lastmod>
+      
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</urlset>

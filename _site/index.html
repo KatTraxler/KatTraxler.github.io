@@ -19,7 +19,7 @@
 </head>
 <body class="home-template">
 
-    <header class="main-header no-cover">
+    <header class="main-header" style="background-image: url('/assets/images/cover.png') no-repeat center">
     <nav class="main-nav overlay clearfix">
             
         <a class="subscribe-button icon-feed" href="/feed.xml ">Subscribe</a>
@@ -36,7 +36,6 @@
     <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
 </header>
 
-
 <main id="content" class="content" role="main">
 
 
@@ -47,6 +46,79 @@
      
 </nav>
     </div>
+
+    
+
+    <article class="post">
+        <header class="post-header">
+            <h2 class="post-title"><a href="/gcp/iam/101/2021/01/01/gcp-actas-dday.html">GCP .actAs d-day > How not to remediate</a></h2>
+        </header>
+        <section class="post-excerpt">
+            <p>On January 27, 2021 a major, potentially breaking change is coming to GCP.  If you’re using the default service account as the backing identity for several of GCP’s data science PaaS services, the end user will be required to have the <code class="language-plaintext highlighter-rouge">.actAs</code> permission on the default service account.</p>
+ <a class="read-more" href="/gcp/iam/101/2021/01/01/gcp-actas-dday.html">&raquo;</a>
+        </section>
+        <footer class="post-meta">
+            
+                <img class="author-thumb" src="/assets/images/profile.png" alt="Author's profile picture" nopin="nopin" />
+                Kat Traxler
+            
+             
+                on GCP, IAM, and 101 
+            
+            <time class="post-date" datetime="2021-01-01">
+                01 Jan 2021
+            </time> 
+        </footer>
+    </article>
+
+    
+
+    <article class="post">
+        <header class="post-header">
+            <h2 class="post-title"><a href="/gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html">GCP Roles and Permissions 101</a></h2>
+        </header>
+        <section class="post-excerpt">
+            <p>Its ultimately Cloud IAM Permissions which grant access to resources.  However, in GCP you do <strong>not</strong> and <strong>cannot</strong> assign individual permissions to an Identity. Instead, permissions are grouped together to form Roles. Its the Role, not the permission, that is granted to an Identity.<br />
+Sometimes, a Role will only contain a single permission, other times it will contain hunderds of permissions so that the Role can enable some broader functionality.</p>
+ <a class="read-more" href="/gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html">&raquo;</a>
+        </section>
+        <footer class="post-meta">
+            
+                <img class="author-thumb" src="/assets/images/profile.png" alt="Author's profile picture" nopin="nopin" />
+                Kat Traxler
+            
+             
+                on GCP, IAM, and 101 
+            
+            <time class="post-date" datetime="2020-12-25">
+                25 Dec 2020
+            </time> 
+        </footer>
+    </article>
+
+    
+
+    <article class="post">
+        <header class="post-header">
+            <h2 class="post-title"><a href="/gcp/iam/101/2020/12/19/gcp-defining-scope-101.html">GCP Defining Scope 101</a></h2>
+        </header>
+        <section class="post-excerpt">
+            <p>When a Role is assigned to a member in a policy, these two directions, ‘who’ can do ‘what’, does not define a scope.  The policy needs to be bound to a Resource in order to deifne scope.  For example if you were to apply the role <code class="language-plaintext highlighter-rouge">pubsub.viewer</code> to a User, that IAM Policy does not</p>
+ <a class="read-more" href="/gcp/iam/101/2020/12/19/gcp-defining-scope-101.html">&raquo;</a>
+        </section>
+        <footer class="post-meta">
+            
+                <img class="author-thumb" src="/assets/images/profile.png" alt="Author's profile picture" nopin="nopin" />
+                Kat Traxler
+            
+             
+                on GCP, IAM, and 101 
+            
+            <time class="post-date" datetime="2020-12-19">
+                19 Dec 2020
+            </time> 
+        </footer>
+    </article>
 
     
 
@@ -157,7 +229,7 @@
     <footer class="site-footer clearfix">
       <section class="copyright">
         <a href="/">Kat Traxler - Taste the IAM</a> &copy; 
-              2020 &bull; All rights reserved.
+              2021 &bull; All rights reserved.
       </section>
       <section class="poweredby">Made with Jekyll using 
         <a href="http://github.com/rosario/kasper">Kasper theme</a>

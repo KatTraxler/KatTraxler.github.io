@@ -1,0 +1,2 @@
+I"a<p>When a Role is assigned to a member in a policy, these two directions, ‘who’ can do ‘what’, does not define a scope.  The policy needs to be bound to a Resource in order to deifne scope.  For example if you were to apply the role <code class="language-plaintext highlighter-rouge">pubsub.viewer</code> to a User, that IAM Policy does not</p>
+:ET

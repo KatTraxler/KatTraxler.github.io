@@ -5,9 +5,217 @@
     <description>A Blog about GCP, mostly</description>
     <link>http://localhost:4000//</link>
     <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 05 Dec 2020 14:06:59 -0600</pubDate>
-    <lastBuildDate>Sat, 05 Dec 2020 14:06:59 -0600</lastBuildDate>
+    <pubDate>Sun, 10 Jan 2021 15:14:08 -0600</pubDate>
+    <lastBuildDate>Sun, 10 Jan 2021 15:14:08 -0600</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
+    
+      <item>
+        <title>GCP .actAs d-day &gt; How not to remediate</title>
+        <description>&lt;p&gt;On January 27, 2021 a major, potentially breaking change is coming to GCP.  If you’re using the default service account as the backing identity for several of GCP’s data science PaaS services, the end user will be required to have the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission on the default service account.&lt;/p&gt;
+
+&lt;p&gt;The PaaS services in question are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cloud Composer&lt;/li&gt;
+  &lt;li&gt;Dataflow&lt;/li&gt;
+  &lt;li&gt;Dataproc&lt;/li&gt;
+  &lt;li&gt;Dataprep&lt;/li&gt;
+  &lt;li&gt;Data Fusion&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Big deal right ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Well, if you’re running these services with the default service account as their underlying identities &lt;strong&gt;and&lt;/strong&gt; your end users &lt;strong&gt;do not&lt;/strong&gt; have the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission on that default service account, January 28 will be a no-good-rotten-day for operations.&lt;/p&gt;
+
+&lt;p&gt;Google PSO published a tool, the &lt;a href=&quot;https://github.com/GoogleCloudPlatform/professional-services/tree/master/tools/permission-discrepancy-finder&quot;&gt;permission-dependency-finder&lt;/a&gt; which can help identify these conditions in your &lt;em&gt;projects&lt;/em&gt;. Google will have also notified the contact for your &lt;em&gt;organization&lt;/em&gt; if this insecure condition exists in any of your &lt;em&gt;projects&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;What is the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;When an end user has access to some infrastructure, most notably, a &lt;em&gt;compute instance&lt;/em&gt;,  it follows that they have unauthenticated access to its metadata API and the service account its running as. Naturally, giving an end user access to a service account, its access token and all of its roles and permissions could be a privilege escalation risk.  Therefore, when we need to enable an end user to operate a resource,  we want to be &lt;u&gt;explict.&lt;/u&gt;  That’s where the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission comes in.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission can be thought of as a gatekeeper permission.  It’s a check against IAM which can authorize or deny access to a service account. It &lt;strong&gt;should&lt;/strong&gt; be required whenever the possibility exists for an end user to gain access to the metadata API. Accessing the metadata API can be accomplished directly say by SSH-ing into a &lt;em&gt;compute instance&lt;/em&gt; or indirectly, by controling code which the instance executes.&lt;/p&gt;
+
+&lt;p&gt;When you assign a service account to a &lt;em&gt;compute instance&lt;/em&gt;, Google requires the end user to have the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission on that service account.  When an end user creates a new Cloud Function, they need the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission on the service account running that Cloud Function.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission is included in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Service Account User&lt;/code&gt; role and is a mechanism for us, the Cloud Adminstrators, a chance to be crystal clear about who can and who cannot access the roles and permissions assigned to a service account.&lt;/p&gt;
+
+&lt;p&gt;On the other side of the orderly, perdicable requirement for the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission, there is the class of GCP PaaS products which, inexplicably, did not require the end user to have the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission on their service accounts ?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;History&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;It’s not necessary to dive overly deep into the back story.  The history of the missing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission check was effectively narrated by Dylan Ayrey in his blog post &lt;a href=&quot;https://security.love/blog/gcp/2020/11/22/lateral-movement-and-privesc-in-GCP.html&quot;&gt;Fixing a Google Vulnerability&lt;/a&gt;.  Dylan, was the first to report this issue to Google in 2019 as a security vulnerability and worked with Google on helping them understand the security considerations they were not……considering.&lt;/p&gt;
+
+&lt;p&gt;While 2019 was the year Dylan began working with Google, seeminly, holding their hand down a path through the ‘coming-to-jesus’ forest; 2020 was the year for this issue to be aired in public. First with his own public talk at &lt;a href=&quot;https://www.youtube.com/watch?v=z5hPU3g2aZ8&quot;&gt;BSides San Francisco&lt;/a&gt; where he and his collaborator, Allison Dononvan presented on “Security Considerations for the metadata API in GCP”.  The associated &lt;a href=&quot;https://github.com/dxa4481/AttackingAndDefendingTheGCPMetadataAPI&quot;&gt;blog post&lt;/a&gt; is another great archive for understanding how attacks on the metadata API can fuel a GCP &lt;em&gt;project&lt;/em&gt; takeover.&lt;/p&gt;
+
+&lt;p&gt;In 2020 I gave three talks that highligted related security issues on the platform, &lt;a href=&quot;https://www.sans.org/webcasts/privilege-escalation-gcp-transitive-path-114705&quot;&gt;Privilege Escalation in GCP - A Transitive Path&lt;/a&gt; which is an academic look on using customer-managed service accounts as a lateral movovement path in a GCP &lt;em&gt;project&lt;/em&gt;, &lt;a href=&quot;https://www.youtube.com/watch?v=YGT_AmCA-eA&quot;&gt;GCP Primitive Roles, An indictment&lt;/a&gt; at &lt;a href=&quot;https://fwdcloudsec.org/index.html#intro&quot;&gt;fwd:CloudSec&lt;/a&gt;, I dug into the most dangerous of permissions included in GCP &lt;em&gt;Primitive Roles&lt;/em&gt;, with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission being a primary concern. And finally, &lt;a href=&quot;https://www.youtube.com/watch?v=I7QWQmS2Mpg&quot;&gt;A Bug Hunters Guide To GCP&lt;/a&gt; at the SANS Cloud &amp;amp; DevOps Security Summit.&lt;/p&gt;
+
+&lt;p&gt;Last but not least, Spence Geizten, formerly of Rhino Security and of AWS Pacu fame, has a well researched &lt;a href=&quot;https://rhinosecuritylabs.com/gcp/privilege-escalation-google-cloud-platform-part-1/&quot;&gt;piece&lt;/a&gt; outlining specifc privilege escalation paths with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission and services not requiring the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission.&lt;/p&gt;
+
+&lt;p&gt;Finally, in July 2020, Google sent a notification to impacted customers informing them that the certain data science related PaaS products have ‘legacy behavior’ which allowed the end user to use them without the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission and that behavior was to change on January 27 2021.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;January 27, 2021&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Despite my best Googling, I cannot find any public notice from Google committing to the January 27, 2021 date although it has been widely reported by customers. You might ask your GCP Org Admin if they received an emailed notice from Google near the end of July informing them of the upcoming changes.&lt;/p&gt;
+
+&lt;p&gt;Since the notice to customers was issued, there is only one piece of public &lt;a href=&quot;https://cloud.google.com/iam/docs/service-accounts-actas&quot;&gt;GCP documentation&lt;/a&gt; regarding this issue.&lt;/p&gt;
+
+&lt;p&gt;Layered in doublespeak, the page can be head scratching to parse.  Here are to two headlines:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Certain PaaS services did not require the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission on the service account to operate (Composer, AppEngine, Dataflow, Dataproc, Data Fusion).  Going forward, when a product-level role is assigned to an end user, they will additionally need the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission to really use the intended functionality.  That is, to attach service accounts to the inderlying &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;compute instances&lt;/code&gt;, a required procedure when spinning up a new service.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;End users who are &lt;strong&gt;currently&lt;/strong&gt; assigned roles allowing for the deployment of AppEngine applications, Composer environments or Dataflow jobs with the default service account &lt;u&gt;still are not&lt;/u&gt; required to have the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission on the default service account.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This will change on January 27, 2021.&lt;/p&gt;
+
+&lt;p&gt;At last, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission will be required, even when using the default &lt;em&gt;compute&lt;/em&gt; or default &lt;em&gt;AppEngine&lt;/em&gt; service accounts as the backing identity.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;How NOT to remediate&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Google provides a predefined role called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iam.serviceAccountUser&lt;/code&gt; which contains the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission. If you were to bind this role at the &lt;em&gt;project&lt;/em&gt; level, you would be granting the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission for all service accounts, current and future.&lt;/p&gt;
+
+&lt;p&gt;Do not bind the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission at the &lt;em&gt;project&lt;/em&gt; level.  If this is how an &lt;em&gt;organization&lt;/em&gt; addresses the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; breaking change,  they might end up with a worse security posture.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;How to remediate&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Google PSO published a nifty tool called the &lt;a href=&quot;https://github.com/GoogleCloudPlatform/professional-services/tree/master/tools/permission-discrepancy-finder&quot;&gt;&lt;strong&gt;permission-discrepancy-finder&lt;/strong&gt;&lt;/a&gt; . You can use this tool to identiify conditions in your &lt;em&gt;project&lt;/em&gt; or &lt;em&gt;organization&lt;/em&gt; where an end user is using one of these PaaS Servcies without the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission on the backing service account.&lt;/p&gt;
+
+&lt;p&gt;Once you’ve identified &lt;strong&gt;who&lt;/strong&gt; needs the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission, you can assign them the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iam.serviceAccountUser&lt;/code&gt; role &lt;em&gt;on&lt;/em&gt; the service account. Binding the role at the resource-level will confine the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission to that specific service account.&lt;/p&gt;
+
+&lt;p&gt;Be mindful that when the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission is assigned, you are effectively agreeing to the idea that one identity can assume the roles and permissions of another.  To reduce the blast radius of potential service account abuse,  assign unique customer-managed service accounts to the &lt;em&gt;compute instance&lt;/em&gt; backing your PaaS Services.&lt;/p&gt;
+
+&lt;p&gt;Trim down the roles and permissions assigned to your service accounts.  While always good advice, it becomes even more important when another identity will be allowed to impersonate or use that service account.  Google did a good job of documenting the minimum roles required for running Dataflow, Dataproc and Data Fusion.  Any additional roles needed would be unique to your workflows.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;How did this happen&lt;/strong&gt; ?&lt;/p&gt;
+
+&lt;p&gt;I’ve done my best to keep any color commentary out of the accounting of the vulnerability.
+This next part is the highly editorizalied portion of the post and &lt;u&gt;should be considered a personal opinion piece.&lt;/u&gt;&lt;/p&gt;
+
+&lt;p&gt;You may be asking yourself as I did, how could a technical powerhouse like Google coditfy a path for privilege escalation as an acceptble pattern? I have no doubt that this debacle wasn’t a bug or an egregious oversight but a conscious decision.&lt;/p&gt;
+
+&lt;p&gt;In Dylan Ayrey’s &lt;a href=&quot;https://security.love/blog/gcp/2020/11/22/lateral-movement-and-privesc-in-GCP.html&quot;&gt;post&lt;/a&gt;, he asks the question ‘how did we get here’ and describes a scenario where the Google juggernaught may have yielded a disappointing result but ultimately operated correctly.&lt;br /&gt;
+That is, the Product Managers for Cloud IAM and the data science PaaS products have engaged over the security issues but ultimately each product has chosen a path they feel is best suited for them. The result? Security issues manifested not as result of tech debt or a failed process but as a &lt;em&gt;byproduct&lt;/em&gt; of the process.&lt;/p&gt;
+
+&lt;p&gt;I’ve found myself asking the question, how insular must an organization be to make such a miscalcuation of risk?&lt;/p&gt;
+
+&lt;p&gt;Google’s notification to customers left me with even more questions. The tone of their announcement makes it seem as if the &lt;strong&gt;core security considerations&lt;/strong&gt; of their products are still lost on them.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;To make onboarding easier, the following services have used the Compute Engine default service account as the default and have relied on product-level IAM permissions without requiring the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iam.serviceAccount.actAs&lt;/code&gt; permission:&lt;/p&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;Cloud Composer&lt;/li&gt;
+    &lt;li&gt;Dataflow&lt;/li&gt;
+    &lt;li&gt;Dataproc&lt;/li&gt;
+    &lt;li&gt;Dataprep&lt;/li&gt;
+    &lt;li&gt;Data Fusion&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Where was Google’s security department?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Given what we know, that this cavernous security flaw existed in GCP for years, I can only conclude that Security @ Google lacks the all important &lt;strong&gt;Oh Shit&lt;/strong&gt; button every security department needs.&lt;/p&gt;
+
+&lt;p&gt;Whether this is by design or because their is a lack of trust, I have no inclanations, but it doesn’t leave me feeling optimistic for the idea that security is a core design principal in GCP.  Or, that when the rubber meets the road, Security @ Google can force different design decisions on behalf of securing their customers workloads.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 01 Jan 2021 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000//gcp/iam/101/2021/01/01/gcp-actas-dday.html</link>
+        <guid isPermaLink="true">http://localhost:4000//gcp/iam/101/2021/01/01/gcp-actas-dday.html</guid>
+        
+        
+        <category>GCP</category>
+        
+        <category>IAM</category>
+        
+        <category>101</category>
+        
+      </item>
+    
+      <item>
+        <title>GCP Roles and Permissions 101</title>
+        <description>&lt;p&gt;Its ultimately Cloud IAM Permissions which grant access to resources.  However, in GCP you do &lt;strong&gt;not&lt;/strong&gt; and &lt;strong&gt;cannot&lt;/strong&gt; assign individual permissions to an Identity. Instead, permissions are grouped together to form Roles. Its the Role, not the permission, that is granted to an Identity.&lt;br /&gt;
+Sometimes, a Role will only contain a single permission, other times it will contain hunderds of permissions so that the Role can enable some broader functionality.&lt;/p&gt;
+
+&lt;h3 id=&quot;permissions&quot;&gt;&lt;strong&gt;Permissions&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A permission will always be detailed in the following three-part format:&lt;/p&gt;
+
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[api].[resource].[action]&lt;/code&gt;.&lt;/p&gt;
+
+  &lt;p&gt;The Cloud IAM API has a permission allowing Identities to update Roles in GCP, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iam.roles.update&lt;/code&gt;.  The Container API also has a permission to update Roles, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;container.roles.update&lt;/code&gt;.&lt;br /&gt;
+These two permissions do not allow for the configuration of the same resource. The Cloud IAM API and the Container API allow for management of two different types of Roles.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;roles&quot;&gt;&lt;strong&gt;Roles&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;In GCP, Roles come in three flavors, Primitive, Pre-Defined Roles and Custom Roles.&lt;/p&gt;
+
+&lt;h6 id=&quot;primitive-roles&quot;&gt;Primitive Roles&lt;/h6&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Prior to Cloud IAM’s introduction in 2016, these were the only types of Roles. Primitive Roles consist of an Owner, Editor and Viewer and are most simply described as coarse grained.  Each of these Primitive Roles makes up concentric circles of permissions, where the Role, Viewer contains a subset of permissions that the Editor Role does and Editor contains a subset of permissions of the Owner Role. 
+The Editor Role is used ubiqutiously in GCP as the default Role assigned to the Default Compute and Default AppEngine Service Accounts.
+Google advises against using Primitive Roles and so do I.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h6 id=&quot;pre-defined-roles&quot;&gt;Pre-Defined Roles&lt;/h6&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;These Roles are collections of permissions currated by Google. Updates to Pre-Defined Roles are pushed ~weekly and can be monitored in the Cloud IAM Permissions Change Log: 
+https://cloud.google.com/iam/docs/permissions-change-log
+Pre-Defined Roles tend to map to job functions and provide a good menu of granular options.&lt;/p&gt;
+
+  &lt;p&gt;Not all Roles can be assigned at all Resource levels.  For example you can bind the Role &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cloudsql.admin&lt;/code&gt; at the Project Level, allowing an end user to admin all SQL instances in a Project, but you cannot assign that Role to an individual instance.  The lowest Resource level possible for the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cloudsql.admin&lt;/code&gt;  Role is the Project.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h6 id=&quot;custom-roles&quot;&gt;Custom Roles&lt;/h6&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;GCP gives its customers the ability to craft their own Roles.  Custom Roles, with your own unique collection of permissions can be defined at the Organization and be bound at various points in the hierarchy. 
+Not all permissions can be used in Custom Roles. Just like Pre-Defined Roles, not all permissions can be assigned at all Resource levels.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;
+&lt;em&gt;Side Note&lt;/em&gt;: GCP has recently rebranded Primitive Roles and now calls them Basic Roles.
+[ref]:
+Primitive Role Definitions: 
+https://cloud.google.com/iam/docs/understanding-roles#primitive_role_definitions&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 25 Dec 2020 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000//gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</link>
+        <guid isPermaLink="true">http://localhost:4000//gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</guid>
+        
+        
+        <category>GCP</category>
+        
+        <category>IAM</category>
+        
+        <category>101</category>
+        
+      </item>
+    
+      <item>
+        <title>GCP Defining Scope 101</title>
+        <description>&lt;p&gt;When a Role is assigned to a member in a policy, these two directions, ‘who’ can do ‘what’, does not define a scope.  The policy needs to be bound to a Resource in order to deifne scope.  For example if you were to apply the role &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pubsub.viewer&lt;/code&gt; to a User, that IAM Policy does not&lt;/p&gt;
+</description>
+        <pubDate>Sat, 19 Dec 2020 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000//gcp/iam/101/2020/12/19/gcp-defining-scope-101.html</link>
+        <guid isPermaLink="true">http://localhost:4000//gcp/iam/101/2020/12/19/gcp-defining-scope-101.html</guid>
+        
+        
+        <category>GCP</category>
+        
+        <category>IAM</category>
+        
+        <category>101</category>
+        
+      </item>
     
       <item>
         <title>GCP Users and Group 101</title>
@@ -23,8 +231,8 @@ This is a console completely apart from the GCP Cloud Console, &lt;code class=&q
 
 &lt;p&gt;&lt;strong&gt;ANY&lt;/strong&gt; Google User or Group in &lt;strong&gt;ANY&lt;/strong&gt; domain can be assigned IAM Roles in &lt;strong&gt;ANY&lt;/strong&gt; Organization or Project in any domain.&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Example: The GCP Organization for ` test.com ` is not limited to only having IAM Roles assigned to Users and Groups with ` test.com ` email addresses.&lt;/li&gt;
-  &lt;li&gt;To limit WHO can have IAM Roles in your GCP Organization, employ the Organizational Policy Constraint &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;constraints/iam.allowedPolicyMemberDomains&lt;/code&gt; where by you can whitelist allowed domains.&lt;/li&gt;
+  &lt;li&gt;Example: The GCP Organization for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test.com&lt;/code&gt; is not limited to only having IAM Roles assigned to Users and Groups with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test.com&lt;/code&gt; email addresses.&lt;/li&gt;
+  &lt;li&gt;To limit &lt;strong&gt;WHO&lt;/strong&gt; can have IAM Roles in your GCP Organization, employ the Organizational Policy Constraint &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;constraints/iam.allowedPolicyMemberDomains&lt;/code&gt; where by you can whitelist allowed domains.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;If you have a GCP Organization associated to your GSuite Directory, all Users in your Directory can create Projects and configure billing by default.&lt;/p&gt;

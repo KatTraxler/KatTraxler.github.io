@@ -31,12 +31,12 @@
     <article class="post">
 
         <header class="post-header">
-            <h1 class="post-title">GCP Service Account 101</h1>
+            <h1 class="post-title">GCP Defining Scope 101</h1>
             <section class="post-meta">
                 
                     on GCP, IAM, and 101
                 
-                <time class="post-date" datetime="2020-12-01">01 Dec 2020</time>
+                <time class="post-date" datetime="2020-12-19">19 Dec 2020</time>
             </section>
         </header>
 
@@ -49,34 +49,16 @@
         </header> -->
 
         <!-- <span class="post-meta">
-            <time datetime="2020-12-01">01 Dec 2020</time>
+            <time datetime="2020-12-19">19 Dec 2020</time>
             
                 on GCP, IAM, and 101
             
         </span> -->
 
-        <!-- <h1 class="post-title">GCP Service Account 101</h1> -->
+        <!-- <h1 class="post-title">GCP Defining Scope 101</h1> -->
 
         <section class="post-content">
-            <p>Service Accounts are non-human identities used for Infrastructure and Resources.  Service Accounts do not have passwords.  You can optionally generate and export a Private Key for a Service Account. But you’ll only want to do this when you need to enable an external integrations, that is, authenticated API calls to your Resources.</p>
-
-<p>A Service Account is <strong>Both</strong> an Identity and a Resource.<br />
-This might be the most difficult concept in GCP to initially grasp. Let me help break that down.</p>
-
-<p><strong>Service Accounts as Resources</strong>
-Service Accounts are created and reside within a Project.  <em>You can think of a Service Account as having a ‘home’ Project.</em>  Just like a Compute Instance or a Storage Bucket ‘resides’ in a Project where its direct parent in the Resource Hierarchy is a Project.</p>
-
-<p>Like a Resource, you can <em>setIAMPolicy</em> on a Service Account.  IAM on a Service Account include permissions like:
-	* who can impersonate that Service Account
-	* who can ActAs the Service Account
-	* who can generate keys for the Service Account</p>
-
-<p><strong>Service Accounts as Identities</strong></p>
-
-<p>Like other types of Identities in GCP (i.e. Users and Groups), Service Accounts can have IAM Policy bindings at any node of the Resource Hierarchy.  Just because a Service Account lives in a Project, doesn’t mean it needs any permissions in that Project.  A Service Account can be assigned any Role, which can be applied at any node of the Resource Hierarchy, just like a User or Group.
-When setting IAM Policy <em>ON</em> a Service Account, the WHO can be another Service Account! In fact, It might be a desirable pattern to have a Service Account, having permissions allowing it to impersonate another Service Account.
-In this case, the Service Account doing the impersonating is the <em>WHO</em>, and is acting like an identity. While the Service Account being impersonated is the <em>Resource.</em></p>
-
+            <p>When a Role is assigned to a member in a policy, these two directions, ‘who’ can do ‘what’, does not define a scope.  The policy needs to be bound to a Resource in order to deifne scope.  For example if you were to apply the role <code class="language-plaintext highlighter-rouge">pubsub.viewer</code> to a User, that IAM Policy does not</p>
 
         </section>
 
@@ -99,15 +81,15 @@ In this case, the Service Account doing the impersonating is the <em>WHO</em>, a
             <!-- Share links section -->
             <section class="share">
     <h4>Share this post</h4>
-    <a class="icon-twitter" href="http://twitter.com/share?text=GCP Service Account 101&amp;url=https://kattraxler.github.io/about//gcp/iam/101/2020/12/01/gcp-service-accounts-101.html"
+    <a class="icon-twitter" href="http://twitter.com/share?text=GCP Defining Scope 101&amp;url=https://kattraxler.github.io/about//gcp/iam/101/2020/12/19/gcp-defining-scope-101.html"
         onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
         <span class="hidden">Twitter</span>
     </a>
-    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kattraxler.github.io/about//gcp/iam/101/2020/12/01/gcp-service-accounts-101.html"
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kattraxler.github.io/about//gcp/iam/101/2020/12/19/gcp-defining-scope-101.html"
         onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
         <span class="hidden">Facebook</span>
     </a>
-    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://kattraxler.github.io/about//gcp/iam/101/2020/12/01/gcp-service-accounts-101.html"
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://kattraxler.github.io/about//gcp/iam/101/2020/12/19/gcp-defining-scope-101.html"
        onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
         <span class="hidden">Google+</span>
     </a>

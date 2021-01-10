@@ -8,14 +8,17 @@ categories: GCP IAM 101
 Its ultimately Cloud IAM Permissions which grant access to resources.  However, in GCP you do **not** and **cannot** assign individual permissions to an Identity. Instead, permissions are grouped together to form Roles. Its the Role, not the permission, that is granted to an Identity.  
 Sometimes, a Role will only contain a single permission, other times it will contain hunderds of permissions so that the Role can enable some broader functionality.
 
-**Permissions**
+### **Permissions**
 
-> A permission will always be detailed in the following three-part format: `[api].[resource].[action]`. Here's how that works. 
+> A permission will always be detailed in the following three-part format:
+>
+>  `[api].[resource].[action]`. 
 >
 > The Cloud IAM API has a permission allowing Identities to update Roles in GCP, `iam.roles.update`.  The Container API also has a permission to update Roles, `container.roles.update`.  
 > These two permissions do not allow for the configuration of the same resource. The Cloud IAM API and the Container API allow for management of two different types of Roles.
 
-**Roles**
+### **Roles**
+
 In GCP, Roles come in three flavors, Primitive, Pre-Defined Roles and Custom Roles.
 
 ###### Primitive Roles

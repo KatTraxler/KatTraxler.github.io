@@ -1,4 +1,4 @@
-I"L<p>Users and Groups are two types of identities which can be assigned IAM Roles in GCP.  When Users and Groups are members in IAM Policy, they are referenced by their email addresses.</p>
+I"É<p>Users and Groups are two types of identities which can be assigned IAM Roles in GCP.  When Users and Groups are members in IAM Policy, they are referenced by their email addresses.</p>
 
 <p>There is no directory in GCP containing Users or Groups.  Instead, Users and Groups live in your the GSuite directory for your registered Google Domain. 
 An inventory of the Users and Groups in your domain is found in their own console,  <code class="language-plaintext highlighter-rouge">admin.google.com/ac/users </code>.<br />
@@ -10,8 +10,8 @@ This is a console completely apart from the GCP Cloud Console, <code class="lang
 
 <p><strong>ANY</strong> Google User or Group in <strong>ANY</strong> domain can be assigned IAM Roles in <strong>ANY</strong> Organization or Project in any domain.</p>
 <ul>
-  <li>Example: The GCP Organization for ` test.com ` is not limited to only having IAM Roles assigned to Users and Groups with ` test.com ` email addresses.</li>
-  <li>To limit WHO can have IAM Roles in your GCP Organization, employ the Organizational Policy Constraint <code class="language-plaintext highlighter-rouge">constraints/iam.allowedPolicyMemberDomains</code> where by you can whitelist allowed domains.</li>
+  <li>Example: The GCP Organization for <code class="language-plaintext highlighter-rouge">test.com</code> is not limited to only having IAM Roles assigned to Users and Groups with <code class="language-plaintext highlighter-rouge">test.com</code> email addresses.</li>
+  <li>To limit <strong>WHO</strong> can have IAM Roles in your GCP Organization, employ the Organizational Policy Constraint <code class="language-plaintext highlighter-rouge">constraints/iam.allowedPolicyMemberDomains</code> where by you can whitelist allowed domains.</li>
 </ul>
 
 <p>If you have a GCP Organization associated to your GSuite Directory, all Users in your Directory can create Projects and configure billing by default.</p>
