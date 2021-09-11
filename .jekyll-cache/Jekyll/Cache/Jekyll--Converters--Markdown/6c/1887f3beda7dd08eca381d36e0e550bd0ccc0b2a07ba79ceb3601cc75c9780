@@ -1,0 +1,5 @@
+I"Ž<p><strong>TLDR;</strong><br />
+Google makes use of custom metadata to authorize access to AI Notebooks and their web UIs.<br />
+Individuals granted access via custom metadata need not have any IAM permissions on the compute instance, on the service account running the Notebook or even be a member of the Organization.  Authorization via custom metadata, bypasses a specific <a href="https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains"><strong>Organization Policy Constraint</strong></a> which restricts cross-domain resource sharing.<br />
+This vulnerability was awarded $1337.00 by the Google VRP Review Panel.</p>
+:ET

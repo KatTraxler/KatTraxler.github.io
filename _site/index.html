@@ -51,6 +51,33 @@
 
     <article class="post">
         <header class="post-header">
+            <h2 class="post-title"><a href="/gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html">Bypassing GCP Org Policy with Custom Metadata</a></h2>
+        </header>
+        <section class="post-excerpt">
+            <p><strong>TLDR;</strong><br />
+Google makes use of custom metadata to authorize access to AI Notebooks and their web UIs.<br />
+Individuals granted access via custom metadata need not have any IAM permissions on the compute instance, on the service account running the Notebook or even be a member of the Organization.  Authorization via custom metadata, bypasses a specific <a href="https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains"><strong>Organization Policy Constraint</strong></a> which restricts cross-domain resource sharing.<br />
+This vulnerability was awarded $1337.00 by the Google VRP Review Panel.</p>
+ <a class="read-more" href="/gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html">&raquo;</a>
+        </section>
+        <footer class="post-meta">
+            
+                <img class="author-thumb" src="/assets/images/profile.png" alt="Author's profile picture" nopin="nopin" />
+                Kat Traxler
+            
+             
+                on GCP and Hacking 
+            
+            <time class="post-date" datetime="2021-09-10">
+                10 Sep 2021
+            </time> 
+        </footer>
+    </article>
+
+    
+
+    <article class="post">
+        <header class="post-header">
             <h2 class="post-title"><a href="/gcp/iam/101/2021/01/01/gcp-actas-dday.html">GCP .actAs d-day > How not to remediate</a></h2>
         </header>
         <section class="post-excerpt">
