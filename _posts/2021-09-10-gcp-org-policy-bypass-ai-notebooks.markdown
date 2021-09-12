@@ -75,7 +75,7 @@ gcloud logging read "resource.type=gce_instance AND logName:projects/[PROJECT-ID
 	-- 08/19/2021: Informed of the Bug Bounty Award. "The VRP panel has decided to issue a reward of $1337.00 for your report. Congratulations"<br>
 	-- 09/09/2021: Asked for an update as the issue remained open and reconfirmed my intensions to publish on September 10th.<br>
 	-- 09/10/2021: Google VRP informed me the patch was being pushed to servers today and would be rolled out to all servers by EOD.<br>
-	-- 09/10/2021: Informed Google VRP of the publishing of this report, despite the issue not being resolved.
+	-- 09/10/2021: Informed Google VRP of the publishing of this report, despite the issue not being resolved.<br>
 	-- 09/11/2021: Informed Google that I agreed their patch plus the expiration of the 'DATALAB_TUNNEL_TOKEN' cookie resulted in a complete fix of the issue. 
 
 
