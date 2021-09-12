@@ -1,4 +1,4 @@
-I"�!<p><strong>TLDR;</strong><br />
+I"Y"<p><strong>TLDR;</strong><br />
 Google makes use of custom metadata to authorize access to AI Notebooks and their web UIs.<br />
 Individuals granted access via custom metadata need not have any IAM permissions on the compute instance, on the service account running the Notebook or even be a member of the Organization.  Authorization via custom metadata, bypasses a specific <a href="https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains"><strong>Organization Policy Constraint</strong></a> which restricts cross-domain resource sharing.<br />
 This vulnerability was awarded $1337.00 by the Google VRP Review Panel.</p>
@@ -36,20 +36,21 @@ The fine-print on this, and all Organization Policy constraints are, they only a
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RgSsQpCoj_w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 </p>
 
-<p><strong>Identifying If You’re Affected</strong><br />
-When Google finally rolls the fix, it will check that the user specified in the <code class="language-plaintext highlighter-rouge">proxy-user-mail</code> metadata property has the <a href="https://cloud.google.com/iam/docs/service-accounts#user-role">Service Account User Role</a>.<br />
-The fix is unlikely to be retroactive. It is possible to have this vulnerability be ‘fixed’, yet still be actively exploited as current Jupyter Notebooks registered with the Inverting Proxy would not be affected by the patch.<br />
-To see if any of your compute instances are potentially being used as a backdoor by malicious actors, perform the following <code class="language-plaintext highlighter-rouge">gcloud</code> query on all your instances.</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	gcloud compute instances describe INSTANCE-ID --format='value[](metadata.items.proxy-user-mail)'
+<p><strong>Identifying If You Were Affected</strong><br />
+Their does not seem to be any ongoing risk with this issue as outlined in my follow up report detailing <a href="">rememdiation</a>.
+The remaining interesting question for GCP Customers is?, “Were you affected?, At somepoint, was an attacker using this vulnerability as a backdoor”<br /></p>
+
+<p>To answer that question I suggest querying your Cloud Audit Logs and review any <code class="language-plaintext highlighter-rouge">setMetadata</code> events.  If any <code class="language-plaintext highlighter-rouge">setMetadata</code> events set the <code class="language-plaintext highlighter-rouge">proxy-user-mail</code> metadata property to a user outside your domain, this should be pursued as suspicious.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcloud logging read "resource.type=gce_instance AND logName:projects/[PROJECT-ID]/logs/cloudaudit.googleapis.com%2Factivity"  --format json
 </code></pre></div></div>
-<p>Review the returned email addresses and investigate any suspicious users, espeicially ones outside of your domain.</p>
 
 <p><strong>Reporting Timeline</strong><br />
 	– 05/15/21: Originally reported this issue via the <a href="https://www.google.com/about/appsecurity/reward-program/"><strong>Google Vulnerability Rewards Program</strong></a> from corporate email address.<br />
 	– June 2021: Was verbally informed the fix would roll out first week in July.<br />
-	– July 2021: Lost access to original report as it was submitted with corporate email and I changed jobs :) <br />
+	– July 2021: Lost access to original report as it was submitted using corporate email address and I changed jobs :) <br />
 	– 07/27/2021: Re-reported the same issue via the <a href="https://www.google.com/about/appsecurity/reward-program/"><strong>Google Vulnerability Rewards Program</strong></a>, this time with personal email account. Assigned ticket number: 194849420 <br />
-	– 07/28/2021: Identified as an Abuse Risk and triaged to the Google Trust &amp; Safety team.<br />
+	– 07/28/2021: Identified as an Abuse Risk and triaged to the Google Trust &amp; Safety team. Categorized as a Priority P1, Severity S4.<br />
 	– 7/29/2021: Google VRP communicated that the fix was rolled out that week.<br />
 	– 7/29/2021: I informed Google that their fix was insufficient and AI Notebooks and the Inverting Proxy was still vulnerable.<br />
 	– 08/05/2021: Provided further details on how this issue bypassed the Domain Restriction Constraint and confirmed that I knew that the Domain Restriction Constraint is NOT retroactive and that quirk of Organization Policy was not relevant.<br />
@@ -61,6 +62,7 @@ To see if any of your compute instances are potentially being used as a backdoor
 	– 08/19/2021: Informed of the Bug Bounty Award. “The VRP panel has decided to issue a reward of $1337.00 for your report. Congratulations”<br />
 	– 09/09/2021: Asked for an update as the issue remained open and reconfirmed my intensions to publish on September 10th.<br />
 	– 09/10/2021: Google VRP informed me the patch was being pushed to servers today and would be rolled out to all servers by EOD.<br />
-	– 09/10/2021: Informed Google VRP of the publishing of this report, despite the issue not being resolved.</p>
+	– 09/10/2021: Informed Google VRP of the publishing of this report, despite the issue not being resolved.
+	– 09/11/2021: Informed Google that I agreed their patch plus the expiration of the ‘DATALAB_TUNNEL_TOKEN’ cookie resulted in a complete fix of the issue.</p>
 
 :ET

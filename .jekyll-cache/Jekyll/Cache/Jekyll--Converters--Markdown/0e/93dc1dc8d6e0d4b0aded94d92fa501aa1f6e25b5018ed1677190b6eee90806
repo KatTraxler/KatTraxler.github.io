@@ -1,4 +1,4 @@
-I"�!<p><strong>TLDR;</strong><br />
+I"�"<p><strong>TLDR;</strong><br />
 Google makes use of custom metadata to authorize access to AI Notebooks and their web UIs.<br />
 Individuals granted access via custom metadata need not have any IAM permissions on the compute instance, on the service account running the Notebook or even be a member of the Organization.  Authorization via custom metadata, bypasses a specific <a href="https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains"><strong>Organization Policy Constraint</strong></a> which restricts cross-domain resource sharing.<br />
 This vulnerability was awarded $1337.00 by the Google VRP Review Panel.</p>
@@ -49,7 +49,7 @@ To see if any of your compute instances are potentially being used as a backdoor
 	– June 2021: Was verbally informed the fix would roll out first week in July.<br />
 	– July 2021: Lost access to original report as it was submitted using corporate email address and I changed jobs :) <br />
 	– 07/27/2021: Re-reported the same issue via the <a href="https://www.google.com/about/appsecurity/reward-program/"><strong>Google Vulnerability Rewards Program</strong></a>, this time with personal email account. Assigned ticket number: 194849420 <br />
-	– 07/28/2021: Identified as an Abuse Risk and triaged to the Google Trust &amp; Safety team.<br />
+	– 07/28/2021: Identified as an Abuse Risk and triaged to the Google Trust &amp; Safety team. Categorized as a Priority P1, Severity S4.<br />
 	– 7/29/2021: Google VRP communicated that the fix was rolled out that week.<br />
 	– 7/29/2021: I informed Google that their fix was insufficient and AI Notebooks and the Inverting Proxy was still vulnerable.<br />
 	– 08/05/2021: Provided further details on how this issue bypassed the Domain Restriction Constraint and confirmed that I knew that the Domain Restriction Constraint is NOT retroactive and that quirk of Organization Policy was not relevant.<br />
@@ -61,6 +61,7 @@ To see if any of your compute instances are potentially being used as a backdoor
 	– 08/19/2021: Informed of the Bug Bounty Award. “The VRP panel has decided to issue a reward of $1337.00 for your report. Congratulations”<br />
 	– 09/09/2021: Asked for an update as the issue remained open and reconfirmed my intensions to publish on September 10th.<br />
 	– 09/10/2021: Google VRP informed me the patch was being pushed to servers today and would be rolled out to all servers by EOD.<br />
-	– 09/10/2021: Informed Google VRP of the publishing of this report, despite the issue not being resolved.</p>
+	– 09/10/2021: Informed Google VRP of the publishing of this report, despite the issue not being resolved.
+	– 09/11/2021: Informed Google that I agreed their patch plus the expiration of the ‘DATALAB_TUNNEL_TOKEN’ cookie resulted in a complete fix of the issue.</p>
 
 :ET

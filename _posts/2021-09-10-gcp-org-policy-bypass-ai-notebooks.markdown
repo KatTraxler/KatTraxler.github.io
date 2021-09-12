@@ -48,14 +48,15 @@ The fine-print on this, and all Organization Policy constraints are, they only a
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RgSsQpCoj_w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </p>
 
-**Identifying If You're Affected**<br>
-When Google finally rolls the fix, it will check that the user specified in the `proxy-user-mail` metadata property has the [Service Account User Role](https://cloud.google.com/iam/docs/service-accounts#user-role).  
-The fix is unlikely to be retroactive. It is possible to have this vulnerability be 'fixed', yet still be actively exploited as current Jupyter Notebooks registered with the Inverting Proxy would not be affected by the patch.  
-To see if any of your compute instances are potentially being used as a backdoor by malicious actors, perform the following `gcloud` query on all your instances.
+**Identifying If You Were Affected**<br>
+Their does not seem to be any ongoing risk with this issue as outlined in my follow up report detailing [rememdiation]().
+The remaining interesting question for GCP Customers is?,<br> "Were you affected? At somepoint, was an attacker using this vulnerability as a backdoor"<br>
+
+To answer that question I suggest querying your Cloud Audit Logs and reviewing any `setMetadata` events.  If any `setMetadata` events set the `proxy-user-mail` metadata property to a user outside your domain, this should be pursued as suspicious.
+
 ```
-	gcloud compute instances describe INSTANCE-ID --format='value[](metadata.items.proxy-user-mail)'
+gcloud logging read "resource.type=gce_instance AND logName:projects/[PROJECT-ID]/logs/cloudaudit.googleapis.com%2Factivity"  --format json
 ```
-Review the returned email addresses and investigate any suspicious users, espeicially ones outside of your domain.
 
 **Reporting Timeline**<br>
 	-- 05/15/21: Originally reported this issue via the [**Google Vulnerability Rewards Program**](https://www.google.com/about/appsecurity/reward-program/) from corporate email address.<br>
@@ -75,6 +76,7 @@ Review the returned email addresses and investigate any suspicious users, espeic
 	-- 09/09/2021: Asked for an update as the issue remained open and reconfirmed my intensions to publish on September 10th.<br>
 	-- 09/10/2021: Google VRP informed me the patch was being pushed to servers today and would be rolled out to all servers by EOD.<br>
 	-- 09/10/2021: Informed Google VRP of the publishing of this report, despite the issue not being resolved.
+	-- 09/11/2021: Informed Google that I agreed their patch plus the expiration of the 'DATALAB_TUNNEL_TOKEN' cookie resulted in a complete fix of the issue. 
 
 
 

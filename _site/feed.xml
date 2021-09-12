@@ -5,9 +5,67 @@
     <description>A Blog about GCP, mostly</description>
     <link>http://localhost:4000//</link>
     <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 10 Sep 2021 19:19:11 -0500</pubDate>
-    <lastBuildDate>Fri, 10 Sep 2021 19:19:11 -0500</lastBuildDate>
+    <pubDate>Sat, 11 Sep 2021 20:40:07 -0500</pubDate>
+    <lastBuildDate>Sat, 11 Sep 2021 20:40:07 -0500</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
+    
+      <item>
+        <title>GCP AI Notebooks Vulnerability - Remediation</title>
+        <description>&lt;p&gt;This is an update to my &lt;a href=&quot;https://kattraxler.github.io/gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html&quot;&gt;previous blog post&lt;/a&gt; which documented a  mechanism for GCP Org Policy Bypass using custom metadata on compute instances.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;The Original Issue&lt;/strong&gt;&lt;br /&gt;
+Google makes use of the custom metadata in compute instances to authorize access to AI Notebooks and their web UIs.&lt;br /&gt;
+Individuals granted access via custom metadata need not have any IAM permissions on the compute instance, on the service account running the Notebook or even be a member of the Organization.  Authorization via custom metadata, bypasses a specific &lt;a href=&quot;https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains&quot;&gt;&lt;strong&gt;Organization Policy Constraint&lt;/strong&gt;&lt;/a&gt; which is intended to restrict cross-domain resource sharing.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Googles Notification To Customers&lt;/strong&gt;&lt;br /&gt;
+On September 9th, Google sent a notification to customers informing them of a ‘Security Enhancement’ being made to the AI Notebooks API.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/remediation-notification-1.png&quot; alt=&quot;Notification-1&quot; /&gt;
+&lt;img src=&quot;/assets/images/remediation-notification-2.png&quot; alt=&quot;Notification-2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;ins&gt;Highlights of the notification include:&lt;/ins&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;AI Notebooks will require a user who is granted access to a Notebook in Single-User Mode to have the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iam.serviceAccounts.actAs&lt;/code&gt; permission on the Service Account the Notebook Instance is running as.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;Indicates the fix will be retroactive. Meaning, if any access is currently being granted without the user having the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iam.serviceAccounts.actAs&lt;/code&gt; permission, this change will actively break their access.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;Provided a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gcloud&lt;/code&gt; command for customers to search compute instances for ones using metadata as an authorization mechanism.&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;Date for roll-out to be Friday, September 10th 2021.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Is the Original Issue Remediated?&lt;/strong&gt;&lt;br /&gt;
+Finally, yes&lt;br /&gt;
+While the engineers at Google pushed a patch for this issue on September 10th, they did not invalidate a persistent auth cookie set by the &lt;a href=&quot;us-west1.datalab.cloud.google.com/_signin?authuser=0&quot;&gt;Datalab signin endpoint&lt;/a&gt;.&lt;br /&gt;
+With a valid ‘DATALAB_TUNNEL_TOKEN’ cookie, an end user is not redirected through the authentication flow (and through the patched piece of code) rather, they are fast tracked to the ‘/lab?authuser=0’ endpoint where they are authorized to access the Jupyter Notebook, again, irrespective of IAM Role assignment.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Is there any lingering risk?&lt;/strong&gt;&lt;br /&gt;
+I don’t believe so.&lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;The initial fix Google rolled out on Friday, September 10th seemed to address all active connections through the Inverting Proxy.&lt;br /&gt; A forcible re-registeration process was performed that had the affect of actively terminating access to notebooks if the user in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;proxy-user-mail&lt;/code&gt; custom metadata field DID NOT have the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iam.serviceAccounts.actAs&lt;/code&gt; permission. &lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;The ‘DATALAB_TUNNEL_TOKEN’ cookie has a TTL of 24 hours and the expiration appears to be enforced server side. It has been more than 24 since the Datalab Signin enpoint would have issued a ‘DATALAB_TUNNEL_TOKEN’ cookie to a user who does not have the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iam.serviceAccounts.actAs&lt;/code&gt; permission&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Lessons Learned&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;It’s never good when two people are performing seemingly the same test and come up with different results.&lt;/li&gt;
+  &lt;li&gt;Invalidate persistent auth cookies when patching auth bypass issues.&lt;/li&gt;
+  &lt;li&gt;If you release details of insufficiently mitigated vulnerability in a major cloud provider on a Friday night, expect to be working the weekend.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Shout Outs&lt;/strong&gt;&lt;br /&gt;
+Special thanks to the Google Engineers that partnered with me over the weekend to figure out what was going on.&lt;br /&gt;
+And to the friends who let me complain to them.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 11 Sep 2021 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000//gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update.html</link>
+        <guid isPermaLink="true">http://localhost:4000//gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update.html</guid>
+        
+        
+        <category>GCP</category>
+        
+        <category>Hacking</category>
+        
+      </item>
     
       <item>
         <title>Bypassing GCP Org Policy with Custom Metadata</title>
@@ -49,13 +107,14 @@ The fine-print on this, and all Organization Policy constraints are, they only a
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/RgSsQpCoj_w&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Identifying If You’re Affected&lt;/strong&gt;&lt;br /&gt;
-When Google finally rolls the fix, it will check that the user specified in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;proxy-user-mail&lt;/code&gt; metadata property has the &lt;a href=&quot;https://cloud.google.com/iam/docs/service-accounts#user-role&quot;&gt;Service Account User Role&lt;/a&gt;.&lt;br /&gt;
-The fix is unlikely to be retroactive. It is possible to have this vulnerability be ‘fixed’, yet still be actively exploited as current Jupyter Notebooks registered with the Inverting Proxy would not be affected by the patch.&lt;br /&gt;
-To see if any of your compute instances are potentially being used as a backdoor by malicious actors, perform the following &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gcloud&lt;/code&gt; query on all your instances.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	gcloud compute instances describe INSTANCE-ID --format='value[](metadata.items.proxy-user-mail)'
+&lt;p&gt;&lt;strong&gt;Identifying If You Were Affected&lt;/strong&gt;&lt;br /&gt;
+Their does not seem to be any ongoing risk with this issue as outlined in my follow up report detailing &lt;a href=&quot;&quot;&gt;rememdiation&lt;/a&gt;.
+The remaining interesting question for GCP Customers is?,&lt;br /&gt; “Were you affected? At somepoint, was an attacker using this vulnerability as a backdoor”&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;To answer that question I suggest querying your Cloud Audit Logs and reviewing any &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setMetadata&lt;/code&gt; events.  If any &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setMetadata&lt;/code&gt; events set the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;proxy-user-mail&lt;/code&gt; metadata property to a user outside your domain, this should be pursued as suspicious.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gcloud logging read &quot;resource.type=gce_instance AND logName:projects/[PROJECT-ID]/logs/cloudaudit.googleapis.com%2Factivity&quot;  --format json
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Review the returned email addresses and investigate any suspicious users, espeicially ones outside of your domain.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Reporting Timeline&lt;/strong&gt;&lt;br /&gt;
 	– 05/15/21: Originally reported this issue via the &lt;a href=&quot;https://www.google.com/about/appsecurity/reward-program/&quot;&gt;&lt;strong&gt;Google Vulnerability Rewards Program&lt;/strong&gt;&lt;/a&gt; from corporate email address.&lt;br /&gt;
@@ -74,7 +133,8 @@ To see if any of your compute instances are potentially being used as a backdoor
 	– 08/19/2021: Informed of the Bug Bounty Award. “The VRP panel has decided to issue a reward of $1337.00 for your report. Congratulations”&lt;br /&gt;
 	– 09/09/2021: Asked for an update as the issue remained open and reconfirmed my intensions to publish on September 10th.&lt;br /&gt;
 	– 09/10/2021: Google VRP informed me the patch was being pushed to servers today and would be rolled out to all servers by EOD.&lt;br /&gt;
-	– 09/10/2021: Informed Google VRP of the publishing of this report, despite the issue not being resolved.&lt;/p&gt;
+	– 09/10/2021: Informed Google VRP of the publishing of this report, despite the issue not being resolved.
+	– 09/11/2021: Informed Google that I agreed their patch plus the expiration of the ‘DATALAB_TUNNEL_TOKEN’ cookie resulted in a complete fix of the issue.&lt;/p&gt;
 
 </description>
         <pubDate>Fri, 10 Sep 2021 00:00:00 -0500</pubDate>

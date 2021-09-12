@@ -1,4 +1,4 @@
-I"�!<p><strong>TLDR;</strong><br />
+I"%"<p><strong>TLDR;</strong><br />
 Google makes use of custom metadata to authorize access to AI Notebooks and their web UIs.<br />
 Individuals granted access via custom metadata need not have any IAM permissions on the compute instance, on the service account running the Notebook or even be a member of the Organization.  Authorization via custom metadata, bypasses a specific <a href="https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains"><strong>Organization Policy Constraint</strong></a> which restricts cross-domain resource sharing.<br />
 This vulnerability was awarded $1337.00 by the Google VRP Review Panel.</p>
@@ -47,9 +47,9 @@ To see if any of your compute instances are potentially being used as a backdoor
 <p><strong>Reporting Timeline</strong><br />
 	– 05/15/21: Originally reported this issue via the <a href="https://www.google.com/about/appsecurity/reward-program/"><strong>Google Vulnerability Rewards Program</strong></a> from corporate email address.<br />
 	– June 2021: Was verbally informed the fix would roll out first week in July.<br />
-	– July 2021: Lost access to original reportcorporate email due to job change. <br />
+	– July 2021: Lost access to original report as it was submitted using corporate email address and I changed jobs :) <br />
 	– 07/27/2021: Re-reported the same issue via the <a href="https://www.google.com/about/appsecurity/reward-program/"><strong>Google Vulnerability Rewards Program</strong></a>, this time with personal email account. Assigned ticket number: 194849420 <br />
-	– 07/28/2021: Identified as an Abuse Risk and triaged to the Google Trust &amp; Safety team.<br />
+	– 07/28/2021: Identified as an Abuse Risk and triaged to the Google Trust &amp; Safety team. Categorized as a Priority P1, Severity S4.<br />
 	– 7/29/2021: Google VRP communicated that the fix was rolled out that week.<br />
 	– 7/29/2021: I informed Google that their fix was insufficient and AI Notebooks and the Inverting Proxy was still vulnerable.<br />
 	– 08/05/2021: Provided further details on how this issue bypassed the Domain Restriction Constraint and confirmed that I knew that the Domain Restriction Constraint is NOT retroactive and that quirk of Organization Policy was not relevant.<br />

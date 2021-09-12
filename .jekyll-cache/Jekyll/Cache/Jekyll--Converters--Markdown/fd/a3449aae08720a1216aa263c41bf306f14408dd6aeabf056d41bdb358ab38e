@@ -1,0 +1,46 @@
+I"�<hr />
+
+<p>This is an update to my <a href="https://kattraxler.github.io/gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html">previous blog post</a> which documented a  mechanism for GCP Org Policy Bypass using custom metadata on compute instances.</p>
+
+<hr />
+
+<p><strong>The Original Issue</strong><br />
+Google makes use of the custom metadata in compute instances to authorize access to AI Notebooks and their web UIs.<br />
+Individuals granted access via custom metadata need not have any IAM permissions on the compute instance, on the service account running the Notebook or even be a member of the Organization.  Authorization via custom metadata, bypasses a specific <a href="https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains"><strong>Organization Policy Constraint</strong></a> which is intended to restrict cross-domain resource sharing.</p>
+
+<p><strong>Googles Notification To Customers</strong><br />
+On September 9th, Google sent a notification to customers informing them of a ‘Security Enhancement’ being made to the AI Notebooks API.</p>
+
+<p><img src="/assets/images/remediation-notification-1.png" alt="Notification-1" />
+<img src="/assets/images/remediation-notification-2.png" alt="Notification-2" /></p>
+
+<p><ins>Highlights of the notification include:</ins><br /></p>
+<ul>
+  <li>AI Notebooks will require a user who is granted access to a Notebook in Single-User Mode to have the <code class="language-plaintext highlighter-rouge">iam.serviceAccounts.actAs</code> permission on the Service Account the Notebook Instance is running as.<br /></li>
+  <li>Indicates the fix will be retroactive. Meaning, if any access is currently being granted without the user having the <code class="language-plaintext highlighter-rouge">iam.serviceAccounts.actAs</code> permission, this change will actively break their access.<br /></li>
+  <li>Provided a <code class="language-plaintext highlighter-rouge">gcloud</code> command for customers to search compute instances for ones using metadata as an authorization mechanism.<br /></li>
+  <li>Date for roll-out to be Friday, September 10th 2021.<br /></li>
+</ul>
+
+<p><strong>Is the Original Issue Remediated?</strong><br />
+Finally, yes<br />
+While the engineers at Google pushed a patch for this issue on September 10th, they did not invalidate a persistent auth cookie set by the <a href="us-west1.datalab.cloud.google.com/_signin?authuser=0">Datalab signin endpoint</a>.<br />
+With a valid ‘DATALAB_TUNNEL_TOKEN’ cookie, an end user is not redirected through the authentication flow (and through the patched piece of code) rather, they are fast tracked to the ‘/lab?authuser=0’ endpoint where they are authorized to access the Jupyter Notebook, again, irrespective of IAM Role assignment.</p>
+
+<p><strong>Is there any lingering risk?</strong><br />
+I don’t believe so.<br /></p>
+<ol>
+  <li>The initial fix Google rolled out on Friday, September 10th seemed to address all active connections through the Inverting Proxy.<br /> A forcible re-registeration process was performed that had the affect of actively terminating access to notebooks if the user in <code class="language-plaintext highlighter-rouge">proxy-user-mail</code> custom metadata field DID NOT have the <code class="language-plaintext highlighter-rouge">iam.serviceAccounts.actAs</code> permission. <br /></li>
+  <li>The ‘DATALAB_TUNNEL_TOKEN’ cookie has a TTL of 24 hours and the expiration appears to be enforced server side. It has been more than 24 since the Datalab Signin enpoint would have issued a ‘DATALAB_TUNNEL_TOKEN’ cookie to a user who does not have the <code class="language-plaintext highlighter-rouge">iam.serviceAccounts.actAs</code> permission<br /></li>
+</ol>
+
+<p><strong>Lessons Learned</strong><br /></p>
+<ol>
+  <li>It’s never good when two people are performing seemingly the same test and come up with different results.</li>
+  <li>Invalidate the persistent auth cookies when patching auth bypass issues.</li>
+  <li>If you release details of insufficiently mitigated vulnerability in a major cloud provider on a Friday night, expect to be working the weekend.</li>
+</ol>
+
+<p><strong>Shout Outs</strong><br />
+Special thanks to the Google Engineers that partnered with me over the weekend to figure out what was going on.</p>
+:ET
