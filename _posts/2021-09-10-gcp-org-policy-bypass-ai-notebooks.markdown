@@ -49,7 +49,7 @@ The fine-print on this, and all Organization Policy constraints are, they only a
 </p>
 
 **Identifying If You Were Affected**<br>
-Their does not seem to be any ongoing risk with this issue as outlined in my follow up report detailing [rememdiation]().
+Their does not seem to be any ongoing risk with this issue as outlined in my follow up report detailing [rememdiation](https://kattraxler.github.io/gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update.html).
 The remaining interesting question for GCP Customers is?,<br> "Were you affected? At somepoint, was an attacker using this vulnerability as a backdoor"<br>
 
 To answer that question I suggest querying your Cloud Audit Logs and reviewing any `setMetadata` events.  If any `setMetadata` events set the `proxy-user-mail` metadata property to a user outside your domain, this should be pursued as suspicious.
