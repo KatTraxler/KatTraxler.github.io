@@ -1,13 +1,13 @@
-name: Kat Traxler - Taste the IAM
-description: A Blog about GCP, mostly
-meta_description: "A Blog about GCP, mostly"
+name: Cloud Conversations - with Kat Traxler
+description: A blog containing cloud research focusing in GCP, AWS and identity architecture
+meta_description: "A blog containing cloud research focusing in GCP, AWS and identity architecture"
 
 markdown: kramdown
 highlighter: rouge
 logo: true
 paginate: 15
 baseurl: /
-domain_name: "https://kattraxler.github.io/about/"
+domain_name: "https://kattraxler.cloud/about/"
 twitter_username: nightmareJS
 plugins: 
     - jekyll-paginate
@@ -17,7 +17,7 @@ plugins:
     - jekyll-mentions
 
 # Details for the RSS feed generator
-url: "https://kattraxler.github.io/"
+url: "https://kattraxler.cloud/"
 author: "Kat Traxler"
 
 # Disqus config
