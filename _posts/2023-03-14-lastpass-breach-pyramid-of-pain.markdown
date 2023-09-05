@@ -1,16 +1,19 @@
 ---
 layout: post
-title:  "Log4J’s Unique Impact In The Cloud"
-date:   2021-12-20
+title:  "LastPass Breach: The Pyramid of Pain Perspective"
+date:   2023-03-14
 categories: Misc Cloud Research
 menus: header
 ---
 
 
-**How to exploit the Log4J software vulnerability in cloud-hosted VMs for maximum impact**<br>
+**Mining LastPass communications for new cloud IOCs**<br>
 
-Want to understand how the Log4J vulnerability uniquely impacts cloud environments?    
-Read my blog hosted in the [Vectra AI Research](https://www.vectra.ai/blogpost/log4j-unique-impact-in-the-cloud) site for details on how the Log4J vulnerability is exploited and why responders need to take addition measures to rotate credentials when vulnerable code is deployed on cloud-hosted VMs.  
+In this blog published in the [Vectra AI Research](https://www.vectra.ai/blogpost/lastpass-breach-the-pyramid-of-pain-perspective) space, each piece of LastPass communications is dissected for new pieces of intel and indicators are evaluated against the pyramind of pain model.     
 
-As ANadditional resources, refer to my [Github Repo](https://github.com/vectra-ai-research/log4j-aws-sandbox) which includes a terraform deployment for a log4J testing sandbox complete with vulnerable application and JNDI Exploit Server.
+In my evaluation of publicly available intel, I follow closely the advice given by author of the Pyramid of Pain, David Bianco’s “Whenever you receive new intel on an adversary (whether it be APT1/Comment Crew or any other threat actor), review it carefully against the Pyramid of Pain. For every paragraph, ask yourself ‘Is there anything here I can use to detect the adversary's activity, and where does this fall on the pyramid?’”      
+
+
+
+
 

@@ -1,16 +1,16 @@
 ---
 layout: post
-title:  "Log4J’s Unique Impact In The Cloud"
-date:   2021-12-20
-categories: Misc Cloud Research
+title:  "Abusing the Replicator: Silently Exfiltrating Data with the AWS S3 Replication Service"
+date:   2022-07-20
+categories: AWS Cloud Research
 menus: header
 ---
 
 
-**How to exploit the Log4J software vulnerability in cloud-hosted VMs for maximum impact**<br>
+**But how would you distinguish between legitimate backup activity and malicious data exfiltration on AWS S3?**<br>
 
-Want to understand how the Log4J vulnerability uniquely impacts cloud environments?    
-Read my blog hosted in the [Vectra AI Research](https://www.vectra.ai/blogpost/log4j-unique-impact-in-the-cloud) site for details on how the Log4J vulnerability is exploited and why responders need to take addition measures to rotate credentials when vulnerable code is deployed on cloud-hosted VMs.  
+In this [blog post](https://www.vectra.ai/blogpost/abusing-the-replicator-silently-exfiltrating-data-with-the-aws-s3-replication-service), I walkthrough a malicious use of the S3 Replication service and how selective data event logging on the S3 service will result in a gap in S3 exfiltration visibility since the `PutObject` event, indicating data movement event will not be written in the Source Account.
 
-As ANadditional resources, refer to my [Github Repo](https://github.com/vectra-ai-research/log4j-aws-sandbox) which includes a terraform deployment for a log4J testing sandbox complete with vulnerable application and JNDI Exploit Server.
+
+
 
