@@ -6,24 +6,31 @@ categories: GCP IAM 101
 ---
 
 
-Service Accounts are non-human identities used for Infrastructure and Resources.  Service Accounts do not have passwords.  You can optionally generate and export a Private Key for a Service Account. But you’ll only want to do this when you need to enable an external integrations, that is, authenticated API calls to your Resources. 
-
-A Service Account is **Both** an Identity and a Resource.  
-This might be the most difficult concept in GCP to initially grasp. Let me help break that down.
+**[Service Accounts](https://cloud.google.com/iam/docs/overview#service_account)** are identities used for authenticating infrastructure and resources, typically for non-human entities. Service Accounts do not utilize passwords. While you have the option to generate and export a private key for a service account, it's generally unnecessary and can pose a ![security risk](https://jryancanty.medium.com/stop-downloading-google-cloud-service-account-keys-1811d44a97d9) in most cases. The only valid scenario where generating and exporting a private key may be necessary is to enable external integrations in instances where ![OIDC](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-google-cloud-platform) is not supported.
+ 
 
 **Service Accounts as Resources**
-Service Accounts are created and reside within a Project.  *You can think of a Service Account as having a ‘home’ Project.*  Just like a Compute Instance or a Storage Bucket ‘resides’ in a Project where its direct parent in the Resource Hierarchy is a Project.
+Service accounts are created within and associated with a specific project. *Think of a service account as having a 'home' project,* similar to how a compute instance or a storage bucket 'resides' in a project within the resource hierarchy.
 
-Like a Resource, you can *setIAMPolicy* on a Service Account.  IAM on a Service Account include permissions like:
-	* who can impersonate that Service Account
-	* who can ActAs the Service Account
-	* who can generate keys for the Service Account
+Similar to other resources, you can use the *![setIAMPolicy](https://cloud.google.com/iam/docs/reference/rest/v1/projects.serviceAccounts/setIamPolicy)* method to attach IAM policies to a service account. IAM policies for a service account typically include permissions such as:
+
+- generate an OAuth or OIDC token for the service account (impersonate)   
+  - (.getAccessToken) (.getOpenIdToken)   
+- attach a service account to a resource.   
+  - (.actAs)
+- generate keys for the service account.   
+  - (iam.serviceAccountKeys.create)   
+- manage the service account.    
+  - (.create) (.delete) (.setIamPolicy)   
 
 
 **Service Accounts as Identities**
 
+In GCP, service accounts, like other identity types such as Users and Groups, can be included as members in IAM Policies and granted permissions at any level within the resource hierarchy. Service accounts are not restricted to receiving permissions only within their home project. Similar to users and groups, service accounts can have cross-project permissions or be assigned roles, allowing them access to resources in other organizations
 
-Like other types of Identities in GCP (i.e. Users and Groups), Service Accounts can have IAM Policy bindings at any node of the Resource Hierarchy.  Just because a Service Account lives in a Project, doesn’t mean it needs any permissions in that Project.  A Service Account can be assigned any Role, which can be applied at any node of the Resource Hierarchy, just like a User or Group.
-When setting IAM Policy *ON* a Service Account, the WHO can be another Service Account! In fact, It might be a desirable pattern to have a Service Account, having permissions allowing it to impersonate another Service Account.
-In this case, the Service Account doing the impersonating is the *WHO*, and is acting like an identity. While the Service Account being impersonated is the *Resource.*
+***Attaching a Policy on a Service Account***
+When configuring IAM Policies for a Service Account, the entity granted permissions (the WHO) can be another Service Account. It can be advantageous to establish a pattern where a Service Account is granted permissions to impersonate another Service Account.
+
+In such scenarios, the Service Account performing the impersonation is the **WHO**, functioning as an identity. Meanwhile, the Service Account being impersonated serves as the target resource.
+
 
