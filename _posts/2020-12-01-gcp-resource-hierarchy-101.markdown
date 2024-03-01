@@ -17,6 +17,6 @@ Resource ownership for Lifecycle management:  If you delete a Project, you delet
 
 Resources serve as attachment points for IAM Policy and Organizational Policies.  IAM Policy can be bound at any node in the hierarchy.  
 
-The resource hierarchy didcates how IAM Policy inheritance will affect access control. IAM Policy both applies to the resouce which it was attached, and all direct children. In GCP there is no concept of overriding IAM Policy inheritance.
+The resource hierarchy dictates how IAM Policy inheritance will affect access control. IAM Policy both applies to the resource which it was attached, and all direct children. 
 
 

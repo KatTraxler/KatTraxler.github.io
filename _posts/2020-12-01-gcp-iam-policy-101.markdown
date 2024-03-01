@@ -6,14 +6,15 @@ categories: GCP IAM 101
 ---
 
 
-This GCP’s model for managing access to resources has three main parts: **Who, What Role and the Resource.**
+The GCP model for managing access to resources has three main parts: **Who, What Role and the Resource.**
 
-To grant permissions in GCP, you combine the **WHO** and the **WHAT** to create a policy.  You apply this policy, or Bind the Role to a Resource to create scope. 
+In Google Cloud Platform (GCP), permissions are granted by combining the **WHO** (identity) and the **WHAT** (action) to form a policy. This policy is then applied, or 'Bound', to a specific Resource. By doing so, permissions are granted and a scope is created.   
 
-**Who**: Member in Policies. Users and Groups are managed in GSuite (Google Workspace), while Service Accounts and the Identity Namespace are wholly constructs of the Google Cloud Platform.  
+**![Who](https://cloud.google.com/iam/docs/overview#concepts_related_identity)**: Users and groups live and are managed in either Google Workspace (formerly GSuite) or Cloud Identity, while Service Accounts and the Identity Namespace live as resources in the Google Cloud Platform. A valid member can also be a Cloud Identity domain or special group such as 'AllUsers' or 'AllAuthenticatedUsers'.
 
-**What Role**: A role is a collection of permissions. Permissions determine what actions you can take on a resource. When a role is assigned to a member, you grant all the permissions that the role contains. 
 
-**Resource**: Who, has What Role is applied to a Resource to affect IAM Policy. A Member is assigned a Role which is then bound to a Resource to create an IAM policy.
-In GCP, Each Node of the Organizational Hierarchy is a Resource which can have IAM Policy Bound.  This includes the Organizational Node, Folder and Project Nodes, in addition to all Resources contained within a Project.
+**![Role](https://cloud.google.com/iam/docs/overview#roles)**: A role is a collection of permissions. Permissions determine what actions you can take on a resource. When a role is assigned to a member, you grant all the permissions contained in that role.
 
+**![Resource](https://cloud.google.com/iam/docs/overview#resource-hierarchy)**: 
+In GCP's resource hierarchy, each level — be it the top-level organization node, folder, or project node — is a resource capable of having an IAM policy attached. This applies not only to the organization/folder/project structure but also to all child resources of projects.  
+Permissions are granted to a principal only when a policy is attached/bound to a resource and are inherited to all downstream child resources.
