@@ -14,6 +14,5 @@ There are two characteristics of a GCP resource hierarchy to consider when creat
 
 1. Resource Ownership for Lifecycle management:  Deleting a project deletes all resources contained within the project. If a Folder is deleted, all Folders or Projects that inherit from it are deleted.
 
-2. Policy Inheritance: Resources function as attachment points for both IAM Policies and Organizational Policy Constraints. IAM Policies can be attached at any level within the hierarchy. The hierarchical structure of resources (with its child/parent relationships) determines how IAM Policy inheritance impacts access control. An IAM policy affects both the resource to which it's attached and all of its direct children
-
+2. Policy Inheritance: Resources function as attachment points for both IAM Policies and Organizational Policy Constraints. IAM Policies can be attached at any level within the hierarchy. The hierarchical structure of resources (with its child/parent relationships) determines how IAM Policy inheritance impacts the scope of access control. An IAM policy affects both the resource to which it's attached and all of its child resources.  
 
