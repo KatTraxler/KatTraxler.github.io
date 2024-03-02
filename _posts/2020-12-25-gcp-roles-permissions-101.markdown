@@ -5,41 +5,57 @@ date:   2020-12-25
 categories: GCP IAM 101
 ---
 
-Its ultimately Cloud IAM Permissions which grant access to resources.  However, in GCP you do **not** and **cannot** assign individual permissions to an Identity. Instead, permissions are grouped together to form Roles. Its the Role, not the permission, that is granted to an Identity.  
-Sometimes, a Role will only contain a single permission, other times it will contain hunderds of permissions so that the Role can enable some broader functionality.
+In GCP, access to resources is ultimately governed by Cloud IAM Permissions however, individual permissions are not directly assigned to principals. Instead, permissions are grouped together to create roles. These roles, rather than individual permissions, are then granted to principals in an IAM Policy.
+
+Roles can range from containing just a single permission to encompassing thousands of permissions, such as the coarse-grained `Editor` and `Owner` ![basic roles](https://cloud.google.com/iam/docs/understanding-roles#basic).
+
 
 ### **Permissions**
 
-> A permission will always be detailed in the following three-part format:
->
->  `[api].[resource].[action]`. 
->
-> The Cloud IAM API has a permission allowing Identities to update Roles in GCP, `iam.roles.update`.  The Container API also has a permission to update Roles, `container.roles.update`.  
-> These two permissions do not allow for the configuration of the same resource. The Cloud IAM API and the Container API allow for management of two different types of Roles.
+Permissions are always described in a three-part format: `[service].[resource].[action]`.
+
+Examples:
+
+- `resourcemanager.projects.setIamPolicy`: This permission, linked with the Resource Manager service, enables principals to modify policies attached at the project-level.
+- `iam.serviceAccounts.setIamPolicy`: This permission, associated with the IAM service, grants principals the ability to modify policies related solely to service accounts.
+- `spanner.databases.setIamPolicy`: This permission, tied to the Spanner service, allows principals to adjust policies related exclusively to Spanner databases.
+
+While all these permissions pertain to updating IAM policies, they target different resources, impacting distinct scopes.
+
 
 ### **Roles**
 
-In GCP, Roles come in three flavors, Primitive, Pre-Defined Roles and Custom Roles.
+Roles come in three flavors, Basic (née Primitive), Pre-Defined Roles and Custom Roles.
 
-###### Primitive Roles
+#### Basic Roles
 
-> Prior to Cloud IAM's introduction in 2016, these were the only types of Roles. Primitive Roles consist of an Owner, Editor and Viewer and are most simply described as coarse grained.  Each of these Primitive Roles makes up concentric circles of permissions, where the Role, Viewer contains a subset of permissions that the Editor Role does and Editor contains a subset of permissions of the Owner Role. 
-> The Editor Role is used ubiqutiously in GCP as the default Role assigned to the Default Compute and Default AppEngine Service Accounts.
-> Google advises against using Primitive Roles and so do I.
+Before Cloud IAM's introduction in 2013, only ![Basic Roles](https://cloud.google.com/iam/docs/understanding-roles#basic) were available for policy assignments. The three Basic Roles (Owner, Editor, and Viewer) are coarse-grained, Google-managed roles each containing thousands of permissions.
 
-###### Pre-Defined Roles
+These three Basic Roles form concentric circles of permissions, with Viewer containing a subset of Editor's permissions, and Editor containing a subset of Owner's permissions.
 
-> These Roles are collections of permissions currated by Google. Updates to Pre-Defined Roles are pushed ~weekly and can be monitored in the Cloud IAM Permissions Change Log: 
-> https://cloud.google.com/iam/docs/permissions-change-log
-> Pre-Defined Roles tend to map to job functions and provide a good menu of granular options. 
->
-> Not all Roles can be assigned at all Resource levels.  For example you can bind the Role `cloudsql.admin` at the Project Level, allowing an end user to admin all SQL instances in a Project, but you cannot assign that Role to an individual instance.  The lowest Resource level possible for the `cloudsql.admin`  Role is the Project.
+Editor is widely used in GCP as the default role assigned to the Default Compute and Default App Engine Service Accounts. However, Google generally advises against using Basic Roles in most situations, a stance I support.
 
-###### Custom Roles
+#### Pre-Defined Roles
 
-> GCP gives its customers the ability to craft their own Roles.  Custom Roles, with your own unique collection of permissions can be defined at the Organization and be bound at various points in the hierarchy. 
-> Not all permissions can be used in Custom Roles. Just like Pre-Defined Roles, not all permissions can be assigned at all Resource levels.
+[Pre-defined Roles](https://cloud.google.com/iam/docs/understanding-roles#predefined) are sets of permissions curated and bundled as roles by Google. Updates to these roles are pushed weekly and can be tracked in the [Cloud IAM Permissions Change Log](https://cloud.google.com/iam/docs/permissions-change-log). 
 
+Pre-defined Roles are designed to align with specific job functions and offer more granularity compared to Basic Roles.
+ 
+
+#### Custom Roles
+
+Google allows end users to create their own custom roles for GCP. [Custom Roles](https://cloud.google.com/iam/docs/creating-custom-roles) enable you to define unique collections of permissions, which can be crafted at the organization level and then assigned at various points in the hierarchy, or created within a project for use exclusively within that resource.
+
+It's important to note that not all permissions can be used in Custom Roles, and some permissions may not be assignable at all resource levels. For more details, refer to the [documentation](https://cloud.google.com/iam/docs/custom-roles-permissions-support).
+
+
+### Role Assignment Resource levels
+
+In GCP, not all roles can be assigned at every resource level. Typically, every role has a lower boundary which it can be assigned. As a best practice, roles should be assigned at the lowest resource level possible to reduce the scope of the permissions.
+
+For example, the `cloudsql.admin` role can be assigned at the Project Level, allowing a user to administer all SQL instances within that project. However, this role cannot be assigned to child resources of the project, such as individual SQL instances.
+
+When it comes to Basic Roles like Owner, Editor, and Viewer, there are both upper and lower boundaries for policy attachments. These roles can only be assigned at the Project-Level; they cannot be be in an IAM policy and attached to a parent resource like the organization node, nor to child resources within the project.
 
 
 **References**
