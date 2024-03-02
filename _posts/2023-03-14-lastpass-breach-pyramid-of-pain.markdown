@@ -7,7 +7,7 @@ menus: header
 ---
 
 
-**Mining LastPass communications for new cloud IOCs**<br>
+Mining LastPass communications for new cloud IOCs<br>
 
 In this blog published in the [Vectra AI Research](https://www.vectra.ai/blogpost/lastpass-breach-the-pyramid-of-pain-perspective) space, each piece of LastPass communications is dissected for new pieces of intel and indicators are evaluated against the pyramind of pain model.     
 
