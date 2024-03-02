@@ -29,12 +29,3 @@ To manage this default behavior:
 - First, create designated billing accounts and project creators.
 - Then, ![manually remove](https://cloud.google.com/resource-manager/docs/default-access-control#removing-default-roles) the default roles (Project Creator and Billing Account Creator) from the organization node.
 
-
-
-**References**
-
-- *Side Note*: GSuite was recently renamed Google Workspace
-- https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains
-- https://cloud.google.com/resource-manager/docs/default-access-control
-
-
