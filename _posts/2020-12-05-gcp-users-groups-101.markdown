@@ -13,21 +13,21 @@ You won't find a directory in Google Cloud listing users or groups. Instead, use
 An inventory of the users and groups within your domain can be accessed through the Google Workspace [Admin Console](https://admin.google.com/ac/users).
 
 
-**Defaults**
+### Defaults
 
 1. Cross-Organization Access Allowed   
 
-**ANY** Google user or group in **ANY** domain can be assigned IAM Roles in **ANY** organization or project in any domain.   
+    **ANY** Google user or group in **ANY** domain can be assigned IAM Roles in **ANY** organization or project.  
 
- - Example: The GCP Organization for the domain `test.com` can have IAM Policy granting principals from `example.org` access to their resources.
- - To limit **WHO** can be a member in IAM Policy, employ the Organizational Policy Constraint `[constraints/iam.allowedPolicyMemberDomains](https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains)` where by you can define an allowed list of approved domains.
+    - Example: The GCP Organization for the domain `test.com` can have IAM Policy granting principals from the `example.org` domain access to their resources.
+    - To limit **WHO** can be a member in IAM Policy, employ the Organizational Policy Constraint [constraints/iam.allowedPolicyMemberDomains](https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains) allowing you to define an approved/allowed domains.
 
-1. All Users can Create GCP Projects and Resources      
+2. All Users can Create GCP Projects and Resources      
 
-By default, when GCP is enabled within Google Workspace, users have the ability to create projects and create a billing account. Consequently, creators of projects are automatically granted the powerful owner role for the projects they create.
+    By default, when GCP is an enabled app in Google Workspace, users have the ability to create projects and create a billing account. Consequently, creators of projects are automatically granted the powerful owner role for the projects they create.
 
-To manage this default behavior:
+    To manage this default behavior:
 
-- First, create designated billing accounts and project creators.
-- Then, [manually remove](https://cloud.google.com/resource-manager/docs/default-access-control#removing-default-roles) the default roles (Project Creator and Billing Account Creator) from the organization node.
+    - First, create designated billing accounts and project creators.
+    - Then, [manually remove](https://cloud.google.com/resource-manager/docs/default-access-control#removing-default-roles) the default roles (Project Creator and Billing Account Creator) from the organization node.
 

@@ -6,11 +6,15 @@ categories: GCP IAM 101
 ---
 
 
-The GCP model for managing access to resources has three main parts: **Who, What Role and the Resource.**
+The GCP model for managing access to resources has three main parts:
 
-In Google Cloud Platform (GCP), permissions are granted by combining the **WHO** (identity) and the **WHAT** (action) to form a policy. This policy is then applied, or 'Bound', to a specific Resource. By doing so, permissions are granted and a scope is created.   
+- **Who**: (the principal)
+- **What**: (the role)
+- **Resource**
 
-**[Who](https://cloud.google.com/iam/docs/overview#concepts_related_identity)**: Users and groups live and are managed in either Google Workspace (formerly GSuite) or Cloud Identity, while Service Accounts and the Identity Namespace live as resources in the Google Cloud Platform. A valid member can also be a Cloud Identity domain or special group such as 'AllUsers' or 'AllAuthenticatedUsers'.
+In Google Cloud Platform (GCP), permissions are granted by combining the **WHO** (principal) and the **WHAT** (role) to form a policy. This policy is then applied, or 'bound', to a specific resource. By doing so, permissions are granted and a scope is created.   
+
+**[Who](https://cloud.google.com/iam/docs/overview#concepts_related_identity)**: The principals in policy are called members and can be one of a handful of identities. Users and groups live and are managed in either Google Workspace (formerly GSuite) or Cloud Identity, while Service Accounts and the Identity Namespace live as resources in the Google Cloud Platform. A valid policy member can also be a domain or a special group such as 'AllUsers' or 'AllAuthenticatedUsers'.
 
 
 **[Role](https://cloud.google.com/iam/docs/overview#roles)**: A role is a collection of permissions. Permissions determine what actions you can take on a resource. When a role is assigned to a member, you grant all the permissions contained in that role.
