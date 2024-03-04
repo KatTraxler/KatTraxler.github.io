@@ -4,11 +4,10 @@ title: About
 menus: about
 ---
 
-Kat Traxler is the Principal Security Researcher at Vectra AI focusing on threat detection in the public cloud. Prior to her current role, she worked in various stages in the SDLC performing web application penetration testing and security architecture design for Web, IAM, Payment Technologies and Cloud Native Technologies.
 
-Kat’s research philosophy directs her work to where design flaws and misconfigurations are most probable. This guiding principle leads her research to the intersection of technologies, particularly the convergence of cloud security and application security and where the OS-layer interfaces with higher-level abstractions.  
+Kat Traxler, a Security Professional based in the Twin Cities, specializes in cloud research and security architecture design, focusing on public cloud, container orchestration systems, and IAM platforms. With a background encompassing roles in penetration testing targeting web applications and cryptographic infrastructure. Kat now leads active cloud detection efforts, engineering detective controls to intercept attacker behavior within the cloud control-plane.  
 
-Kat has presented at various conferences including the SANS CloudSecNext Summit and fwd:CloudSec on topics such as privilege escalation in GCP, and bug-hunting in the cloud. In addition to her work at Vectra AI, she is a member of IANS Faculty and the Lead Author of the SANS SEC549 - Enterprise Cloud Security Architecture and currently holds multiple GIAC certifications.   
+Kat has presented at various conferences including the SANS CloudSecNext Summit and fwd:CloudSec on topics such as privilege escalation in GCP, and bug-hunting in the cloud. In addition to her work at Vectra AI, she is a member of IANS Faculty and was the co-author of the SANS SEC549 - Enterprise Cloud Security Architecture.
 
 I can be found equal parts in the world of infoSec and plant twitter [@nightmareJS](https://twitter.com/NightmareJS)
 
