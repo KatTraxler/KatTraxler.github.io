@@ -25,14 +25,14 @@ Similar to other resources, you can use the *[setIAMPolicy](https://cloud.google
   - (.create) (.delete) (.setIamPolicy)   
 
 
-## Service Accounts as Identities**
+## Service Accounts as Identities
 
-In GCP, service accounts, like other identity types such as Users and Groups, can be included as members in IAM Policies and granted permissions at any level within the resource hierarchy. Service accounts are not restricted to receiving permissions only within their home project. Similar to users and groups, service accounts can have cross-project permissions or even have access to resources in other organizations.  
+In GCP, service accounts, like other identity types such as users and groups, can be included as members in IAM Policies and assigned roles at any level within the resource hierarchy. Service accounts are not restricted to being granted roles within their home project. Similar to users and groups, service accounts can have cross-project permissions or even have access to resources in other organizations.  
 
 ## Attaching a Policy to a Service Account
 
-When configuring IAM Policies for a Service Account, the entity granted permissions (the WHO) can be another Service Account. It can be advantageous to establish a pattern where a Service Account is granted permissions to impersonate another Service Account.
+When binding a policy to a service account, the principal granted permissions (the WHO) can be another service account. In fact, it can be advantageous to establish a pattern where a service account is granted permissions to impersonate another service account.
 
-In such scenarios, the Service Account performing the impersonation is the **WHO**, functioning as an identity. Meanwhile, the Service Account being impersonated serves as the target resource.
+In such scenarios, the service account performing the impersonation is the **WHO**, functioning as an principal. Meanwhile, the service account being impersonated serves as the target resource.
 
 
