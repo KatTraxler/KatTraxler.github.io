@@ -34,7 +34,7 @@ Before Cloud IAM's introduction in 2013, only [Basic Roles](https://cloud.google
 
 These three Basic Roles form concentric circles of permissions, with Viewer containing a subset of Editor's permissions, and Editor containing a subset of Owner's permissions.
 
-Editor is widely used in GCP as the default role** assigned to the Default Compute and Default App Engine Service Accounts. Despite this ubiquity, Google generally advises against using Basic Roles in most situations, as do I.
+The Editor role is widely used in GCP as the automatically assigned, default role such as with the Default Compute and Default App Engine Service Accounts. Despite this ubiquity, Google generally advises against using Basic Roles in most situations, as do I.
 
 ##### Pre-Defined Roles
 
