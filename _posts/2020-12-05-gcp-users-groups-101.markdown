@@ -20,7 +20,7 @@ An inventory of the users and groups within your domain can be accessed through 
     **ANY** Google user or group in **ANY** domain can be assigned IAM Roles in **ANY** organization or project.  
 
     - Example: The GCP Organization for the domain `test.com` can have IAM Policy granting principals from the `example.org` domain access to their resources.
-    - To limit **WHO** can be a member in IAM Policy, employ the Organizational Policy Constraint [constraints/iam.allowedPolicyMemberDomains](https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains) allowing you to define an approved/allowed domains.
+    - To limit **WHO** can be a member in IAM Policy, employ the Organizational Policy Constraint [constraints/iam.allowedPolicyMemberDomains](https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains) allowing you to define an approved/allowed list of domains.
 
 2. All Users can Create GCP Projects and Resources      
 
