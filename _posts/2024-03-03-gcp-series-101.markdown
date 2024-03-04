@@ -6,8 +6,6 @@ categories: GCP IAM 101
 ---
 
 
-## Google Cloud IAM 101
-
 The GCP IAM 101 series is intended to give a brief, succinct overview of essential Google Cloud authorization concepts, answering questions like 'How does Alice gain access to the Bucket?' These pages provide the MVK (Minimal Viable Knowledge) for Google Cloud IAM, supplemented with links to official, more verbose Google documentation where needed.
 
 - [GCP Resource Hierarchy](2020-12-01-gcp-resource-hierarchy-101.markdown)

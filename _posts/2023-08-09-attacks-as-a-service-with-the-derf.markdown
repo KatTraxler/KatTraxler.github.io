@@ -7,7 +7,7 @@ menus: header
 ---
 
 
-**Leverage The DeRF for attacker simulations, validating security controls or enhancing cloud detection capabilities**<br>
+Leverage The DeRF for attacker simulations, validating security controls or enhancing cloud detection capabilities.  
 
 DeRF (Detection Replay Framework) is an "Attacks As A Service" framework, allowing the emulation of offensive techniques and generation of repeatable detection samples in the cloud. Built on Google Workflows
 
