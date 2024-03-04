@@ -31,12 +31,12 @@
     <article class="post">
 
         <header class="post-header">
-            <h1 class="post-title">GCP Service Account 101</h1>
+            <h1 class="post-title">LastPass Breach: The Pyramid of Pain Perspective</h1>
             <section class="post-meta">
                 
-                    on GCP, IAM, and 101
+                    on Misc, Cloud, and Research
                 
-                <time class="post-date" datetime="2020-12-01">01 Dec 2020</time>
+                <time class="post-date" datetime="2023-03-14">14 Mar 2023</time>
             </section>
         </header>
 
@@ -49,55 +49,20 @@
         </header> -->
 
         <!-- <span class="post-meta">
-            <time datetime="2020-12-01">01 Dec 2020</time>
+            <time datetime="2023-03-14">14 Mar 2023</time>
             
-                on GCP, IAM, and 101
+                on Misc, Cloud, and Research
             
         </span> -->
 
-        <!-- <h1 class="post-title">GCP Service Account 101</h1> -->
+        <!-- <h1 class="post-title">LastPass Breach: The Pyramid of Pain Perspective</h1> -->
 
         <section class="post-content">
-            <p><strong><a href="https://cloud.google.com/iam/docs/overview#service_account">Service Accounts</a></strong> are identities used for authenticating infrastructure and resources, typically for non-human entities. Service Accounts do not utilize passwords. While you have the option to generate and export a private key for a service account, it’s generally unnecessary and can pose a <a href="https://jryancanty.medium.com/stop-downloading-google-cloud-service-account-keys-1811d44a97d9">security risk</a> in most cases. The only valid scenario where generating and exporting a private key may be necessary is to enable external integrations in instances where <a href="https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-google-cloud-platform">OIDC</a> is not supported.</p>
+            <p>Mining LastPass communications for new cloud IOCs<br /></p>
 
-<h2 id="service-accounts-as-resources">Service Accounts as Resources</h2>
+<p>In this blog published in the <a href="https://www.vectra.ai/blogpost/lastpass-breach-the-pyramid-of-pain-perspective">Vectra AI Research</a> space, each piece of LastPass communications is dissected for new pieces of intel and indicators are evaluated against the pyramind of pain model.</p>
 
-<p>Service accounts are created within and associated with a specific project. <em>Think of a service account as having a ‘home’ project,</em> similar to how a compute instance or a storage bucket ‘resides’ in a project within the resource hierarchy.</p>
-
-<p>Similar to other resources, you can use the <em><a href="https://cloud.google.com/iam/docs/reference/rest/v1/projects.serviceAccounts/setIamPolicy">setIAMPolicy</a></em> method to attach IAM policies to a service account. IAM policies for a service account typically include permissions such as:</p>
-
-<ul>
-  <li>generate an OAuth or OIDC token for the service account (impersonate)
-    <ul>
-      <li>(.getAccessToken) (.getOpenIdToken)</li>
-    </ul>
-  </li>
-  <li>attach a service account to a resource.
-    <ul>
-      <li>(.actAs)</li>
-    </ul>
-  </li>
-  <li>generate keys for the service account.
-    <ul>
-      <li>(iam.serviceAccountKeys.create)</li>
-    </ul>
-  </li>
-  <li>manage the service account.
-    <ul>
-      <li>(.create) (.delete) (.setIamPolicy)</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="service-accounts-as-identities">Service Accounts as Identities**</h2>
-
-<p>In GCP, service accounts, like other identity types such as Users and Groups, can be included as members in IAM Policies and granted permissions at any level within the resource hierarchy. Service accounts are not restricted to receiving permissions only within their home project. Similar to users and groups, service accounts can have cross-project permissions or even have access to resources in other organizations.</p>
-
-<h2 id="attaching-a-policy-to-a-service-account">Attaching a Policy to a Service Account</h2>
-
-<p>When configuring IAM Policies for a Service Account, the entity granted permissions (the WHO) can be another Service Account. It can be advantageous to establish a pattern where a Service Account is granted permissions to impersonate another Service Account.</p>
-
-<p>In such scenarios, the Service Account performing the impersonation is the <strong>WHO</strong>, functioning as an identity. Meanwhile, the Service Account being impersonated serves as the target resource.</p>
+<p>In my evaluation of publicly available intel, I follow closely the advice given by author of the Pyramid of Pain, David Bianco’s “Whenever you receive new intel on an adversary (whether it be APT1/Comment Crew or any other threat actor), review it carefully against the Pyramid of Pain. For every paragraph, ask yourself ‘Is there anything here I can use to detect the adversary’s activity, and where does this fall on the pyramid?’”</p>
 
 
         </section>
@@ -121,15 +86,15 @@
             <!-- Share links section -->
             <section class="share">
     <h4>Share this post</h4>
-    <a class="icon-twitter" href="http://twitter.com/share?text=GCP Service Account 101&amp;url=https://kattraxler.cloud/about//gcp/iam/101/2020/12/01/gcp-service-accounts-101.html"
+    <a class="icon-twitter" href="http://twitter.com/share?text=LastPass Breach: The Pyramid of Pain Perspective&amp;url=https://kattraxler.cloud/about//misc/cloud/research/2023/03/14/lastpass-breach-pyramid-of-pain.html"
         onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
         <span class="hidden">Twitter</span>
     </a>
-    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kattraxler.cloud/about//gcp/iam/101/2020/12/01/gcp-service-accounts-101.html"
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kattraxler.cloud/about//misc/cloud/research/2023/03/14/lastpass-breach-pyramid-of-pain.html"
         onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
         <span class="hidden">Facebook</span>
     </a>
-    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://kattraxler.cloud/about//gcp/iam/101/2020/12/01/gcp-service-accounts-101.html"
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://kattraxler.cloud/about//misc/cloud/research/2023/03/14/lastpass-breach-pyramid-of-pain.html"
        onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
         <span class="hidden">Google+</span>
     </a>

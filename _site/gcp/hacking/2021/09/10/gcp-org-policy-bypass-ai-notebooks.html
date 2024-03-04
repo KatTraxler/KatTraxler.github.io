@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Kat Traxler - Taste the IAM - A Blog about GCP, mostly</title>
-    <meta name="description" content="A Blog about GCP, mostly" />
+    <title>Cloud Conversations - with Kat Traxler - A blog containing cloud research focusing in GCP, AWS and identity architecture</title>
+    <meta name="description" content="A blog containing cloud research focusing in GCP, AWS and identity architecture" />
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
@@ -43,7 +43,7 @@
 <!--         <header class="post-header">
             <a id="blog-logo" href="http://localhost:4000">
                 
-                    <img src="true" alt="Kat Traxler - Taste the IAM" />
+                    <img src="true" alt="Cloud Conversations - with Kat Traxler" />
                 
             </a>
         </header> -->
@@ -97,7 +97,7 @@ The fine-print on this, and all Organization Policy constraints are, they only a
 </p>
 
 <p><strong>Identifying If You Were Affected</strong><br />
-Their does not seem to be any ongoing risk with this issue as outlined in my follow up report detailing <a href="">rememdiation</a>.
+Their does not seem to be any ongoing risk with this issue as outlined in my follow up report detailing <a href="https://kattraxler.github.io/gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update.html">rememdiation</a>.
 The remaining interesting question for GCP Customers is?,<br /> “Were you affected? At somepoint, was an attacker using this vulnerability as a backdoor”<br /></p>
 
 <p>To answer that question I suggest querying your Cloud Audit Logs and reviewing any <code class="language-plaintext highlighter-rouge">setMetadata</code> events.  If any <code class="language-plaintext highlighter-rouge">setMetadata</code> events set the <code class="language-plaintext highlighter-rouge">proxy-user-mail</code> metadata property to a user outside your domain, this should be pursued as suspicious.</p>
@@ -122,7 +122,7 @@ The remaining interesting question for GCP Customers is?,<br /> “Were you affe
 	– 08/19/2021: Informed of the Bug Bounty Award. “The VRP panel has decided to issue a reward of $1337.00 for your report. Congratulations”<br />
 	– 09/09/2021: Asked for an update as the issue remained open and reconfirmed my intensions to publish on September 10th.<br />
 	– 09/10/2021: Google VRP informed me the patch was being pushed to servers today and would be rolled out to all servers by EOD.<br />
-	– 09/10/2021: Informed Google VRP of the publishing of this report, despite the issue not being resolved.
+	– 09/10/2021: Informed Google VRP of the publishing of this report, despite the issue not being resolved.<br />
 	– 09/11/2021: Informed Google that I agreed their patch plus the expiration of the ‘DATALAB_TUNNEL_TOKEN’ cookie resulted in a complete fix of the issue.</p>
 
 
@@ -147,15 +147,15 @@ The remaining interesting question for GCP Customers is?,<br /> “Were you affe
             <!-- Share links section -->
             <section class="share">
     <h4>Share this post</h4>
-    <a class="icon-twitter" href="http://twitter.com/share?text=Bypassing GCP Org Policy with Custom Metadata&amp;url=https://kattraxler.github.io/about//gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html"
+    <a class="icon-twitter" href="http://twitter.com/share?text=Bypassing GCP Org Policy with Custom Metadata&amp;url=https://kattraxler.cloud/about//gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html"
         onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
         <span class="hidden">Twitter</span>
     </a>
-    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kattraxler.github.io/about//gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html"
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kattraxler.cloud/about//gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html"
         onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
         <span class="hidden">Facebook</span>
     </a>
-    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://kattraxler.github.io/about//gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html"
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://kattraxler.cloud/about//gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html"
        onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
         <span class="hidden">Google+</span>
     </a>
@@ -172,8 +172,8 @@ The remaining interesting question for GCP Customers is?,<br /> “Were you affe
 
     <footer class="site-footer clearfix">
       <section class="copyright">
-        <a href="/">Kat Traxler - Taste the IAM</a> &copy; 
-              2021 &bull; All rights reserved.
+        <a href="/">Cloud Conversations - with Kat Traxler</a> &copy; 
+              2024 &bull; All rights reserved.
       </section>
       <section class="poweredby">Made with Jekyll using 
         <a href="http://github.com/rosario/kasper">Kasper theme</a>

@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Kat Traxler - Taste the IAM - A Blog about GCP, mostly</title>
-    <meta name="description" content="A Blog about GCP, mostly" />
+    <title>Cloud Conversations - with Kat Traxler - A blog containing cloud research focusing in GCP, AWS and identity architecture</title>
+    <meta name="description" content="A blog containing cloud research focusing in GCP, AWS and identity architecture" />
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
@@ -43,7 +43,7 @@
 <!--         <header class="post-header">
             <a id="blog-logo" href="http://localhost:4000">
                 
-                    <img src="true" alt="Kat Traxler - Taste the IAM" />
+                    <img src="true" alt="Cloud Conversations - with Kat Traxler" />
                 
             </a>
         </header> -->
@@ -58,33 +58,36 @@
         <!-- <h1 class="post-title">GCP Users and Group 101</h1> -->
 
         <section class="post-content">
-            <p>Users and Groups are two types of identities which can be assigned IAM Roles in GCP.  When Users and Groups are members in IAM Policy, they are referenced by their email addresses.</p>
+            <p><strong>Users and Groups</strong> are two types of principals that can be granted access in GCP. When users and groups are members in IAM Policies, they are referenced by their Google email addresses.</p>
 
-<p>There is no directory in GCP containing Users or Groups.  Instead, Users and Groups live in your the GSuite directory for your registered Google Domain. 
-An inventory of the Users and Groups in your domain is found in their own console,  <code class="language-plaintext highlighter-rouge">admin.google.com/ac/users </code>.<br />
-This is a console completely apart from the GCP Cloud Console, <code class="language-plaintext highlighter-rouge">console.cloud.google.com</code>.</p>
+<p>You won’t find a directory in Google Cloud listing users or groups. Instead, users and groups are managed within the Google Workspace directory (formerly GSuite) of your registered Google Domain. Alternatively, groups and group memberships can be managed using <a href="https://cloud.google.com/identity/docs/reference/rest">Cloud Identity</a>, a service within Google Cloud.</p>
 
-<p>In GCP, you can assign Roles directly to Users however, this pattern is bound to face management and scalability problems.  Instead, consider placing Users in Groups and assigning GCP IAM Roles to the Groups.</p>
+<p>An inventory of the users and groups within your domain can be accessed through the Google Workspace <a href="https://admin.google.com/ac/users">Admin Console</a>.</p>
 
 <p><strong>Defaults</strong></p>
 
-<p><strong>ANY</strong> Google User or Group in <strong>ANY</strong> domain can be assigned IAM Roles in <strong>ANY</strong> Organization or Project in any domain.</p>
+<ol>
+  <li>Cross-Organization Access Allowed</li>
+</ol>
+
+<p><strong>ANY</strong> Google user or group in <strong>ANY</strong> domain can be assigned IAM Roles in <strong>ANY</strong> organization or project in any domain.</p>
+
 <ul>
-  <li>Example: The GCP Organization for <code class="language-plaintext highlighter-rouge">test.com</code> is not limited to only having IAM Roles assigned to Users and Groups with <code class="language-plaintext highlighter-rouge">test.com</code> email addresses.</li>
-  <li>To limit <strong>WHO</strong> can have IAM Roles in your GCP Organization, employ the Organizational Policy Constraint <code class="language-plaintext highlighter-rouge">constraints/iam.allowedPolicyMemberDomains</code> where by you can whitelist allowed domains.</li>
+  <li>Example: The GCP Organization for the domain <code class="language-plaintext highlighter-rouge">test.com</code> can have IAM Policy granting principals from <code class="language-plaintext highlighter-rouge">example.org</code> access to their resources.</li>
+  <li>To limit <strong>WHO</strong> can be a member in IAM Policy, employ the Organizational Policy Constraint <code class="language-plaintext highlighter-rouge">[constraints/iam.allowedPolicyMemberDomains](https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains)</code> where by you can define an allowed list of approved domains.</li>
 </ul>
 
-<p>If you have a GCP Organization associated to your GSuite Directory, all Users in your Directory can create Projects and configure billing by default.</p>
-<ul>
-  <li>These permissions are automatically inherited and need to be explicitly disabled in GCP at the Organization level.</li>
-</ul>
+<ol>
+  <li>All Users can Create GCP Projects and Resources</li>
+</ol>
 
-<p><strong>References</strong></p>
+<p>By default, when GCP is enabled within Google Workspace, users have the ability to create projects and create a billing account. Consequently, creators of projects are automatically granted the powerful owner role for the projects they create.</p>
+
+<p>To manage this default behavior:</p>
 
 <ul>
-  <li><em>Side Note</em>: GSuite was recently renamed Google Workspace</li>
-  <li>https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains</li>
-  <li>https://cloud.google.com/resource-manager/docs/default-access-control</li>
+  <li>First, create designated billing accounts and project creators.</li>
+  <li>Then, <a href="https://cloud.google.com/resource-manager/docs/default-access-control#removing-default-roles">manually remove</a> the default roles (Project Creator and Billing Account Creator) from the organization node.</li>
 </ul>
 
 
@@ -109,15 +112,15 @@ This is a console completely apart from the GCP Cloud Console, <code class="lang
             <!-- Share links section -->
             <section class="share">
     <h4>Share this post</h4>
-    <a class="icon-twitter" href="http://twitter.com/share?text=GCP Users and Group 101&amp;url=https://kattraxler.github.io/about//gcp/iam/101/2020/12/05/gcp-users-groups-101.html"
+    <a class="icon-twitter" href="http://twitter.com/share?text=GCP Users and Group 101&amp;url=https://kattraxler.cloud/about//gcp/iam/101/2020/12/05/gcp-users-groups-101.html"
         onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
         <span class="hidden">Twitter</span>
     </a>
-    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kattraxler.github.io/about//gcp/iam/101/2020/12/05/gcp-users-groups-101.html"
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kattraxler.cloud/about//gcp/iam/101/2020/12/05/gcp-users-groups-101.html"
         onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
         <span class="hidden">Facebook</span>
     </a>
-    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://kattraxler.github.io/about//gcp/iam/101/2020/12/05/gcp-users-groups-101.html"
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://kattraxler.cloud/about//gcp/iam/101/2020/12/05/gcp-users-groups-101.html"
        onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
         <span class="hidden">Google+</span>
     </a>
@@ -134,8 +137,8 @@ This is a console completely apart from the GCP Cloud Console, <code class="lang
 
     <footer class="site-footer clearfix">
       <section class="copyright">
-        <a href="/">Kat Traxler - Taste the IAM</a> &copy; 
-              2021 &bull; All rights reserved.
+        <a href="/">Cloud Conversations - with Kat Traxler</a> &copy; 
+              2024 &bull; All rights reserved.
       </section>
       <section class="poweredby">Made with Jekyll using 
         <a href="http://github.com/rosario/kasper">Kasper theme</a>

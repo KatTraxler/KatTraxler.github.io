@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Kat Traxler - Taste the IAM - A Blog about GCP, mostly</title>
-    <meta name="description" content="A Blog about GCP, mostly" />
+    <title>Cloud Conversations - with Kat Traxler - A blog containing cloud research focusing in GCP, AWS and identity architecture</title>
+    <meta name="description" content="A blog containing cloud research focusing in GCP, AWS and identity architecture" />
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
@@ -43,7 +43,7 @@
 <!--         <header class="post-header">
             <a id="blog-logo" href="http://localhost:4000">
                 
-                    <img src="true" alt="Kat Traxler - Taste the IAM" />
+                    <img src="true" alt="Cloud Conversations - with Kat Traxler" />
                 
             </a>
         </header> -->
@@ -58,54 +58,57 @@
         <!-- <h1 class="post-title">GCP Roles and Permissions 101</h1> -->
 
         <section class="post-content">
-            <p>Its ultimately Cloud IAM Permissions which grant access to resources.  However, in GCP you do <strong>not</strong> and <strong>cannot</strong> assign individual permissions to an Identity. Instead, permissions are grouped together to form Roles. Its the Role, not the permission, that is granted to an Identity.<br />
-Sometimes, a Role will only contain a single permission, other times it will contain hunderds of permissions so that the Role can enable some broader functionality.</p>
+            <p>In GCP, access to resources is ultimately governed by Cloud IAM Permissions however, individual permissions are not directly assigned to principals. Instead, permissions are grouped together to create roles. These roles, rather than individual permissions, are then granted to principals in an IAM Policy.</p>
+
+<p>Roles can range from containing just a single permission to encompassing thousands of permissions, such as the coarse-grained <code class="language-plaintext highlighter-rouge">Editor</code> and <code class="language-plaintext highlighter-rouge">Owner</code> <code class="language-plaintext highlighter-rouge">[basic roles](https://cloud.google.com/iam/docs/understanding-roles#basic)</code>.</p>
 
 <h3 id="permissions"><strong>Permissions</strong></h3>
 
-<blockquote>
-  <p>A permission will always be detailed in the following three-part format:</p>
+<p>Permissions are always described in the three-part format: <code class="language-plaintext highlighter-rouge">[service].[resource].[action]</code>.</p>
 
-  <p><code class="language-plaintext highlighter-rouge">[api].[resource].[action]</code>.</p>
+<p>Examples:</p>
 
-  <p>The Cloud IAM API has a permission allowing Identities to update Roles in GCP, <code class="language-plaintext highlighter-rouge">iam.roles.update</code>.  The Container API also has a permission to update Roles, <code class="language-plaintext highlighter-rouge">container.roles.update</code>.<br />
-These two permissions do not allow for the configuration of the same resource. The Cloud IAM API and the Container API allow for management of two different types of Roles.</p>
-</blockquote>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">resourcemanager.projects.setIamPolicy</code>: This permission, associated with the Resource Manager service, enables principals to modify IAM policies attached at the project-level.</li>
+  <li><code class="language-plaintext highlighter-rouge">iam.serviceAccounts.setIamPolicy</code>: This permission, associated with the IAM service, grants principals the ability to modify IAM policies related solely to service accounts.</li>
+  <li><code class="language-plaintext highlighter-rouge">spanner.databases.setIamPolicy</code>: This permission, associated to the Spanner service, allows principals to modify IAM policies related exclusively to Spanner databases.</li>
+</ul>
+
+<p>While all these permissions pertain to updating IAM policies, they target different resources, impacting distinct scopes.</p>
 
 <h3 id="roles"><strong>Roles</strong></h3>
 
-<p>In GCP, Roles come in three flavors, Primitive, Pre-Defined Roles and Custom Roles.</p>
+<p>Roles come in three flavors, Basic (née Primitive), Pre-Defined Roles and Custom Roles.</p>
 
-<h6 id="primitive-roles">Primitive Roles</h6>
+<h5 id="basic-roles">Basic Roles</h5>
 
-<blockquote>
-  <p>Prior to Cloud IAM’s introduction in 2016, these were the only types of Roles. Primitive Roles consist of an Owner, Editor and Viewer and are most simply described as coarse grained.  Each of these Primitive Roles makes up concentric circles of permissions, where the Role, Viewer contains a subset of permissions that the Editor Role does and Editor contains a subset of permissions of the Owner Role. 
-The Editor Role is used ubiqutiously in GCP as the default Role assigned to the Default Compute and Default AppEngine Service Accounts.
-Google advises against using Primitive Roles and so do I.</p>
-</blockquote>
+<p>Before Cloud IAM’s introduction in 2013, only <a href="https://cloud.google.com/iam/docs/understanding-roles#basic">Basic Roles</a> were available for policy assignments. The three Basic Roles (Owner, Editor, and Viewer) are coarse-grained, Google-managed roles each containing thousands of permissions.</p>
 
-<h6 id="pre-defined-roles">Pre-Defined Roles</h6>
+<p>These three Basic Roles form concentric circles of permissions, with Viewer containing a subset of Editor’s permissions, and Editor containing a subset of Owner’s permissions.</p>
 
-<blockquote>
-  <p>These Roles are collections of permissions currated by Google. Updates to Pre-Defined Roles are pushed ~weekly and can be monitored in the Cloud IAM Permissions Change Log: 
-https://cloud.google.com/iam/docs/permissions-change-log
-Pre-Defined Roles tend to map to job functions and provide a good menu of granular options.</p>
+<p>Editor is widely used in GCP as the default role assigned to the Default Compute and Default App Engine Service Accounts. However, Google generally advises against using Basic Roles in most situations, a stance I support.</p>
 
-  <p>Not all Roles can be assigned at all Resource levels.  For example you can bind the Role <code class="language-plaintext highlighter-rouge">cloudsql.admin</code> at the Project Level, allowing an end user to admin all SQL instances in a Project, but you cannot assign that Role to an individual instance.  The lowest Resource level possible for the <code class="language-plaintext highlighter-rouge">cloudsql.admin</code>  Role is the Project.</p>
-</blockquote>
+<h5 id="pre-defined-roles">Pre-Defined Roles</h5>
 
-<h6 id="custom-roles">Custom Roles</h6>
+<p><a href="https://cloud.google.com/iam/docs/understanding-roles#predefined">Pre-defined Roles</a> are sets of permissions curated and bundled as roles by Google. Updates to these roles are pushed weekly and can be tracked in the <a href="https://cloud.google.com/iam/docs/permissions-change-log">Cloud IAM Permissions Change Log</a>.</p>
 
-<blockquote>
-  <p>GCP gives its customers the ability to craft their own Roles.  Custom Roles, with your own unique collection of permissions can be defined at the Organization and be bound at various points in the hierarchy. 
-Not all permissions can be used in Custom Roles. Just like Pre-Defined Roles, not all permissions can be assigned at all Resource levels.</p>
-</blockquote>
+<p>Pre-defined Roles are designed to align with specific job functions and offer more granularity compared to Basic Roles.</p>
 
-<p><strong>References</strong>
-<em>Side Note</em>: GCP has recently rebranded Primitive Roles and now calls them Basic Roles.
-[ref]:
-Primitive Role Definitions: 
-https://cloud.google.com/iam/docs/understanding-roles#primitive_role_definitions</p>
+<h5 id="custom-roles">Custom Roles</h5>
+
+<p>Finally, Google allows end users to create their own Custom Roles for GCP. <a href="https://cloud.google.com/iam/docs/creating-custom-roles">Custom Roles</a> enable you to define unique collections of permissions, which can be crafted at the organization level and then assigned at various points in the hierarchy, or created within a project for use exclusively within that resource.</p>
+
+<p>It’s important to note that not all permissions can be used in Custom Roles, and some permissions may not be assignable at all resource levels. For more details, refer to the <a href="https://cloud.google.com/iam/docs/custom-roles-permissions-support">documentation</a>.</p>
+
+<h3 id="role-assignment-resource-levels">Role Assignment Resource levels</h3>
+
+<p>In GCP, not all roles can be assigned at every resource level. Typically, every role has a lower boundary which it can be assigned.</p>
+
+<p>For example, the <code class="language-plaintext highlighter-rouge">cloudsql.admin</code> role can be assigned at the Project Level, allowing a user to administer all SQL instances within that project. However, this role cannot be assigned to child resources of the project, such as individual SQL instances.</p>
+
+<p>When it comes to Basic Roles like Owner, Editor, and Viewer, there are both upper and lower boundaries for policy attachments. These roles can only be assigned at the Project-Level; they cannot be in an IAM policy and attached to a parent resource like the organization node, nor to child resources within the project.</p>
+
+<p>As a best practice, roles should be assigned at the lowest resource level possible to reduce the scope of the permissions.</p>
 
 
         </section>
@@ -129,15 +132,15 @@ https://cloud.google.com/iam/docs/understanding-roles#primitive_role_definitions
             <!-- Share links section -->
             <section class="share">
     <h4>Share this post</h4>
-    <a class="icon-twitter" href="http://twitter.com/share?text=GCP Roles and Permissions 101&amp;url=https://kattraxler.github.io/about//gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html"
+    <a class="icon-twitter" href="http://twitter.com/share?text=GCP Roles and Permissions 101&amp;url=https://kattraxler.cloud/about//gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html"
         onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
         <span class="hidden">Twitter</span>
     </a>
-    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kattraxler.github.io/about//gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html"
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kattraxler.cloud/about//gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html"
         onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
         <span class="hidden">Facebook</span>
     </a>
-    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://kattraxler.github.io/about//gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html"
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://kattraxler.cloud/about//gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html"
        onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
         <span class="hidden">Google+</span>
     </a>
@@ -154,8 +157,8 @@ https://cloud.google.com/iam/docs/understanding-roles#primitive_role_definitions
 
     <footer class="site-footer clearfix">
       <section class="copyright">
-        <a href="/">Kat Traxler - Taste the IAM</a> &copy; 
-              2021 &bull; All rights reserved.
+        <a href="/">Cloud Conversations - with Kat Traxler</a> &copy; 
+              2024 &bull; All rights reserved.
       </section>
       <section class="poweredby">Made with Jekyll using 
         <a href="http://github.com/rosario/kasper">Kasper theme</a>

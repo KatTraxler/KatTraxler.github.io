@@ -5,6 +5,7 @@ date:   2020-12-25
 categories: GCP IAM 101
 ---
 
+
 In GCP, access to resources is ultimately governed by Cloud IAM Permissions however, individual permissions are not directly assigned to principals. Instead, permissions are grouped together to create roles. These roles, rather than individual permissions, are then granted to principals in an IAM Policy.
 
 Roles can range from containing just a single permission to encompassing thousands of permissions, such as the coarse-grained `Editor` and `Owner` `[basic roles](https://cloud.google.com/iam/docs/understanding-roles#basic)`.

@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Kat Traxler - Taste the IAM - A Blog about GCP, mostly</title>
-    <meta name="description" content="A Blog about GCP, mostly" />
+    <title>Cloud Conversations - with Kat Traxler - A blog containing cloud research focusing in GCP, AWS and identity architecture</title>
+    <meta name="description" content="A blog containing cloud research focusing in GCP, AWS and identity architecture" />
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
@@ -43,7 +43,7 @@
 <!--         <header class="post-header">
             <a id="blog-logo" href="http://localhost:4000">
                 
-                    <img src="true" alt="Kat Traxler - Taste the IAM" />
+                    <img src="true" alt="Cloud Conversations - with Kat Traxler" />
                 
             </a>
         </header> -->
@@ -58,17 +58,17 @@
         <!-- <h1 class="post-title">GCP IAM Policy 101</h1> -->
 
         <section class="post-content">
-            <p>This GCP’s model for managing access to resources has three main parts: <strong>Who, What Role and the Resource.</strong></p>
+            <p>The GCP model for managing access to resources has three main parts: <strong>Who, What Role and the Resource.</strong></p>
 
-<p>To grant permissions in GCP, you combine the <strong>WHO</strong> and the <strong>WHAT</strong> to create a policy.  You apply this policy, or Bind the Role to a Resource to create scope.</p>
+<p>In Google Cloud Platform (GCP), permissions are granted by combining the <strong>WHO</strong> (identity) and the <strong>WHAT</strong> (action) to form a policy. This policy is then applied, or ‘Bound’, to a specific Resource. By doing so, permissions are granted and a scope is created.</p>
 
-<p><strong>Who</strong>: Member in Policies. Users and Groups are managed in GSuite (Google Workspace), while Service Accounts and the Identity Namespace are wholly constructs of the Google Cloud Platform.</p>
+<p><strong><a href="https://cloud.google.com/iam/docs/overview#concepts_related_identity">Who</a></strong>: Users and groups live and are managed in either Google Workspace (formerly GSuite) or Cloud Identity, while Service Accounts and the Identity Namespace live as resources in the Google Cloud Platform. A valid member can also be a Cloud Identity domain or special group such as ‘AllUsers’ or ‘AllAuthenticatedUsers’.</p>
 
-<p><strong>What Role</strong>: A role is a collection of permissions. Permissions determine what actions you can take on a resource. When a role is assigned to a member, you grant all the permissions that the role contains.</p>
+<p><strong><a href="https://cloud.google.com/iam/docs/overview#roles">Role</a></strong>: A role is a collection of permissions. Permissions determine what actions you can take on a resource. When a role is assigned to a member, you grant all the permissions contained in that role.</p>
 
-<p><strong>Resource</strong>: Who, has What Role is applied to a Resource to affect IAM Policy. A Member is assigned a Role which is then bound to a Resource to create an IAM policy.
-In GCP, Each Node of the Organizational Hierarchy is a Resource which can have IAM Policy Bound.  This includes the Organizational Node, Folder and Project Nodes, in addition to all Resources contained within a Project.</p>
-
+<p><strong><a href="https://cloud.google.com/iam/docs/overview#resource-hierarchy">Resource</a></strong>: 
+In GCP’s resource hierarchy, each level — be it the top-level organization node, folder, or project node — is a resource capable of having an IAM policy attached. This applies not only to the organization/folder/project structure but also to all child resources of projects.<br />
+Permissions are granted to a principal only when a policy is attached/bound to a resource and are inherited to all downstream child resources.</p>
 
         </section>
 
@@ -91,15 +91,15 @@ In GCP, Each Node of the Organizational Hierarchy is a Resource which can have I
             <!-- Share links section -->
             <section class="share">
     <h4>Share this post</h4>
-    <a class="icon-twitter" href="http://twitter.com/share?text=GCP IAM Policy 101&amp;url=https://kattraxler.github.io/about//gcp/iam/101/2020/12/01/gcp-iam-policy-101.html"
+    <a class="icon-twitter" href="http://twitter.com/share?text=GCP IAM Policy 101&amp;url=https://kattraxler.cloud/about//gcp/iam/101/2020/12/01/gcp-iam-policy-101.html"
         onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
         <span class="hidden">Twitter</span>
     </a>
-    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kattraxler.github.io/about//gcp/iam/101/2020/12/01/gcp-iam-policy-101.html"
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kattraxler.cloud/about//gcp/iam/101/2020/12/01/gcp-iam-policy-101.html"
         onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
         <span class="hidden">Facebook</span>
     </a>
-    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://kattraxler.github.io/about//gcp/iam/101/2020/12/01/gcp-iam-policy-101.html"
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://kattraxler.cloud/about//gcp/iam/101/2020/12/01/gcp-iam-policy-101.html"
        onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
         <span class="hidden">Google+</span>
     </a>
@@ -116,8 +116,8 @@ In GCP, Each Node of the Organizational Hierarchy is a Resource which can have I
 
     <footer class="site-footer clearfix">
       <section class="copyright">
-        <a href="/">Kat Traxler - Taste the IAM</a> &copy; 
-              2021 &bull; All rights reserved.
+        <a href="/">Cloud Conversations - with Kat Traxler</a> &copy; 
+              2024 &bull; All rights reserved.
       </section>
       <section class="poweredby">Made with Jekyll using 
         <a href="http://github.com/rosario/kasper">Kasper theme</a>

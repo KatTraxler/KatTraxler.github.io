@@ -1,17 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title></title>
-    <description>A Blog about GCP, mostly</description>
-    <link>http://localhost:4000//</link>
-    <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 11 Sep 2021 20:40:07 -0500</pubDate>
-    <lastBuildDate>Sat, 11 Sep 2021 20:40:07 -0500</lastBuildDate>
-    <generator>Jekyll v4.1.1</generator>
-    
-      <item>
-        <title>GCP AI Notebooks Vulnerability - Remediation</title>
-        <description>&lt;p&gt;This is an update to my &lt;a href=&quot;https://kattraxler.github.io/gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html&quot;&gt;previous blog post&lt;/a&gt; which documented a  mechanism for GCP Org Policy Bypass using custom metadata on compute instances.&lt;/p&gt;
+	<channel>
+		<title>Cloud Conversations - with Kat Traxler - Articles</title>
+		<description>A blog containing cloud research focusing in GCP, AWS and identity architecture</description>
+		<link>http://localhost:4000</link>
+		<atom:link href="http://localhost:4000/feed.articles.xml" rel="self" type="application/rss+xml" />
+		
+			
+			<item>
+				<title>GCP IAM 101 Series</title>
+				<description>&lt;p&gt;The GCP IAM 101 series is intended to give a brief, succinct overview of essential Google Cloud authorization concepts, answering questions like ‘How does Alice gain access to the Bucket?’ These pages provide the MVK (Minimal Viable Knowledge) for Google Cloud IAM, supplemented with links to official, more verbose Google documentation where needed.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;2020-12-01-gcp-resource-hierarchy-101.markdown&quot;&gt;GCP Resource Hierarchy&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;2020-12-01-gcp-iam-policy-101.markdown&quot;&gt;GCP IAM Policy&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;2020-12-25-gcp-roles-permissions-101.markdown&quot;&gt;GCP Roles and Permissions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;2020-12-05-gcp-users-groups-101.markdown&quot;&gt;GCP Users and Groups&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;2020-12-02-gcp-service-accounts-101.markdown&quot;&gt;GCP Service Accounts&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+				<pubDate>Sun, 03 Mar 2024 00:00:00 -0600</pubDate>
+				<link>http://localhost:4000/gcp/iam/101/2024/03/03/gcp-series-101.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2024/03/03/gcp-series-101.html</guid>
+			</item>
+			
+		
+			
+			<item>
+				<title>Attacks as a Service with The DeRF</title>
+				<description>&lt;p&gt;Leverage The DeRF for attacker simulations, validating security controls or enhancing cloud detection capabilities.&lt;/p&gt;
+
+&lt;p&gt;DeRF (Detection Replay Framework) is an “Attacks As A Service” framework, allowing the emulation of offensive techniques and generation of repeatable detection samples in the cloud. Built on Google Workflows&lt;/p&gt;
+
+&lt;p&gt;The DeRF is open-source tool available on &lt;a href=&quot;https://github.com/vectra-ai-research/derf&quot;&gt;GitHub&lt;/a&gt;, consisting of Terraform modules and a Cloud Run application. Within this package, a variety of built-in attack techniques are provided, focusing on AWS and GCP. The DeRF is shipped with attack technique parity with Stratus Red Team to help eliminate the need for operators to choose tooling-based attack capabilities.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Read the release announcement in the &lt;a href=&quot;https://www.vectra.ai/blogpost/introducing-the-derf-detection-replay-framework-in-github&quot;&gt;Vectra AI Research&lt;/a&gt; space.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Read the &lt;a href=&quot;https://thederf.cloud&quot;&gt;Full Documentation&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Slide deck from Cloud Village talk can be found &lt;a href=&quot;https://github.com/vectra-ai-research/derf/blob/main/IntroducingTheDeRF.pdf&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+				<pubDate>Wed, 09 Aug 2023 00:00:00 -0500</pubDate>
+				<link>http://localhost:4000/cloud/tooling/2023/08/09/attacks-as-a-service-with-the-derf.html</link>
+				<guid isPermaLink="true">http://localhost:4000/cloud/tooling/2023/08/09/attacks-as-a-service-with-the-derf.html</guid>
+			</item>
+			
+		
+			
+			<item>
+				<title>Rethinking Your Threat Models for the Cloud</title>
+				<description>&lt;p&gt;The cloud scrambled context for defenders who are accustomed to leaning on their understanding  of traditional on-prem architecture&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;In this &lt;a href=&quot;https://www.vectra.ai/blogpost/rethinking-your-threat-models-for-the-cloud&quot;&gt;post&lt;/a&gt; I aim to clarify the unique approaches needed to defend cloud systems by discussing the architecture underpinning the cloud, the resulting threat model, and finally, how attackers abuse such systems.&lt;/p&gt;
+
+&lt;p&gt;The discussion begins with a brief overview of traditional on-premises architecture, highlighting the vulnerable points that attackers typically target. This is followed by an examination of the architecture provided by your cloud service provider (CSP). Next, I delve into the fundamentals of cloud architecture, exploring the new threat model that emerges as a result. This leads to an exploration of the tactics attackers employ to infiltrate cloud-deployed resources.&lt;/p&gt;
+
+&lt;p&gt;To conclude, once we establish the unique aspects of cloud environments, I emphasize a cloud-native approach that attackers use to exploit vulnerabilities. I also discuss how defenders should prioritize visibility within the cloud environment.&lt;/p&gt;
+
+</description>
+				<pubDate>Wed, 03 May 2023 00:00:00 -0500</pubDate>
+				<link>http://localhost:4000/misc/cloud/research/2023/05/03/rethinking-your-threatmodels.html</link>
+				<guid isPermaLink="true">http://localhost:4000/misc/cloud/research/2023/05/03/rethinking-your-threatmodels.html</guid>
+			</item>
+			
+		
+			
+			<item>
+				<title>LastPass Breach: The Pyramid of Pain Perspective</title>
+				<description>&lt;p&gt;Mining LastPass communications for new cloud IOCs&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;In this blog published in the &lt;a href=&quot;https://www.vectra.ai/blogpost/lastpass-breach-the-pyramid-of-pain-perspective&quot;&gt;Vectra AI Research&lt;/a&gt; space, each piece of LastPass communications is dissected for new pieces of intel and indicators are evaluated against the pyramind of pain model.&lt;/p&gt;
+
+&lt;p&gt;In my evaluation of publicly available intel, I follow closely the advice given by author of the Pyramid of Pain, David Bianco’s “Whenever you receive new intel on an adversary (whether it be APT1/Comment Crew or any other threat actor), review it carefully against the Pyramid of Pain. For every paragraph, ask yourself ‘Is there anything here I can use to detect the adversary’s activity, and where does this fall on the pyramid?’”&lt;/p&gt;
+
+</description>
+				<pubDate>Tue, 14 Mar 2023 00:00:00 -0500</pubDate>
+				<link>http://localhost:4000/misc/cloud/research/2023/03/14/lastpass-breach-pyramid-of-pain.html</link>
+				<guid isPermaLink="true">http://localhost:4000/misc/cloud/research/2023/03/14/lastpass-breach-pyramid-of-pain.html</guid>
+			</item>
+			
+		
+			
+			<item>
+				<title>Abusing the Replicator: Silently Exfiltrating Data with the AWS S3 Replication Service</title>
+				<description>&lt;p&gt;But how would you distinguish between legitimate backup activity and malicious data exfiltration on AWS S3?&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;In this &lt;a href=&quot;https://www.vectra.ai/blogpost/abusing-the-replicator-silently-exfiltrating-data-with-the-aws-s3-replication-service&quot;&gt;blog post&lt;/a&gt;, I walkthrough a malicious use of the S3 Replication service and how selective data event logging on the S3 service will result in a gap in S3 exfiltration visibility since the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PutObject&lt;/code&gt; event, indicating data movement event will not be written in the Source Account.&lt;/p&gt;
+
+</description>
+				<pubDate>Wed, 20 Jul 2022 00:00:00 -0500</pubDate>
+				<link>http://localhost:4000/aws/cloud/research/2022/07/20/aws-abusing-the-replicator-s3-replication.html</link>
+				<guid isPermaLink="true">http://localhost:4000/aws/cloud/research/2022/07/20/aws-abusing-the-replicator-s3-replication.html</guid>
+			</item>
+			
+		
+			
+			<item>
+				<title>Log4J’s Unique Impact In The Cloud</title>
+				<description>&lt;p&gt;&lt;strong&gt;How to exploit the Log4J software vulnerability in cloud-hosted VMs for maximum impact&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Want to understand how the Log4J vulnerability uniquely impacts cloud environments?  &lt;br /&gt;
+Read my blog hosted in the &lt;a href=&quot;https://www.vectra.ai/blogpost/log4j-unique-impact-in-the-cloud&quot;&gt;Vectra AI Research&lt;/a&gt; site for details on how the Log4J vulnerability is exploited and why responders need to take addition measures to rotate credentials when vulnerable code is deployed on cloud-hosted VMs.&lt;/p&gt;
+
+&lt;p&gt;As ANadditional resources, refer to my &lt;a href=&quot;https://github.com/vectra-ai-research/log4j-aws-sandbox&quot;&gt;Github Repo&lt;/a&gt; which includes a terraform deployment for a log4J testing sandbox complete with vulnerable application and JNDI Exploit Server.&lt;/p&gt;
+
+</description>
+				<pubDate>Mon, 20 Dec 2021 00:00:00 -0600</pubDate>
+				<link>http://localhost:4000/misc/cloud/research/2021/12/20/log4j-in-cloud-environments.html</link>
+				<guid isPermaLink="true">http://localhost:4000/misc/cloud/research/2021/12/20/log4j-in-cloud-environments.html</guid>
+			</item>
+			
+		
+			
+			<item>
+				<title>GCP AI Notebooks Vulnerability - Remediation</title>
+				<description>&lt;p&gt;This is an update to my &lt;a href=&quot;https://kattraxler.github.io/gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html&quot;&gt;previous blog post&lt;/a&gt; which documented a  mechanism for GCP Org Policy Bypass using custom metadata on compute instances.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -56,20 +166,16 @@ I don’t believe so.&lt;br /&gt;&lt;/p&gt;
 Special thanks to the Google Engineers that partnered with me over the weekend to figure out what was going on.&lt;br /&gt;
 And to the friends who let me complain to them.&lt;/p&gt;
 </description>
-        <pubDate>Sat, 11 Sep 2021 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000//gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update.html</link>
-        <guid isPermaLink="true">http://localhost:4000//gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update.html</guid>
-        
-        
-        <category>GCP</category>
-        
-        <category>Hacking</category>
-        
-      </item>
-    
-      <item>
-        <title>Bypassing GCP Org Policy with Custom Metadata</title>
-        <description>&lt;p&gt;&lt;strong&gt;TLDR;&lt;/strong&gt;&lt;br /&gt;
+				<pubDate>Sat, 11 Sep 2021 00:00:00 -0500</pubDate>
+				<link>http://localhost:4000/gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update-copy.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update-copy.html</guid>
+			</item>
+			
+		
+			
+			<item>
+				<title>Bypassing GCP Org Policy with Custom Metadata</title>
+				<description>&lt;p&gt;&lt;strong&gt;TLDR;&lt;/strong&gt;&lt;br /&gt;
 Google makes use of custom metadata to authorize access to AI Notebooks and their web UIs.&lt;br /&gt;
 Individuals granted access via custom metadata need not have any IAM permissions on the compute instance, on the service account running the Notebook or even be a member of the Organization.  Authorization via custom metadata, bypasses a specific &lt;a href=&quot;https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains&quot;&gt;&lt;strong&gt;Organization Policy Constraint&lt;/strong&gt;&lt;/a&gt; which restricts cross-domain resource sharing.&lt;br /&gt;
 This vulnerability was awarded $1337.00 by the Google VRP Review Panel.&lt;/p&gt;
@@ -108,7 +214,7 @@ The fine-print on this, and all Organization Policy constraints are, they only a
 &lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Identifying If You Were Affected&lt;/strong&gt;&lt;br /&gt;
-Their does not seem to be any ongoing risk with this issue as outlined in my follow up report detailing &lt;a href=&quot;&quot;&gt;rememdiation&lt;/a&gt;.
+Their does not seem to be any ongoing risk with this issue as outlined in my follow up report detailing &lt;a href=&quot;https://kattraxler.github.io/gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update.html&quot;&gt;rememdiation&lt;/a&gt;.
 The remaining interesting question for GCP Customers is?,&lt;br /&gt; “Were you affected? At somepoint, was an attacker using this vulnerability as a backdoor”&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;To answer that question I suggest querying your Cloud Audit Logs and reviewing any &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setMetadata&lt;/code&gt; events.  If any &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setMetadata&lt;/code&gt; events set the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;proxy-user-mail&lt;/code&gt; metadata property to a user outside your domain, this should be pursued as suspicious.&lt;/p&gt;
@@ -133,24 +239,20 @@ The remaining interesting question for GCP Customers is?,&lt;br /&gt; “Were yo
 	– 08/19/2021: Informed of the Bug Bounty Award. “The VRP panel has decided to issue a reward of $1337.00 for your report. Congratulations”&lt;br /&gt;
 	– 09/09/2021: Asked for an update as the issue remained open and reconfirmed my intensions to publish on September 10th.&lt;br /&gt;
 	– 09/10/2021: Google VRP informed me the patch was being pushed to servers today and would be rolled out to all servers by EOD.&lt;br /&gt;
-	– 09/10/2021: Informed Google VRP of the publishing of this report, despite the issue not being resolved.
+	– 09/10/2021: Informed Google VRP of the publishing of this report, despite the issue not being resolved.&lt;br /&gt;
 	– 09/11/2021: Informed Google that I agreed their patch plus the expiration of the ‘DATALAB_TUNNEL_TOKEN’ cookie resulted in a complete fix of the issue.&lt;/p&gt;
 
 </description>
-        <pubDate>Fri, 10 Sep 2021 00:00:00 -0500</pubDate>
-        <link>http://localhost:4000//gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html</link>
-        <guid isPermaLink="true">http://localhost:4000//gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html</guid>
-        
-        
-        <category>GCP</category>
-        
-        <category>Hacking</category>
-        
-      </item>
-    
-      <item>
-        <title>GCP .actAs d-day &gt; How not to remediate</title>
-        <description>&lt;p&gt;On January 27, 2021 a major, potentially breaking change is coming to GCP.  If you’re using the default service account as the backing identity for several of GCP’s data science PaaS services, the end user will be required to have the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission on the default service account.&lt;/p&gt;
+				<pubDate>Fri, 10 Sep 2021 00:00:00 -0500</pubDate>
+				<link>http://localhost:4000/gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html</guid>
+			</item>
+			
+		
+			
+			<item>
+				<title>GCP .actAs d-day &gt; How not to remediate</title>
+				<description>&lt;p&gt;On January 27, 2021 a major, potentially breaking change is coming to GCP.  If you’re using the default service account as the backing identity for several of GCP’s data science PaaS services, the end user will be required to have the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.actAs&lt;/code&gt; permission on the default service account.&lt;/p&gt;
 
 &lt;p&gt;The PaaS services in question are:&lt;/p&gt;
 
@@ -261,218 +363,212 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 
 &lt;p&gt;Whether this is by design or because their is a lack of trust, I have no inclanations, but it doesn’t leave me feeling optimistic for the idea that security is a core design principal in GCP.  Or, that when the rubber meets the road, Security @ Google can force different design decisions on behalf of securing their customers workloads.&lt;/p&gt;
 </description>
-        <pubDate>Fri, 01 Jan 2021 00:00:00 -0600</pubDate>
-        <link>http://localhost:4000//gcp/iam/101/2021/01/01/gcp-actas-dday.html</link>
-        <guid isPermaLink="true">http://localhost:4000//gcp/iam/101/2021/01/01/gcp-actas-dday.html</guid>
-        
-        
-        <category>GCP</category>
-        
-        <category>IAM</category>
-        
-        <category>101</category>
-        
-      </item>
-    
-      <item>
-        <title>GCP Roles and Permissions 101</title>
-        <description>&lt;p&gt;Its ultimately Cloud IAM Permissions which grant access to resources.  However, in GCP you do &lt;strong&gt;not&lt;/strong&gt; and &lt;strong&gt;cannot&lt;/strong&gt; assign individual permissions to an Identity. Instead, permissions are grouped together to form Roles. Its the Role, not the permission, that is granted to an Identity.&lt;br /&gt;
-Sometimes, a Role will only contain a single permission, other times it will contain hunderds of permissions so that the Role can enable some broader functionality.&lt;/p&gt;
+				<pubDate>Fri, 01 Jan 2021 00:00:00 -0600</pubDate>
+				<link>http://localhost:4000/gcp/iam/101/2021/01/01/gcp-actas-dday.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2021/01/01/gcp-actas-dday.html</guid>
+			</item>
+			
+		
+			
+			<item>
+				<title>GCP Roles and Permissions 101</title>
+				<description>&lt;p&gt;In GCP, access to resources is ultimately governed by Cloud IAM Permissions however, individual permissions are not directly assigned to principals. Instead, permissions are grouped together to create roles. These roles, rather than individual permissions, are then granted to principals in an IAM Policy.&lt;/p&gt;
+
+&lt;p&gt;Roles can range from containing just a single permission to encompassing thousands of permissions, such as the coarse-grained &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Editor&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Owner&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[basic roles](https://cloud.google.com/iam/docs/understanding-roles#basic)&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;permissions&quot;&gt;&lt;strong&gt;Permissions&lt;/strong&gt;&lt;/h3&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;A permission will always be detailed in the following three-part format:&lt;/p&gt;
+&lt;p&gt;Permissions are always described in the three-part format: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[service].[resource].[action]&lt;/code&gt;.&lt;/p&gt;
 
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[api].[resource].[action]&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Examples:&lt;/p&gt;
 
-  &lt;p&gt;The Cloud IAM API has a permission allowing Identities to update Roles in GCP, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iam.roles.update&lt;/code&gt;.  The Container API also has a permission to update Roles, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;container.roles.update&lt;/code&gt;.&lt;br /&gt;
-These two permissions do not allow for the configuration of the same resource. The Cloud IAM API and the Container API allow for management of two different types of Roles.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;resourcemanager.projects.setIamPolicy&lt;/code&gt;: This permission, associated with the Resource Manager service, enables principals to modify IAM policies attached at the project-level.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iam.serviceAccounts.setIamPolicy&lt;/code&gt;: This permission, associated with the IAM service, grants principals the ability to modify IAM policies related solely to service accounts.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;spanner.databases.setIamPolicy&lt;/code&gt;: This permission, associated to the Spanner service, allows principals to modify IAM policies related exclusively to Spanner databases.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;While all these permissions pertain to updating IAM policies, they target different resources, impacting distinct scopes.&lt;/p&gt;
 
 &lt;h3 id=&quot;roles&quot;&gt;&lt;strong&gt;Roles&lt;/strong&gt;&lt;/h3&gt;
 
-&lt;p&gt;In GCP, Roles come in three flavors, Primitive, Pre-Defined Roles and Custom Roles.&lt;/p&gt;
+&lt;p&gt;Roles come in three flavors, Basic (née Primitive), Pre-Defined Roles and Custom Roles.&lt;/p&gt;
 
-&lt;h6 id=&quot;primitive-roles&quot;&gt;Primitive Roles&lt;/h6&gt;
+&lt;h5 id=&quot;basic-roles&quot;&gt;Basic Roles&lt;/h5&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Prior to Cloud IAM’s introduction in 2016, these were the only types of Roles. Primitive Roles consist of an Owner, Editor and Viewer and are most simply described as coarse grained.  Each of these Primitive Roles makes up concentric circles of permissions, where the Role, Viewer contains a subset of permissions that the Editor Role does and Editor contains a subset of permissions of the Owner Role. 
-The Editor Role is used ubiqutiously in GCP as the default Role assigned to the Default Compute and Default AppEngine Service Accounts.
-Google advises against using Primitive Roles and so do I.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Before Cloud IAM’s introduction in 2013, only &lt;a href=&quot;https://cloud.google.com/iam/docs/understanding-roles#basic&quot;&gt;Basic Roles&lt;/a&gt; were available for policy assignments. The three Basic Roles (Owner, Editor, and Viewer) are coarse-grained, Google-managed roles each containing thousands of permissions.&lt;/p&gt;
 
-&lt;h6 id=&quot;pre-defined-roles&quot;&gt;Pre-Defined Roles&lt;/h6&gt;
+&lt;p&gt;These three Basic Roles form concentric circles of permissions, with Viewer containing a subset of Editor’s permissions, and Editor containing a subset of Owner’s permissions.&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;These Roles are collections of permissions currated by Google. Updates to Pre-Defined Roles are pushed ~weekly and can be monitored in the Cloud IAM Permissions Change Log: 
-https://cloud.google.com/iam/docs/permissions-change-log
-Pre-Defined Roles tend to map to job functions and provide a good menu of granular options.&lt;/p&gt;
+&lt;p&gt;Editor is widely used in GCP as the default role assigned to the Default Compute and Default App Engine Service Accounts. However, Google generally advises against using Basic Roles in most situations, a stance I support.&lt;/p&gt;
 
-  &lt;p&gt;Not all Roles can be assigned at all Resource levels.  For example you can bind the Role &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cloudsql.admin&lt;/code&gt; at the Project Level, allowing an end user to admin all SQL instances in a Project, but you cannot assign that Role to an individual instance.  The lowest Resource level possible for the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cloudsql.admin&lt;/code&gt;  Role is the Project.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h5 id=&quot;pre-defined-roles&quot;&gt;Pre-Defined Roles&lt;/h5&gt;
 
-&lt;h6 id=&quot;custom-roles&quot;&gt;Custom Roles&lt;/h6&gt;
+&lt;p&gt;&lt;a href=&quot;https://cloud.google.com/iam/docs/understanding-roles#predefined&quot;&gt;Pre-defined Roles&lt;/a&gt; are sets of permissions curated and bundled as roles by Google. Updates to these roles are pushed weekly and can be tracked in the &lt;a href=&quot;https://cloud.google.com/iam/docs/permissions-change-log&quot;&gt;Cloud IAM Permissions Change Log&lt;/a&gt;.&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;GCP gives its customers the ability to craft their own Roles.  Custom Roles, with your own unique collection of permissions can be defined at the Organization and be bound at various points in the hierarchy. 
-Not all permissions can be used in Custom Roles. Just like Pre-Defined Roles, not all permissions can be assigned at all Resource levels.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Pre-defined Roles are designed to align with specific job functions and offer more granularity compared to Basic Roles.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;
-&lt;em&gt;Side Note&lt;/em&gt;: GCP has recently rebranded Primitive Roles and now calls them Basic Roles.
-[ref]:
-Primitive Role Definitions: 
-https://cloud.google.com/iam/docs/understanding-roles#primitive_role_definitions&lt;/p&gt;
+&lt;h5 id=&quot;custom-roles&quot;&gt;Custom Roles&lt;/h5&gt;
+
+&lt;p&gt;Finally, Google allows end users to create their own Custom Roles for GCP. &lt;a href=&quot;https://cloud.google.com/iam/docs/creating-custom-roles&quot;&gt;Custom Roles&lt;/a&gt; enable you to define unique collections of permissions, which can be crafted at the organization level and then assigned at various points in the hierarchy, or created within a project for use exclusively within that resource.&lt;/p&gt;
+
+&lt;p&gt;It’s important to note that not all permissions can be used in Custom Roles, and some permissions may not be assignable at all resource levels. For more details, refer to the &lt;a href=&quot;https://cloud.google.com/iam/docs/custom-roles-permissions-support&quot;&gt;documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;role-assignment-resource-levels&quot;&gt;Role Assignment Resource levels&lt;/h3&gt;
+
+&lt;p&gt;In GCP, not all roles can be assigned at every resource level. Typically, every role has a lower boundary which it can be assigned.&lt;/p&gt;
+
+&lt;p&gt;For example, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cloudsql.admin&lt;/code&gt; role can be assigned at the Project Level, allowing a user to administer all SQL instances within that project. However, this role cannot be assigned to child resources of the project, such as individual SQL instances.&lt;/p&gt;
+
+&lt;p&gt;When it comes to Basic Roles like Owner, Editor, and Viewer, there are both upper and lower boundaries for policy attachments. These roles can only be assigned at the Project-Level; they cannot be in an IAM policy and attached to a parent resource like the organization node, nor to child resources within the project.&lt;/p&gt;
+
+&lt;p&gt;As a best practice, roles should be assigned at the lowest resource level possible to reduce the scope of the permissions.&lt;/p&gt;
 
 </description>
-        <pubDate>Fri, 25 Dec 2020 00:00:00 -0600</pubDate>
-        <link>http://localhost:4000//gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</link>
-        <guid isPermaLink="true">http://localhost:4000//gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</guid>
-        
-        
-        <category>GCP</category>
-        
-        <category>IAM</category>
-        
-        <category>101</category>
-        
-      </item>
-    
-      <item>
-        <title>GCP Users and Group 101</title>
-        <description>&lt;p&gt;Users and Groups are two types of identities which can be assigned IAM Roles in GCP.  When Users and Groups are members in IAM Policy, they are referenced by their email addresses.&lt;/p&gt;
+				<pubDate>Fri, 25 Dec 2020 00:00:00 -0600</pubDate>
+				<link>http://localhost:4000/gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</guid>
+			</item>
+			
+		
+			
+			<item>
+				<title>GCP Users and Group 101</title>
+				<description>&lt;p&gt;&lt;strong&gt;Users and Groups&lt;/strong&gt; are two types of principals that can be granted access in GCP. When users and groups are members in IAM Policies, they are referenced by their Google email addresses.&lt;/p&gt;
 
-&lt;p&gt;There is no directory in GCP containing Users or Groups.  Instead, Users and Groups live in your the GSuite directory for your registered Google Domain. 
-An inventory of the Users and Groups in your domain is found in their own console,  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;admin.google.com/ac/users &lt;/code&gt;.&lt;br /&gt;
-This is a console completely apart from the GCP Cloud Console, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;console.cloud.google.com&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You won’t find a directory in Google Cloud listing users or groups. Instead, users and groups are managed within the Google Workspace directory (formerly GSuite) of your registered Google Domain. Alternatively, groups and group memberships can be managed using &lt;a href=&quot;https://cloud.google.com/identity/docs/reference/rest&quot;&gt;Cloud Identity&lt;/a&gt;, a service within Google Cloud.&lt;/p&gt;
 
-&lt;p&gt;In GCP, you can assign Roles directly to Users however, this pattern is bound to face management and scalability problems.  Instead, consider placing Users in Groups and assigning GCP IAM Roles to the Groups.&lt;/p&gt;
+&lt;p&gt;An inventory of the users and groups within your domain can be accessed through the Google Workspace &lt;a href=&quot;https://admin.google.com/ac/users&quot;&gt;Admin Console&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Defaults&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;ANY&lt;/strong&gt; Google User or Group in &lt;strong&gt;ANY&lt;/strong&gt; domain can be assigned IAM Roles in &lt;strong&gt;ANY&lt;/strong&gt; Organization or Project in any domain.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Example: The GCP Organization for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test.com&lt;/code&gt; is not limited to only having IAM Roles assigned to Users and Groups with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test.com&lt;/code&gt; email addresses.&lt;/li&gt;
-  &lt;li&gt;To limit &lt;strong&gt;WHO&lt;/strong&gt; can have IAM Roles in your GCP Organization, employ the Organizational Policy Constraint &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;constraints/iam.allowedPolicyMemberDomains&lt;/code&gt; where by you can whitelist allowed domains.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;ol&gt;
+  &lt;li&gt;Cross-Organization Access Allowed&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;If you have a GCP Organization associated to your GSuite Directory, all Users in your Directory can create Projects and configure billing by default.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;These permissions are automatically inherited and need to be explicitly disabled in GCP at the Organization level.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ANY&lt;/strong&gt; Google user or group in &lt;strong&gt;ANY&lt;/strong&gt; domain can be assigned IAM Roles in &lt;strong&gt;ANY&lt;/strong&gt; organization or project in any domain.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;em&gt;Side Note&lt;/em&gt;: GSuite was recently renamed Google Workspace&lt;/li&gt;
-  &lt;li&gt;https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains&lt;/li&gt;
-  &lt;li&gt;https://cloud.google.com/resource-manager/docs/default-access-control&lt;/li&gt;
+  &lt;li&gt;Example: The GCP Organization for the domain &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;test.com&lt;/code&gt; can have IAM Policy granting principals from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;example.org&lt;/code&gt; access to their resources.&lt;/li&gt;
+  &lt;li&gt;To limit &lt;strong&gt;WHO&lt;/strong&gt; can be a member in IAM Policy, employ the Organizational Policy Constraint &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[constraints/iam.allowedPolicyMemberDomains](https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains)&lt;/code&gt; where by you can define an allowed list of approved domains.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;All Users can Create GCP Projects and Resources&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;By default, when GCP is enabled within Google Workspace, users have the ability to create projects and create a billing account. Consequently, creators of projects are automatically granted the powerful owner role for the projects they create.&lt;/p&gt;
+
+&lt;p&gt;To manage this default behavior:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;First, create designated billing accounts and project creators.&lt;/li&gt;
+  &lt;li&gt;Then, &lt;a href=&quot;https://cloud.google.com/resource-manager/docs/default-access-control#removing-default-roles&quot;&gt;manually remove&lt;/a&gt; the default roles (Project Creator and Billing Account Creator) from the organization node.&lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
-        <pubDate>Sat, 05 Dec 2020 00:00:00 -0600</pubDate>
-        <link>http://localhost:4000//gcp/iam/101/2020/12/05/gcp-users-groups-101.html</link>
-        <guid isPermaLink="true">http://localhost:4000//gcp/iam/101/2020/12/05/gcp-users-groups-101.html</guid>
-        
-        
-        <category>GCP</category>
-        
-        <category>IAM</category>
-        
-        <category>101</category>
-        
-      </item>
-    
-      <item>
-        <title>GCP Service Account 101</title>
-        <description>&lt;p&gt;Service Accounts are non-human identities used for Infrastructure and Resources.  Service Accounts do not have passwords.  You can optionally generate and export a Private Key for a Service Account. But you’ll only want to do this when you need to enable an external integrations, that is, authenticated API calls to your Resources.&lt;/p&gt;
+				<pubDate>Sat, 05 Dec 2020 00:00:00 -0600</pubDate>
+				<link>http://localhost:4000/gcp/iam/101/2020/12/05/gcp-users-groups-101.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/05/gcp-users-groups-101.html</guid>
+			</item>
+			
+		
+			
+			<item>
+				<title>GCP Service Account 101</title>
+				<description>&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://cloud.google.com/iam/docs/overview#service_account&quot;&gt;Service Accounts&lt;/a&gt;&lt;/strong&gt; are identities used for authenticating infrastructure and resources, typically for non-human entities. Service Accounts do not utilize passwords. While you have the option to generate and export a private key for a service account, it’s generally unnecessary and can pose a &lt;a href=&quot;https://jryancanty.medium.com/stop-downloading-google-cloud-service-account-keys-1811d44a97d9&quot;&gt;security risk&lt;/a&gt; in most cases. The only valid scenario where generating and exporting a private key may be necessary is to enable external integrations in instances where &lt;a href=&quot;https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-google-cloud-platform&quot;&gt;OIDC&lt;/a&gt; is not supported.&lt;/p&gt;
 
-&lt;p&gt;A Service Account is &lt;strong&gt;Both&lt;/strong&gt; an Identity and a Resource.&lt;br /&gt;
-This might be the most difficult concept in GCP to initially grasp. Let me help break that down.&lt;/p&gt;
+&lt;h2 id=&quot;service-accounts-as-resources&quot;&gt;Service Accounts as Resources&lt;/h2&gt;
 
-&lt;p&gt;&lt;strong&gt;Service Accounts as Resources&lt;/strong&gt;
-Service Accounts are created and reside within a Project.  &lt;em&gt;You can think of a Service Account as having a ‘home’ Project.&lt;/em&gt;  Just like a Compute Instance or a Storage Bucket ‘resides’ in a Project where its direct parent in the Resource Hierarchy is a Project.&lt;/p&gt;
+&lt;p&gt;Service accounts are created within and associated with a specific project. &lt;em&gt;Think of a service account as having a ‘home’ project,&lt;/em&gt; similar to how a compute instance or a storage bucket ‘resides’ in a project within the resource hierarchy.&lt;/p&gt;
 
-&lt;p&gt;Like a Resource, you can &lt;em&gt;setIAMPolicy&lt;/em&gt; on a Service Account.  IAM on a Service Account include permissions like:
-	* who can impersonate that Service Account
-	* who can ActAs the Service Account
-	* who can generate keys for the Service Account&lt;/p&gt;
+&lt;p&gt;Similar to other resources, you can use the &lt;em&gt;&lt;a href=&quot;https://cloud.google.com/iam/docs/reference/rest/v1/projects.serviceAccounts/setIamPolicy&quot;&gt;setIAMPolicy&lt;/a&gt;&lt;/em&gt; method to attach IAM policies to a service account. IAM policies for a service account typically include permissions such as:&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Service Accounts as Identities&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;generate an OAuth or OIDC token for the service account (impersonate)
+    &lt;ul&gt;
+      &lt;li&gt;(.getAccessToken) (.getOpenIdToken)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;attach a service account to a resource.
+    &lt;ul&gt;
+      &lt;li&gt;(.actAs)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;generate keys for the service account.
+    &lt;ul&gt;
+      &lt;li&gt;(iam.serviceAccountKeys.create)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;manage the service account.
+    &lt;ul&gt;
+      &lt;li&gt;(.create) (.delete) (.setIamPolicy)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Like other types of Identities in GCP (i.e. Users and Groups), Service Accounts can have IAM Policy bindings at any node of the Resource Hierarchy.  Just because a Service Account lives in a Project, doesn’t mean it needs any permissions in that Project.  A Service Account can be assigned any Role, which can be applied at any node of the Resource Hierarchy, just like a User or Group.
-When setting IAM Policy &lt;em&gt;ON&lt;/em&gt; a Service Account, the WHO can be another Service Account! In fact, It might be a desirable pattern to have a Service Account, having permissions allowing it to impersonate another Service Account.
-In this case, the Service Account doing the impersonating is the &lt;em&gt;WHO&lt;/em&gt;, and is acting like an identity. While the Service Account being impersonated is the &lt;em&gt;Resource.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&quot;service-accounts-as-identities&quot;&gt;Service Accounts as Identities**&lt;/h2&gt;
 
-</description>
-        <pubDate>Tue, 01 Dec 2020 00:00:00 -0600</pubDate>
-        <link>http://localhost:4000//gcp/iam/101/2020/12/01/gcp-service-accounts-101.html</link>
-        <guid isPermaLink="true">http://localhost:4000//gcp/iam/101/2020/12/01/gcp-service-accounts-101.html</guid>
-        
-        
-        <category>GCP</category>
-        
-        <category>IAM</category>
-        
-        <category>101</category>
-        
-      </item>
-    
-      <item>
-        <title>GCP Resource Hierarchy 101</title>
-        <description>&lt;p&gt;Resources in Google Cloud are organized into a hierarchy with each level or node of this structure being called a Resource.  At the top of the hierarchy is the &lt;strong&gt;Organization&lt;/strong&gt; followed by any number of nested &lt;strong&gt;Folders&lt;/strong&gt; which then house &lt;strong&gt;Projects&lt;/strong&gt;. At the lowest level of the hierarchy are the widgets the compose a GCP Project, things like a Pub/Sub topic, Cloud Compute instance or Cloud Buckets.&lt;/p&gt;
+&lt;p&gt;In GCP, service accounts, like other identity types such as Users and Groups, can be included as members in IAM Policies and granted permissions at any level within the resource hierarchy. Service accounts are not restricted to receiving permissions only within their home project. Similar to users and groups, service accounts can have cross-project permissions or even have access to resources in other organizations.&lt;/p&gt;
 
-&lt;p&gt;Whether the Resource you are referring to is a Project, a Folder or a Key Ring, each resource has exactly one parent.&lt;/p&gt;
+&lt;h2 id=&quot;attaching-a-policy-to-a-service-account&quot;&gt;Attaching a Policy to a Service Account&lt;/h2&gt;
 
-&lt;p&gt;There are three characteristics of a GCP resource hierarchy to consider:&lt;/p&gt;
+&lt;p&gt;When configuring IAM Policies for a Service Account, the entity granted permissions (the WHO) can be another Service Account. It can be advantageous to establish a pattern where a Service Account is granted permissions to impersonate another Service Account.&lt;/p&gt;
 
-&lt;p&gt;Resource ownership for Lifecycle management:  If you delete a Project, you delete all Resources contained within the Project. If a Folder is deleted, all Folders or Projects that inherit from it are deleted.&lt;/p&gt;
-
-&lt;p&gt;Resources serve as attachment points for IAM Policy and Organizational Policies.  IAM Policy can be bound at any node in the hierarchy.&lt;/p&gt;
-
-&lt;p&gt;The resource hierarchy didcates how IAM Policy inheritance will affect access control. IAM Policy both applies to the resouce which it was attached, and all direct children. In GCP there is no concept of overriding IAM Policy inheritance.&lt;/p&gt;
+&lt;p&gt;In such scenarios, the Service Account performing the impersonation is the &lt;strong&gt;WHO&lt;/strong&gt;, functioning as an identity. Meanwhile, the Service Account being impersonated serves as the target resource.&lt;/p&gt;
 
 </description>
-        <pubDate>Tue, 01 Dec 2020 00:00:00 -0600</pubDate>
-        <link>http://localhost:4000//gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html</link>
-        <guid isPermaLink="true">http://localhost:4000//gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html</guid>
-        
-        
-        <category>GCP</category>
-        
-        <category>IAM</category>
-        
-        <category>101</category>
-        
-      </item>
-    
-      <item>
-        <title>GCP IAM Policy 101</title>
-        <description>&lt;p&gt;This GCP’s model for managing access to resources has three main parts: &lt;strong&gt;Who, What Role and the Resource.&lt;/strong&gt;&lt;/p&gt;
+				<pubDate>Tue, 01 Dec 2020 00:00:00 -0600</pubDate>
+				<link>http://localhost:4000/gcp/iam/101/2020/12/01/gcp-service-accounts-101.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/01/gcp-service-accounts-101.html</guid>
+			</item>
+			
+		
+			
+			<item>
+				<title>GCP Resource Hierarchy 101</title>
+				<description>&lt;p&gt;Google Cloud is organized into a hierarchy with each level or node of this structure being a resource.  At the top of the hierarchy is the &lt;strong&gt;Organization&lt;/strong&gt; followed by any number of nested &lt;strong&gt;Folders&lt;/strong&gt; which then house &lt;strong&gt;Projects&lt;/strong&gt;. At the lowest level of the hierarchy are the widgets the compose a GCP Project. Resources including Pub/Sub topics, Cloud Compute instances, Cloud Buckets or Services Accounts are all child resources of projects.&lt;/p&gt;
 
-&lt;p&gt;To grant permissions in GCP, you combine the &lt;strong&gt;WHO&lt;/strong&gt; and the &lt;strong&gt;WHAT&lt;/strong&gt; to create a policy.  You apply this policy, or Bind the Role to a Resource to create scope.&lt;/p&gt;
+&lt;p&gt;Whether the resource is a Project, a Folder or a Key Ring, each resource has exactly one parent.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Who&lt;/strong&gt;: Member in Policies. Users and Groups are managed in GSuite (Google Workspace), while Service Accounts and the Identity Namespace are wholly constructs of the Google Cloud Platform.&lt;/p&gt;
+&lt;p&gt;There are two characteristics of a GCP resource hierarchy to consider when creating a resource hierarchy.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;What Role&lt;/strong&gt;: A role is a collection of permissions. Permissions determine what actions you can take on a resource. When a role is assigned to a member, you grant all the permissions that the role contains.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Resource&lt;/strong&gt;: Who, has What Role is applied to a Resource to affect IAM Policy. A Member is assigned a Role which is then bound to a Resource to create an IAM policy.
-In GCP, Each Node of the Organizational Hierarchy is a Resource which can have IAM Policy Bound.  This includes the Organizational Node, Folder and Project Nodes, in addition to all Resources contained within a Project.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Resource Ownership for Lifecycle management:  Deleting a project deletes all resources contained within the project. If a Folder is deleted, all Folders or Projects that inherit from it are deleted.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Policy Inheritance: Resources function as attachment points for both IAM Policies and Organizational Policy Constraints. IAM Policies can be attached at any level within the hierarchy. The hierarchical structure of resources (with its child/parent relationships) determines how IAM Policy inheritance impacts the scope of access control. An IAM policy affects both the resource to which it’s attached and all of its child resources.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 
 </description>
-        <pubDate>Tue, 01 Dec 2020 00:00:00 -0600</pubDate>
-        <link>http://localhost:4000//gcp/iam/101/2020/12/01/gcp-iam-policy-101.html</link>
-        <guid isPermaLink="true">http://localhost:4000//gcp/iam/101/2020/12/01/gcp-iam-policy-101.html</guid>
-        
-        
-        <category>GCP</category>
-        
-        <category>IAM</category>
-        
-        <category>101</category>
-        
-      </item>
-    
-  </channel>
+				<pubDate>Tue, 01 Dec 2020 00:00:00 -0600</pubDate>
+				<link>http://localhost:4000/gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html</guid>
+			</item>
+			
+		
+			
+			<item>
+				<title>GCP IAM Policy 101</title>
+				<description>&lt;p&gt;The GCP model for managing access to resources has three main parts: &lt;strong&gt;Who, What Role and the Resource.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In Google Cloud Platform (GCP), permissions are granted by combining the &lt;strong&gt;WHO&lt;/strong&gt; (identity) and the &lt;strong&gt;WHAT&lt;/strong&gt; (action) to form a policy. This policy is then applied, or ‘Bound’, to a specific Resource. By doing so, permissions are granted and a scope is created.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://cloud.google.com/iam/docs/overview#concepts_related_identity&quot;&gt;Who&lt;/a&gt;&lt;/strong&gt;: Users and groups live and are managed in either Google Workspace (formerly GSuite) or Cloud Identity, while Service Accounts and the Identity Namespace live as resources in the Google Cloud Platform. A valid member can also be a Cloud Identity domain or special group such as ‘AllUsers’ or ‘AllAuthenticatedUsers’.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://cloud.google.com/iam/docs/overview#roles&quot;&gt;Role&lt;/a&gt;&lt;/strong&gt;: A role is a collection of permissions. Permissions determine what actions you can take on a resource. When a role is assigned to a member, you grant all the permissions contained in that role.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://cloud.google.com/iam/docs/overview#resource-hierarchy&quot;&gt;Resource&lt;/a&gt;&lt;/strong&gt;: 
+In GCP’s resource hierarchy, each level — be it the top-level organization node, folder, or project node — is a resource capable of having an IAM policy attached. This applies not only to the organization/folder/project structure but also to all child resources of projects.&lt;br /&gt;
+Permissions are granted to a principal only when a policy is attached/bound to a resource and are inherited to all downstream child resources.&lt;/p&gt;
+</description>
+				<pubDate>Tue, 01 Dec 2020 00:00:00 -0600</pubDate>
+				<link>http://localhost:4000/gcp/iam/101/2020/12/01/gcp-iam-policy-101.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/01/gcp-iam-policy-101.html</guid>
+			</item>
+			
+		
+	</channel>
 </rss>

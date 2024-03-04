@@ -8,8 +8,8 @@ categories: GCP IAM 101
 
 The GCP IAM 101 series is intended to give a brief, succinct overview of essential Google Cloud authorization concepts, answering questions like 'How does Alice gain access to the Bucket?' These pages provide the MVK (Minimal Viable Knowledge) for Google Cloud IAM, supplemented with links to official, more verbose Google documentation where needed.
 
-- [GCP Resource Hierarchy](2020-12-01-gcp-resource-hierarchy-101.markdown)
-- [GCP IAM Policy](2020-12-01-gcp-iam-policy-101.markdown)
-- [GCP Roles and Permissions](2020-12-25-gcp-roles-permissions-101.markdown)
-- [GCP Users and Groups](2020-12-05-gcp-users-groups-101.markdown)
-- [GCP Service Accounts](2020-12-02-gcp-service-accounts-101.markdown)
+- [GCP Resource Hierarchy](./2020-12-01-gcp-resource-hierarchy-101.markdown)
+- [GCP IAM Policy](./2020-12-01-gcp-iam-policy-101.markdown)
+- [GCP Roles and Permissions](./2020-12-25-gcp-roles-permissions-101.markdown)
+- [GCP Users and Groups](./2020-12-05-gcp-users-groups-101.markdown)
+- [GCP Service Accounts](./2020-12-02-gcp-service-accounts-101.markdown)

@@ -1,2 +1,0 @@
-I"Á<p>Resources in Google Cloud are organized into a hierarchy with each level or node of this structure being called a Resource.  At the top of the hierarchy is the <strong>Organization</strong> followed by any number of nested <strong>Folders</strong> which then house <strong>Projects</strong>. At the lowest level of the hierarchy are the widgets the compose a GCP Project, things like a Pub/Sub topic, Cloud Compute instance or Cloud Buckets.</p>
-:ET

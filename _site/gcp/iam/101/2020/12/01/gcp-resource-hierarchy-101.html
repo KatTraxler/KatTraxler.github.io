@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Kat Traxler - Taste the IAM - A Blog about GCP, mostly</title>
-    <meta name="description" content="A Blog about GCP, mostly" />
+    <title>Cloud Conversations - with Kat Traxler - A blog containing cloud research focusing in GCP, AWS and identity architecture</title>
+    <meta name="description" content="A blog containing cloud research focusing in GCP, AWS and identity architecture" />
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
@@ -43,7 +43,7 @@
 <!--         <header class="post-header">
             <a id="blog-logo" href="http://localhost:4000">
                 
-                    <img src="true" alt="Kat Traxler - Taste the IAM" />
+                    <img src="true" alt="Cloud Conversations - with Kat Traxler" />
                 
             </a>
         </header> -->
@@ -58,17 +58,20 @@
         <!-- <h1 class="post-title">GCP Resource Hierarchy 101</h1> -->
 
         <section class="post-content">
-            <p>Resources in Google Cloud are organized into a hierarchy with each level or node of this structure being called a Resource.  At the top of the hierarchy is the <strong>Organization</strong> followed by any number of nested <strong>Folders</strong> which then house <strong>Projects</strong>. At the lowest level of the hierarchy are the widgets the compose a GCP Project, things like a Pub/Sub topic, Cloud Compute instance or Cloud Buckets.</p>
+            <p>Google Cloud is organized into a hierarchy with each level or node of this structure being a resource.  At the top of the hierarchy is the <strong>Organization</strong> followed by any number of nested <strong>Folders</strong> which then house <strong>Projects</strong>. At the lowest level of the hierarchy are the widgets the compose a GCP Project. Resources including Pub/Sub topics, Cloud Compute instances, Cloud Buckets or Services Accounts are all child resources of projects.</p>
 
-<p>Whether the Resource you are referring to is a Project, a Folder or a Key Ring, each resource has exactly one parent.</p>
+<p>Whether the resource is a Project, a Folder or a Key Ring, each resource has exactly one parent.</p>
 
-<p>There are three characteristics of a GCP resource hierarchy to consider:</p>
+<p>There are two characteristics of a GCP resource hierarchy to consider when creating a resource hierarchy.</p>
 
-<p>Resource ownership for Lifecycle management:  If you delete a Project, you delete all Resources contained within the Project. If a Folder is deleted, all Folders or Projects that inherit from it are deleted.</p>
-
-<p>Resources serve as attachment points for IAM Policy and Organizational Policies.  IAM Policy can be bound at any node in the hierarchy.</p>
-
-<p>The resource hierarchy didcates how IAM Policy inheritance will affect access control. IAM Policy both applies to the resouce which it was attached, and all direct children. In GCP there is no concept of overriding IAM Policy inheritance.</p>
+<ol>
+  <li>
+    <p>Resource Ownership for Lifecycle management:  Deleting a project deletes all resources contained within the project. If a Folder is deleted, all Folders or Projects that inherit from it are deleted.</p>
+  </li>
+  <li>
+    <p>Policy Inheritance: Resources function as attachment points for both IAM Policies and Organizational Policy Constraints. IAM Policies can be attached at any level within the hierarchy. The hierarchical structure of resources (with its child/parent relationships) determines how IAM Policy inheritance impacts the scope of access control. An IAM policy affects both the resource to which it’s attached and all of its child resources.</p>
+  </li>
+</ol>
 
 
         </section>
@@ -92,15 +95,15 @@
             <!-- Share links section -->
             <section class="share">
     <h4>Share this post</h4>
-    <a class="icon-twitter" href="http://twitter.com/share?text=GCP Resource Hierarchy 101&amp;url=https://kattraxler.github.io/about//gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html"
+    <a class="icon-twitter" href="http://twitter.com/share?text=GCP Resource Hierarchy 101&amp;url=https://kattraxler.cloud/about//gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html"
         onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
         <span class="hidden">Twitter</span>
     </a>
-    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kattraxler.github.io/about//gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html"
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kattraxler.cloud/about//gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html"
         onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
         <span class="hidden">Facebook</span>
     </a>
-    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://kattraxler.github.io/about//gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html"
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://kattraxler.cloud/about//gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html"
        onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
         <span class="hidden">Google+</span>
     </a>
@@ -117,8 +120,8 @@
 
     <footer class="site-footer clearfix">
       <section class="copyright">
-        <a href="/">Kat Traxler - Taste the IAM</a> &copy; 
-              2021 &bull; All rights reserved.
+        <a href="/">Cloud Conversations - with Kat Traxler</a> &copy; 
+              2024 &bull; All rights reserved.
       </section>
       <section class="poweredby">Made with Jekyll using 
         <a href="http://github.com/rosario/kasper">Kasper theme</a>
