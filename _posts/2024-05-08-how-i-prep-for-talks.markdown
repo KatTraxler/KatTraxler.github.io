@@ -46,7 +46,10 @@ Example of a slide which can be used as a backdrop to discuss impersonation in G
 ## The Notecards
 
 **Here's where the magic (and a bit of arts and crafts) really starts to happen.**
-By this stage, we should have a relatively stable outline — though always feel free to tweak and trim as new inspirations strike - complemented by a set of engaging slides. Done, right? Not quite. Ideally, reaching this stage 2-3 weeks before a major talk is perfect for beginning the prep phase.
+By this stage, there should have a relatively stable outline — though always feel free to tweak and trim as new inspirations strike - complemented by a set of engaging slides.   
+Done, right?   
+Not quite.  
+Ideally, reaching this stage 2-3 weeks before a major talk is perfect for beginning the prep phase.
 
 ### Arts and Crafts
 For every talk over the past five years, I've crafted a handy, spiral-bound booklet for my presentations, similar to this one:
@@ -56,16 +59,17 @@ I print each slide to scale, cut them out, and tape them onto a notecard. If I'm
 
 ![about me slide](../../../../assets/images/how-i-prep-for-talks-image3.png)
 
-Each notecard is labeled with its slide number in the upper right-hand corner. White-out is your friend if you have a last-minute rearrangement.
+Each notecard is labeled with its slide number in the upper right-hand corner. White-out is your friend if you have a last-minute rearrangements.
 
 ![slide 7](../../../../assets/images/how-i-prep-for-talks-image4.png)
 
-This crafting process results in a portable notecard booklet. It’s a practical tool that I can take anywhere, serving as a compact cheat sheet while I practice. Remember, presentations unfold in the three-dimensional world, not just within the binary confines of our computers. Bringing your rehearsal into the physical realm is crucial, as it helps you learn how to occupy space while communicating your ideas.
+This crafting process results in a portable notecard booklet. It’s a practical tool that I can take anywhere, serving as a compact cheat sheet while I practice.    
+Remember, presentations unfold in the three-dimensional world, not just within the binary confines of our computers. Bringing your rehearsal into the physical realm is crucial, as it helps you learn how to occupy space while communicating your ideas.
 
 
 ## Transitions and Main Points
 
-**Taking this practice aide a step further** I jot down critical notes on the back of each card.
+**Taking this practice aide a step further,** I jot down critical notes on the back of each card.
 
 - **Transition:** On the back of each notecard, I write the transition sentence that leads the audience from one slide to the next. These are the only sentences I tend to fully memorize and deliver verbatim. Mastering these transitions helps with a smooth flow, guiding the audience through the story arch.
 
@@ -73,7 +77,7 @@ This crafting process results in a portable notecard booklet. It’s a practical
 
 ![transitions and main points](../../../../assets/images/how-i-prep-for-talks-image5.png)
 
-**Resist the urge** to write everything you want to say on the back of the notecards. Get comfortable with the content and what you want to say so you can speak spontaneously to any slide randomly.
+**Resist the urge** to write everything you want to say on the back of the notecards. Get comfortable with the content and what you want to say so you can speak spontaneously to any slide randomly.    
 **When practicing your delivery**, do so standing up, and if you only have small windows of time, always run through 2-3 slides at a time so you work through both main content and slide transitions.
 
 

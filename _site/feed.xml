@@ -3,8 +3,8 @@
 	<channel>
 		<title>Cloud Conversations - with Kat Traxler - Articles</title>
 		<description>A blog containing cloud research focusing in GCP, AWS and identity architecture</description>
-		<link>https://kattraxler.cloud/</link>
-		<atom:link href="https://kattraxler.cloud//feed.articles.xml" rel="self" type="application/rss+xml" />
+		<link>http://localhost:4000</link>
+		<atom:link href="http://localhost:4000/feed.articles.xml" rel="self" type="application/rss+xml" />
 		
 			
 			<item>
@@ -54,7 +54,10 @@ That’s why you’ll find very few words on my slides. Instead, they’re mostl
 &lt;h2 id=&quot;the-notecards&quot;&gt;The Notecards&lt;/h2&gt;
 
 &lt;p&gt;&lt;strong&gt;Here’s where the magic (and a bit of arts and crafts) really starts to happen.&lt;/strong&gt;
-By this stage, we should have a relatively stable outline — though always feel free to tweak and trim as new inspirations strike - complemented by a set of engaging slides. Done, right? Not quite. Ideally, reaching this stage 2-3 weeks before a major talk is perfect for beginning the prep phase.&lt;/p&gt;
+By this stage, there should have a relatively stable outline — though always feel free to tweak and trim as new inspirations strike - complemented by a set of engaging slides. &lt;br /&gt;
+Done, right? &lt;br /&gt;
+Not quite.&lt;br /&gt;
+Ideally, reaching this stage 2-3 weeks before a major talk is perfect for beginning the prep phase.&lt;/p&gt;
 
 &lt;h3 id=&quot;arts-and-crafts&quot;&gt;Arts and Crafts&lt;/h3&gt;
 &lt;p&gt;For every talk over the past five years, I’ve crafted a handy, spiral-bound booklet for my presentations, similar to this one:
@@ -64,15 +67,16 @@ By this stage, we should have a relatively stable outline — though always feel
 
 &lt;p&gt;&lt;img src=&quot;../../../../assets/images/how-i-prep-for-talks-image3.png&quot; alt=&quot;about me slide&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Each notecard is labeled with its slide number in the upper right-hand corner. White-out is your friend if you have a last-minute rearrangement.&lt;/p&gt;
+&lt;p&gt;Each notecard is labeled with its slide number in the upper right-hand corner. White-out is your friend if you have a last-minute rearrangements.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;../../../../assets/images/how-i-prep-for-talks-image4.png&quot; alt=&quot;slide 7&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;This crafting process results in a portable notecard booklet. It’s a practical tool that I can take anywhere, serving as a compact cheat sheet while I practice. Remember, presentations unfold in the three-dimensional world, not just within the binary confines of our computers. Bringing your rehearsal into the physical realm is crucial, as it helps you learn how to occupy space while communicating your ideas.&lt;/p&gt;
+&lt;p&gt;This crafting process results in a portable notecard booklet. It’s a practical tool that I can take anywhere, serving as a compact cheat sheet while I practice.  &lt;br /&gt;
+Remember, presentations unfold in the three-dimensional world, not just within the binary confines of our computers. Bringing your rehearsal into the physical realm is crucial, as it helps you learn how to occupy space while communicating your ideas.&lt;/p&gt;
 
 &lt;h2 id=&quot;transitions-and-main-points&quot;&gt;Transitions and Main Points&lt;/h2&gt;
 
-&lt;p&gt;&lt;strong&gt;Taking this practice aide a step further&lt;/strong&gt; I jot down critical notes on the back of each card.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Taking this practice aide a step further,&lt;/strong&gt; I jot down critical notes on the back of each card.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -85,7 +89,7 @@ By this stage, we should have a relatively stable outline — though always feel
 
 &lt;p&gt;&lt;img src=&quot;../../../../assets/images/how-i-prep-for-talks-image5.png&quot; alt=&quot;transitions and main points&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Resist the urge&lt;/strong&gt; to write everything you want to say on the back of the notecards. Get comfortable with the content and what you want to say so you can speak spontaneously to any slide randomly.
+&lt;p&gt;&lt;strong&gt;Resist the urge&lt;/strong&gt; to write everything you want to say on the back of the notecards. Get comfortable with the content and what you want to say so you can speak spontaneously to any slide randomly.  &lt;br /&gt;
 &lt;strong&gt;When practicing your delivery&lt;/strong&gt;, do so standing up, and if you only have small windows of time, always run through 2-3 slides at a time so you work through both main content and slide transitions.&lt;/p&gt;
 
 &lt;h2 id=&quot;delivery&quot;&gt;Delivery&lt;/h2&gt;
@@ -93,8 +97,8 @@ By this stage, we should have a relatively stable outline — though always feel
 &lt;p&gt;Finally, try to have some fun.  It could be worse; you could be in freeze mode in front of an audience trying to demystify Javascript Cryptography to a bunch of nerds. :smirk:&lt;/p&gt;
 </description>
 				<pubDate>Wed, 08 May 2024 00:00:00 -0500</pubDate>
-				<link>https://kattraxler.cloud//musings/2024/05/08/how-i-prep-for-talks.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//musings/2024/05/08/how-i-prep-for-talks.html</guid>
+				<link>http://localhost:4000/musings/2024/05/08/how-i-prep-for-talks.html</link>
+				<guid isPermaLink="true">http://localhost:4000/musings/2024/05/08/how-i-prep-for-talks.html</guid>
 			</item>
 			
 		
@@ -113,8 +117,8 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 &lt;/ul&gt;
 </description>
 				<pubDate>Sun, 03 Mar 2024 00:00:00 -0600</pubDate>
-				<link>https://kattraxler.cloud//gcp/iam/101/2024/03/03/gcp-series-101-copy.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2024/03/03/gcp-series-101-copy.html</guid>
+				<link>http://localhost:4000/gcp/iam/101/2024/03/03/gcp-series-101-copy.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2024/03/03/gcp-series-101-copy.html</guid>
 			</item>
 			
 		
@@ -141,8 +145,8 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 
 </description>
 				<pubDate>Wed, 09 Aug 2023 00:00:00 -0500</pubDate>
-				<link>https://kattraxler.cloud//cloud/tooling/2023/08/09/attacks-as-a-service-with-the-derf.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//cloud/tooling/2023/08/09/attacks-as-a-service-with-the-derf.html</guid>
+				<link>http://localhost:4000/cloud/tooling/2023/08/09/attacks-as-a-service-with-the-derf.html</link>
+				<guid isPermaLink="true">http://localhost:4000/cloud/tooling/2023/08/09/attacks-as-a-service-with-the-derf.html</guid>
 			</item>
 			
 		
@@ -159,8 +163,8 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 
 </description>
 				<pubDate>Wed, 03 May 2023 00:00:00 -0500</pubDate>
-				<link>https://kattraxler.cloud//misc/cloud/research/2023/05/03/rethinking-your-threatmodels.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//misc/cloud/research/2023/05/03/rethinking-your-threatmodels.html</guid>
+				<link>http://localhost:4000/misc/cloud/research/2023/05/03/rethinking-your-threatmodels.html</link>
+				<guid isPermaLink="true">http://localhost:4000/misc/cloud/research/2023/05/03/rethinking-your-threatmodels.html</guid>
 			</item>
 			
 		
@@ -175,8 +179,8 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 
 </description>
 				<pubDate>Tue, 14 Mar 2023 00:00:00 -0500</pubDate>
-				<link>https://kattraxler.cloud//misc/cloud/research/2023/03/14/lastpass-breach-pyramid-of-pain.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//misc/cloud/research/2023/03/14/lastpass-breach-pyramid-of-pain.html</guid>
+				<link>http://localhost:4000/misc/cloud/research/2023/03/14/lastpass-breach-pyramid-of-pain.html</link>
+				<guid isPermaLink="true">http://localhost:4000/misc/cloud/research/2023/03/14/lastpass-breach-pyramid-of-pain.html</guid>
 			</item>
 			
 		
@@ -189,8 +193,8 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 
 </description>
 				<pubDate>Wed, 20 Jul 2022 00:00:00 -0500</pubDate>
-				<link>https://kattraxler.cloud//aws/cloud/research/2022/07/20/aws-abusing-the-replicator-s3-replication.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//aws/cloud/research/2022/07/20/aws-abusing-the-replicator-s3-replication.html</guid>
+				<link>http://localhost:4000/aws/cloud/research/2022/07/20/aws-abusing-the-replicator-s3-replication.html</link>
+				<guid isPermaLink="true">http://localhost:4000/aws/cloud/research/2022/07/20/aws-abusing-the-replicator-s3-replication.html</guid>
 			</item>
 			
 		
@@ -206,8 +210,8 @@ Read my blog hosted in the &lt;a href=&quot;https://www.vectra.ai/blogpost/log4j
 
 </description>
 				<pubDate>Mon, 20 Dec 2021 00:00:00 -0600</pubDate>
-				<link>https://kattraxler.cloud//misc/cloud/research/2021/12/20/log4j-in-cloud-environments.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//misc/cloud/research/2021/12/20/log4j-in-cloud-environments.html</guid>
+				<link>http://localhost:4000/misc/cloud/research/2021/12/20/log4j-in-cloud-environments.html</link>
+				<guid isPermaLink="true">http://localhost:4000/misc/cloud/research/2021/12/20/log4j-in-cloud-environments.html</guid>
 			</item>
 			
 		
@@ -260,8 +264,8 @@ Special thanks to the Google Engineers that partnered with me over the weekend t
 And to the friends who let me complain to them.&lt;/p&gt;
 </description>
 				<pubDate>Sat, 11 Sep 2021 00:00:00 -0500</pubDate>
-				<link>https://kattraxler.cloud//gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update-copy.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update-copy.html</guid>
+				<link>http://localhost:4000/gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update-copy.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update-copy.html</guid>
 			</item>
 			
 		
@@ -337,8 +341,8 @@ The remaining interesting question for GCP Customers is?,&lt;br /&gt; “Were yo
 
 </description>
 				<pubDate>Fri, 10 Sep 2021 00:00:00 -0500</pubDate>
-				<link>https://kattraxler.cloud//gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html</guid>
+				<link>http://localhost:4000/gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html</guid>
 			</item>
 			
 		
@@ -457,8 +461,8 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 &lt;p&gt;Whether this is by design or because their is a lack of trust, I have no inclanations, but it doesn’t leave me feeling optimistic for the idea that security is a core design principal in GCP.  Or, that when the rubber meets the road, Security @ Google can force different design decisions on behalf of securing their customers workloads.&lt;/p&gt;
 </description>
 				<pubDate>Fri, 01 Jan 2021 00:00:00 -0600</pubDate>
-				<link>https://kattraxler.cloud//gcp/iam/101/2021/01/01/gcp-actas-dday.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2021/01/01/gcp-actas-dday.html</guid>
+				<link>http://localhost:4000/gcp/iam/101/2021/01/01/gcp-actas-dday.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2021/01/01/gcp-actas-dday.html</guid>
 			</item>
 			
 		
@@ -519,8 +523,8 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 
 </description>
 				<pubDate>Fri, 25 Dec 2020 00:00:00 -0600</pubDate>
-				<link>https://kattraxler.cloud//gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</guid>
+				<link>http://localhost:4000/gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</guid>
 			</item>
 			
 		
@@ -562,8 +566,8 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 
 </description>
 				<pubDate>Sat, 05 Dec 2020 00:00:00 -0600</pubDate>
-				<link>https://kattraxler.cloud//gcp/iam/101/2020/12/05/gcp-users-groups-101.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2020/12/05/gcp-users-groups-101.html</guid>
+				<link>http://localhost:4000/gcp/iam/101/2020/12/05/gcp-users-groups-101.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/05/gcp-users-groups-101.html</guid>
 			</item>
 			
 		
@@ -613,8 +617,8 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 
 </description>
 				<pubDate>Tue, 01 Dec 2020 00:00:00 -0600</pubDate>
-				<link>https://kattraxler.cloud//gcp/iam/101/2020/12/01/gcp-service-accounts-101.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2020/12/01/gcp-service-accounts-101.html</guid>
+				<link>http://localhost:4000/gcp/iam/101/2020/12/01/gcp-service-accounts-101.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/01/gcp-service-accounts-101.html</guid>
 			</item>
 			
 		
@@ -638,8 +642,8 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 
 </description>
 				<pubDate>Tue, 01 Dec 2020 00:00:00 -0600</pubDate>
-				<link>https://kattraxler.cloud//gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html</guid>
+				<link>http://localhost:4000/gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html</guid>
 			</item>
 			
 		
@@ -665,8 +669,8 @@ In GCP’s resource hierarchy, each level — be it the top-level organization n
 Permissions are granted to a principal only when a policy is attached/bound to a resource and are inherited to all downstream child resources.&lt;/p&gt;
 </description>
 				<pubDate>Tue, 01 Dec 2020 00:00:00 -0600</pubDate>
-				<link>https://kattraxler.cloud//gcp/iam/101/2020/12/01/gcp-iam-policy-101.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2020/12/01/gcp-iam-policy-101.html</guid>
+				<link>http://localhost:4000/gcp/iam/101/2020/12/01/gcp-iam-policy-101.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/01/gcp-iam-policy-101.html</guid>
 			</item>
 			
 		
