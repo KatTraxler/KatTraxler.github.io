@@ -60,7 +60,7 @@
         <section class="post-content">
             <p>In GCP, access to resources is ultimately governed by Cloud IAM Permissions however, individual permissions are not directly assigned to principals. Instead, permissions are grouped together to create roles. These roles, rather than individual permissions, are then granted to principals in an IAM Policy.</p>
 
-<p>Roles can range from containing just a single permission to encompassing thousands of permissions, such as the coarse-grained <code class="language-plaintext highlighter-rouge">Editor</code> and <code class="language-plaintext highlighter-rouge">Owner</code> <code class="language-plaintext highlighter-rouge">[basic roles](https://cloud.google.com/iam/docs/understanding-roles#basic)</code>.</p>
+<p>Roles can range from containing just a single permission to encompassing thousands of permissions, such as the coarse-grained <code class="language-plaintext highlighter-rouge">Editor</code> and <code class="language-plaintext highlighter-rouge">Owner</code> <a href="https://cloud.google.com/iam/docs/understanding-roles#basic">roles</a>.</p>
 
 <h3 id="permissions"><strong>Permissions</strong></h3>
 
@@ -69,9 +69,9 @@
 <p>Examples:</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">resourcemanager.projects.setIamPolicy</code>: This permission, associated with the Resource Manager service, enables principals to modify IAM policies attached at the project-level.</li>
-  <li><code class="language-plaintext highlighter-rouge">iam.serviceAccounts.setIamPolicy</code>: This permission, associated with the IAM service, grants principals the ability to modify IAM policies related solely to service accounts.</li>
-  <li><code class="language-plaintext highlighter-rouge">spanner.databases.setIamPolicy</code>: This permission, associated to the Spanner service, allows principals to modify IAM policies related exclusively to Spanner databases.</li>
+  <li><code class="language-plaintext highlighter-rouge">resourcemanager.projects.setIamPolicy</code>: This permission, associated with the <u>Resource Manager</u> service, enables principals to modify IAM policies attached at the project-level.</li>
+  <li><code class="language-plaintext highlighter-rouge">iam.serviceAccounts.setIamPolicy</code>: This permission, associated with the <u>IAM service</u>, grants principals the ability to modify IAM policies related solely to service accounts.</li>
+  <li><code class="language-plaintext highlighter-rouge">spanner.databases.setIamPolicy</code>: This permission, associated to the <u>Spanner service</u>, allows principals to modify IAM policies related exclusively to Spanner databases.</li>
 </ul>
 
 <p>While all these permissions pertain to updating IAM policies, they target different resources, impacting distinct scopes.</p>
@@ -86,7 +86,7 @@
 
 <p>These three Basic Roles form concentric circles of permissions, with Viewer containing a subset of Editor’s permissions, and Editor containing a subset of Owner’s permissions.</p>
 
-<p>Editor is widely used in GCP as the default role assigned to the Default Compute and Default App Engine Service Accounts. However, Google generally advises against using Basic Roles in most situations, a stance I support.</p>
+<p>The Editor role is widely used in GCP as the automatically assigned, default role such as with the Default Compute and Default App Engine Service Accounts. Despite this ubiquity, Google generally advises against using Basic Roles in most situations, as do I.</p>
 
 <h5 id="pre-defined-roles">Pre-Defined Roles</h5>
 
@@ -108,7 +108,7 @@
 
 <p>When it comes to Basic Roles like Owner, Editor, and Viewer, there are both upper and lower boundaries for policy attachments. These roles can only be assigned at the Project-Level; they cannot be in an IAM policy and attached to a parent resource like the organization node, nor to child resources within the project.</p>
 
-<p>As a best practice, roles should be assigned at the lowest resource level possible to reduce the scope of the permissions.</p>
+<p><strong>As a best practice, roles should be assigned at the lowest resource level possible to reduce the scope of the permissions.</strong></p>
 
 
         </section>

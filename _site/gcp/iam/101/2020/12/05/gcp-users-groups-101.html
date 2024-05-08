@@ -64,31 +64,32 @@
 
 <p>An inventory of the users and groups within your domain can be accessed through the Google Workspace <a href="https://admin.google.com/ac/users">Admin Console</a>.</p>
 
-<p><strong>Defaults</strong></p>
+<h3 id="defaults">Defaults</h3>
 
 <ol>
-  <li>Cross-Organization Access Allowed</li>
+  <li>
+    <p>Cross-Organization Access Allowed</p>
+
+    <p><strong>ANY</strong> Google user or group in <strong>ANY</strong> domain can be assigned IAM Roles in <strong>ANY</strong> organization or project.</p>
+
+    <ul>
+      <li>Example: The GCP Organization for the domain <code class="language-plaintext highlighter-rouge">test.com</code> can have IAM Policy granting principals from the <code class="language-plaintext highlighter-rouge">example.org</code> domain access to their resources.</li>
+      <li>To limit <strong>WHO</strong> can be a member in IAM Policy, employ the Organizational Policy Constraint <a href="https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains">constraints/iam.allowedPolicyMemberDomains</a> allowing you to define an approved/allowed list of domains.</li>
+    </ul>
+  </li>
+  <li>
+    <p>All Users can Create GCP Projects and Resources</p>
+
+    <p>By default, when GCP is an enabled app in Google Workspace, users have the ability to create projects and create a billing account. Consequently, creators of projects are automatically granted the powerful owner role for the projects they create.</p>
+
+    <p>To manage this default behavior:</p>
+
+    <ul>
+      <li>First, create designated billing accounts and project creators.</li>
+      <li>Then, <a href="https://cloud.google.com/resource-manager/docs/default-access-control#removing-default-roles">manually remove</a> the default roles (Project Creator and Billing Account Creator) from the organization node.</li>
+    </ul>
+  </li>
 </ol>
-
-<p><strong>ANY</strong> Google user or group in <strong>ANY</strong> domain can be assigned IAM Roles in <strong>ANY</strong> organization or project in any domain.</p>
-
-<ul>
-  <li>Example: The GCP Organization for the domain <code class="language-plaintext highlighter-rouge">test.com</code> can have IAM Policy granting principals from <code class="language-plaintext highlighter-rouge">example.org</code> access to their resources.</li>
-  <li>To limit <strong>WHO</strong> can be a member in IAM Policy, employ the Organizational Policy Constraint <code class="language-plaintext highlighter-rouge">[constraints/iam.allowedPolicyMemberDomains](https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains)</code> where by you can define an allowed list of approved domains.</li>
-</ul>
-
-<ol>
-  <li>All Users can Create GCP Projects and Resources</li>
-</ol>
-
-<p>By default, when GCP is enabled within Google Workspace, users have the ability to create projects and create a billing account. Consequently, creators of projects are automatically granted the powerful owner role for the projects they create.</p>
-
-<p>To manage this default behavior:</p>
-
-<ul>
-  <li>First, create designated billing accounts and project creators.</li>
-  <li>Then, <a href="https://cloud.google.com/resource-manager/docs/default-access-control#removing-default-roles">manually remove</a> the default roles (Project Creator and Billing Account Creator) from the organization node.</li>
-</ul>
 
 
         </section>
