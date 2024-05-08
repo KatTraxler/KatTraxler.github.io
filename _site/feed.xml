@@ -3,8 +3,8 @@
 	<channel>
 		<title>Cloud Conversations - with Kat Traxler - Articles</title>
 		<description>A blog containing cloud research focusing in GCP, AWS and identity architecture</description>
-		<link>http://localhost:4000</link>
-		<atom:link href="http://localhost:4000/feed.articles.xml" rel="self" type="application/rss+xml" />
+		<link>https://kattraxler.cloud/</link>
+		<atom:link href="https://kattraxler.cloud//feed.articles.xml" rel="self" type="application/rss+xml" />
 		
 			
 			<item>
@@ -93,8 +93,8 @@ By this stage, we should have a relatively stable outline — though always feel
 &lt;p&gt;Finally, try to have some fun.  It could be worse; you could be in freeze mode in front of an audience trying to demystify Javascript Cryptography to a bunch of nerds. :smirk:&lt;/p&gt;
 </description>
 				<pubDate>Wed, 08 May 2024 00:00:00 -0500</pubDate>
-				<link>http://localhost:4000/musings/2024/05/08/how-i-prep-for-talks.html</link>
-				<guid isPermaLink="true">http://localhost:4000/musings/2024/05/08/how-i-prep-for-talks.html</guid>
+				<link>https://kattraxler.cloud//musings/2024/05/08/how-i-prep-for-talks.html</link>
+				<guid isPermaLink="true">https://kattraxler.cloud//musings/2024/05/08/how-i-prep-for-talks.html</guid>
 			</item>
 			
 		
@@ -113,8 +113,8 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 &lt;/ul&gt;
 </description>
 				<pubDate>Sun, 03 Mar 2024 00:00:00 -0600</pubDate>
-				<link>http://localhost:4000/gcp/iam/101/2024/03/03/gcp-series-101-copy.html</link>
-				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2024/03/03/gcp-series-101-copy.html</guid>
+				<link>https://kattraxler.cloud//gcp/iam/101/2024/03/03/gcp-series-101-copy.html</link>
+				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2024/03/03/gcp-series-101-copy.html</guid>
 			</item>
 			
 		
@@ -141,8 +141,8 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 
 </description>
 				<pubDate>Wed, 09 Aug 2023 00:00:00 -0500</pubDate>
-				<link>http://localhost:4000/cloud/tooling/2023/08/09/attacks-as-a-service-with-the-derf.html</link>
-				<guid isPermaLink="true">http://localhost:4000/cloud/tooling/2023/08/09/attacks-as-a-service-with-the-derf.html</guid>
+				<link>https://kattraxler.cloud//cloud/tooling/2023/08/09/attacks-as-a-service-with-the-derf.html</link>
+				<guid isPermaLink="true">https://kattraxler.cloud//cloud/tooling/2023/08/09/attacks-as-a-service-with-the-derf.html</guid>
 			</item>
 			
 		
@@ -159,8 +159,8 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 
 </description>
 				<pubDate>Wed, 03 May 2023 00:00:00 -0500</pubDate>
-				<link>http://localhost:4000/misc/cloud/research/2023/05/03/rethinking-your-threatmodels.html</link>
-				<guid isPermaLink="true">http://localhost:4000/misc/cloud/research/2023/05/03/rethinking-your-threatmodels.html</guid>
+				<link>https://kattraxler.cloud//misc/cloud/research/2023/05/03/rethinking-your-threatmodels.html</link>
+				<guid isPermaLink="true">https://kattraxler.cloud//misc/cloud/research/2023/05/03/rethinking-your-threatmodels.html</guid>
 			</item>
 			
 		
@@ -175,8 +175,8 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 
 </description>
 				<pubDate>Tue, 14 Mar 2023 00:00:00 -0500</pubDate>
-				<link>http://localhost:4000/misc/cloud/research/2023/03/14/lastpass-breach-pyramid-of-pain.html</link>
-				<guid isPermaLink="true">http://localhost:4000/misc/cloud/research/2023/03/14/lastpass-breach-pyramid-of-pain.html</guid>
+				<link>https://kattraxler.cloud//misc/cloud/research/2023/03/14/lastpass-breach-pyramid-of-pain.html</link>
+				<guid isPermaLink="true">https://kattraxler.cloud//misc/cloud/research/2023/03/14/lastpass-breach-pyramid-of-pain.html</guid>
 			</item>
 			
 		
@@ -189,8 +189,8 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 
 </description>
 				<pubDate>Wed, 20 Jul 2022 00:00:00 -0500</pubDate>
-				<link>http://localhost:4000/aws/cloud/research/2022/07/20/aws-abusing-the-replicator-s3-replication.html</link>
-				<guid isPermaLink="true">http://localhost:4000/aws/cloud/research/2022/07/20/aws-abusing-the-replicator-s3-replication.html</guid>
+				<link>https://kattraxler.cloud//aws/cloud/research/2022/07/20/aws-abusing-the-replicator-s3-replication.html</link>
+				<guid isPermaLink="true">https://kattraxler.cloud//aws/cloud/research/2022/07/20/aws-abusing-the-replicator-s3-replication.html</guid>
 			</item>
 			
 		
@@ -206,8 +206,8 @@ Read my blog hosted in the &lt;a href=&quot;https://www.vectra.ai/blogpost/log4j
 
 </description>
 				<pubDate>Mon, 20 Dec 2021 00:00:00 -0600</pubDate>
-				<link>http://localhost:4000/misc/cloud/research/2021/12/20/log4j-in-cloud-environments.html</link>
-				<guid isPermaLink="true">http://localhost:4000/misc/cloud/research/2021/12/20/log4j-in-cloud-environments.html</guid>
+				<link>https://kattraxler.cloud//misc/cloud/research/2021/12/20/log4j-in-cloud-environments.html</link>
+				<guid isPermaLink="true">https://kattraxler.cloud//misc/cloud/research/2021/12/20/log4j-in-cloud-environments.html</guid>
 			</item>
 			
 		
@@ -260,8 +260,8 @@ Special thanks to the Google Engineers that partnered with me over the weekend t
 And to the friends who let me complain to them.&lt;/p&gt;
 </description>
 				<pubDate>Sat, 11 Sep 2021 00:00:00 -0500</pubDate>
-				<link>http://localhost:4000/gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update-copy.html</link>
-				<guid isPermaLink="true">http://localhost:4000/gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update-copy.html</guid>
+				<link>https://kattraxler.cloud//gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update-copy.html</link>
+				<guid isPermaLink="true">https://kattraxler.cloud//gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update-copy.html</guid>
 			</item>
 			
 		
@@ -337,8 +337,8 @@ The remaining interesting question for GCP Customers is?,&lt;br /&gt; “Were yo
 
 </description>
 				<pubDate>Fri, 10 Sep 2021 00:00:00 -0500</pubDate>
-				<link>http://localhost:4000/gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html</link>
-				<guid isPermaLink="true">http://localhost:4000/gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html</guid>
+				<link>https://kattraxler.cloud//gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html</link>
+				<guid isPermaLink="true">https://kattraxler.cloud//gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html</guid>
 			</item>
 			
 		
@@ -457,8 +457,8 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 &lt;p&gt;Whether this is by design or because their is a lack of trust, I have no inclanations, but it doesn’t leave me feeling optimistic for the idea that security is a core design principal in GCP.  Or, that when the rubber meets the road, Security @ Google can force different design decisions on behalf of securing their customers workloads.&lt;/p&gt;
 </description>
 				<pubDate>Fri, 01 Jan 2021 00:00:00 -0600</pubDate>
-				<link>http://localhost:4000/gcp/iam/101/2021/01/01/gcp-actas-dday.html</link>
-				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2021/01/01/gcp-actas-dday.html</guid>
+				<link>https://kattraxler.cloud//gcp/iam/101/2021/01/01/gcp-actas-dday.html</link>
+				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2021/01/01/gcp-actas-dday.html</guid>
 			</item>
 			
 		
@@ -519,8 +519,8 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 
 </description>
 				<pubDate>Fri, 25 Dec 2020 00:00:00 -0600</pubDate>
-				<link>http://localhost:4000/gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</link>
-				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</guid>
+				<link>https://kattraxler.cloud//gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</link>
+				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</guid>
 			</item>
 			
 		
@@ -562,8 +562,8 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 
 </description>
 				<pubDate>Sat, 05 Dec 2020 00:00:00 -0600</pubDate>
-				<link>http://localhost:4000/gcp/iam/101/2020/12/05/gcp-users-groups-101.html</link>
-				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/05/gcp-users-groups-101.html</guid>
+				<link>https://kattraxler.cloud//gcp/iam/101/2020/12/05/gcp-users-groups-101.html</link>
+				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2020/12/05/gcp-users-groups-101.html</guid>
 			</item>
 			
 		
@@ -613,8 +613,8 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 
 </description>
 				<pubDate>Tue, 01 Dec 2020 00:00:00 -0600</pubDate>
-				<link>http://localhost:4000/gcp/iam/101/2020/12/01/gcp-service-accounts-101.html</link>
-				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/01/gcp-service-accounts-101.html</guid>
+				<link>https://kattraxler.cloud//gcp/iam/101/2020/12/01/gcp-service-accounts-101.html</link>
+				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2020/12/01/gcp-service-accounts-101.html</guid>
 			</item>
 			
 		
@@ -638,8 +638,8 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 
 </description>
 				<pubDate>Tue, 01 Dec 2020 00:00:00 -0600</pubDate>
-				<link>http://localhost:4000/gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html</link>
-				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html</guid>
+				<link>https://kattraxler.cloud//gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html</link>
+				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html</guid>
 			</item>
 			
 		
@@ -665,8 +665,8 @@ In GCP’s resource hierarchy, each level — be it the top-level organization n
 Permissions are granted to a principal only when a policy is attached/bound to a resource and are inherited to all downstream child resources.&lt;/p&gt;
 </description>
 				<pubDate>Tue, 01 Dec 2020 00:00:00 -0600</pubDate>
-				<link>http://localhost:4000/gcp/iam/101/2020/12/01/gcp-iam-policy-101.html</link>
-				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/01/gcp-iam-policy-101.html</guid>
+				<link>https://kattraxler.cloud//gcp/iam/101/2020/12/01/gcp-iam-policy-101.html</link>
+				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2020/12/01/gcp-iam-policy-101.html</guid>
 			</item>
 			
 		
