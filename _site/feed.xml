@@ -3,8 +3,92 @@
 	<channel>
 		<title>Cloud Conversations - with Kat Traxler - Articles</title>
 		<description>A blog containing cloud research focusing in GCP, AWS and identity architecture</description>
-		<link>https://kattraxler.cloud/</link>
-		<atom:link href="https://kattraxler.cloud//feed.articles.xml" rel="self" type="application/rss+xml" />
+		<link>http://localhost:4000</link>
+		<atom:link href="http://localhost:4000/feed.articles.xml" rel="self" type="application/rss+xml" />
+		
+			
+			<item>
+				<title>GCP IAM 201 - Service Agents</title>
+				<description>&lt;p&gt;&lt;br /&gt;
+&lt;a href=&quot;https://cloud.google.com/iam/docs/service-agents&quot;&gt;Service Agents&lt;/a&gt; are nothing more than a type of a &lt;a href=&quot;https://cloud.google.com/iam/docs/overview#service_account&quot;&gt;Service Account&lt;/a&gt;. &lt;br /&gt;
+Also known as a P4SA (Per-Project, Per-Product; Service Account), a Service Agent is typically created automatically whenever its associated Google API is enabled in a Project.&lt;/p&gt;
+
+&lt;h2 id=&quot;service-agent-and-service-account-comparison&quot;&gt;Service Agent and Service Account Comparison&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;Customer-managed SAs&lt;/th&gt;
+      &lt;th&gt;Google-managed SAs&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Colloquially called:&lt;/td&gt;
+      &lt;td&gt;Service Accounts&lt;/td&gt;
+      &lt;td&gt;Service Agents / P4SAs&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Lives Where?:&lt;/td&gt;
+      &lt;td&gt;Resource resides in a consumer project&lt;/td&gt;
+      &lt;td&gt;Resource resides in a google project&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Typical Usage:&lt;/td&gt;
+      &lt;td&gt;Used by the customer at their discretion&lt;/td&gt;
+      &lt;td&gt;Used as service identity&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Typical Role Assignment:&lt;/td&gt;
+      &lt;td&gt;Can be assigned any role&lt;/td&gt;
+      &lt;td&gt;Automatically assigned ‘ServiceAgent’ roles, typically at the Project-level&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Credentials:&lt;/td&gt;
+      &lt;td&gt;Customers have several options for &lt;a href=&quot;https://cloud.google.com/iam/docs/service-account-creds&quot;&gt;authenticating&lt;/a&gt; Service Accounts&lt;/td&gt;
+      &lt;td&gt;Credentials should not be accessible to customers&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;customer-managed-vs-google-managed&quot;&gt;Customer-Managed vs Google-Managed&lt;/h2&gt;
+
+&lt;p&gt;Service Accounts, like all resources, can be ‘customer-managed’ or ‘google-managed’. Here, ‘managed’ refers to the Project in which the resource resides.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Customer-managed&lt;/strong&gt;: A customer-managed service account is a resource whose parent is a consumer project, i.e., one you own. Since it’s a resource in your project, you have full authority over its creation, deletion, and  permissions. &lt;br /&gt;
+&lt;strong&gt;Google-managed&lt;/strong&gt;: On the other hand, any Service Account that resides in a Google-owned project is considered ‘Google-managed’. A Service Agent/P4SA is kist one such example of a ‘Google-managed’ Service Account.&lt;/p&gt;
+
+&lt;h2 id=&quot;common-usage-and-permissions&quot;&gt;Common Usage and Permissions&lt;/h2&gt;
+
+&lt;p&gt;A single Service Agent/P4SA (Per-Project, Per-Product Service Account) is created for every project and product requiring Cloud IAM permissions. This architecture creates a one-to-one ratio between the identity, its permissions and consumer projects, restricting a possible path for multi-tenant abuses.&lt;/p&gt;
+
+&lt;p&gt;Typically, a P4SA is granted roles at the project-level to serve as the identity for services performing background tasks. To view the roles assigned to P4SAs in the GCP console, navigate to the IAM screen and check the box labeled ‘Include Google-provided role grants’. Without checking this box, the project-level roles assigned to P4SAs are hidden from view.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/check-the-box.png&quot; alt=&quot;check the box&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;examples-of-p4sas-and-their-usage&quot;&gt;Examples of P4SAs and Their Usage&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The &lt;a href=&quot;https://cloud.google.com/iam/docs/service-agents#eventarc-service-agent&quot;&gt;Eventarc Service Agent&lt;/a&gt; needs project-level permissions to publish events to Pub/Sub topics.&lt;/li&gt;
+  &lt;li&gt;The &lt;a href=&quot;https://cloud.google.com/iam/docs/service-agents#cloud-workflows-service-agent&quot;&gt;Workflows Service Agent&lt;/a&gt; requires project-level permissions to generate access tokens for the runtime service account and insert its credentials into the Authorization header when sending authenticated HTTP requests.&lt;/li&gt;
+  &lt;li&gt;The &lt;a href=&quot;https://cloud.google.com/iam/docs/service-agents#cloud-build-service-agent&quot;&gt;Cloud Build Service Agent&lt;/a&gt; needs multiple project-level permissions to create Binary Authorization attestations and impersonate the Build runtime service account.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;how-are-permissions-assigned&quot;&gt;How are Permissions Assigned?&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://cloud.google.com/iam/docs/service-account-types#role-manager&quot;&gt;Service Agent Manager Service Account&lt;/a&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service-agent-manager@system.gserviceaccount.com&lt;/code&gt;, is responsible for granting roles to Service Agents in consumer projects. Although its permissions are not visible to end users, it has been observed assigning Cloud IAM roles to Service Agents at the project-level.&lt;/p&gt;
+
+&lt;h2 id=&quot;but-wait-theres-more&quot;&gt;But Wait There’s More&lt;/h2&gt;
+
+&lt;p&gt;For more on the risk and potential impact of compromise with Service Agents, stay tuned for the upcoming: “GCP IAM 201 - Service Agent Threat Model”.&lt;/p&gt;
+
+</description>
+				<pubDate>Sun, 02 Jun 2024 00:00:00 -0500</pubDate>
+				<link>http://localhost:4000/gcp/iam/201/2024/06/02/gcp-service-agents-201.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/201/2024/06/02/gcp-service-agents-201.html</guid>
+			</item>
+			
 		
 			
 			<item>
@@ -97,8 +181,8 @@ Remember, presentations unfold in the three-dimensional world, not just within t
 &lt;p&gt;Finally, try to have some fun.  It could be worse; you could be in freeze mode in front of an audience trying to demystify Javascript Cryptography to a bunch of nerds. :smirk:&lt;/p&gt;
 </description>
 				<pubDate>Wed, 08 May 2024 00:00:00 -0500</pubDate>
-				<link>https://kattraxler.cloud//musings/2024/05/08/how-i-prep-for-talks.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//musings/2024/05/08/how-i-prep-for-talks.html</guid>
+				<link>http://localhost:4000/musings/2024/05/08/how-i-prep-for-talks.html</link>
+				<guid isPermaLink="true">http://localhost:4000/musings/2024/05/08/how-i-prep-for-talks.html</guid>
 			</item>
 			
 		
@@ -117,8 +201,8 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 &lt;/ul&gt;
 </description>
 				<pubDate>Sun, 03 Mar 2024 00:00:00 -0600</pubDate>
-				<link>https://kattraxler.cloud//gcp/iam/101/2024/03/03/gcp-series-101-copy.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2024/03/03/gcp-series-101-copy.html</guid>
+				<link>http://localhost:4000/gcp/iam/101/2024/03/03/gcp-series-101-copy.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2024/03/03/gcp-series-101-copy.html</guid>
 			</item>
 			
 		
@@ -145,8 +229,8 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 
 </description>
 				<pubDate>Wed, 09 Aug 2023 00:00:00 -0500</pubDate>
-				<link>https://kattraxler.cloud//cloud/tooling/2023/08/09/attacks-as-a-service-with-the-derf.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//cloud/tooling/2023/08/09/attacks-as-a-service-with-the-derf.html</guid>
+				<link>http://localhost:4000/cloud/tooling/2023/08/09/attacks-as-a-service-with-the-derf.html</link>
+				<guid isPermaLink="true">http://localhost:4000/cloud/tooling/2023/08/09/attacks-as-a-service-with-the-derf.html</guid>
 			</item>
 			
 		
@@ -163,8 +247,8 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 
 </description>
 				<pubDate>Wed, 03 May 2023 00:00:00 -0500</pubDate>
-				<link>https://kattraxler.cloud//misc/cloud/research/2023/05/03/rethinking-your-threatmodels.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//misc/cloud/research/2023/05/03/rethinking-your-threatmodels.html</guid>
+				<link>http://localhost:4000/misc/cloud/research/2023/05/03/rethinking-your-threatmodels.html</link>
+				<guid isPermaLink="true">http://localhost:4000/misc/cloud/research/2023/05/03/rethinking-your-threatmodels.html</guid>
 			</item>
 			
 		
@@ -179,8 +263,8 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 
 </description>
 				<pubDate>Tue, 14 Mar 2023 00:00:00 -0500</pubDate>
-				<link>https://kattraxler.cloud//misc/cloud/research/2023/03/14/lastpass-breach-pyramid-of-pain.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//misc/cloud/research/2023/03/14/lastpass-breach-pyramid-of-pain.html</guid>
+				<link>http://localhost:4000/misc/cloud/research/2023/03/14/lastpass-breach-pyramid-of-pain.html</link>
+				<guid isPermaLink="true">http://localhost:4000/misc/cloud/research/2023/03/14/lastpass-breach-pyramid-of-pain.html</guid>
 			</item>
 			
 		
@@ -193,8 +277,8 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 
 </description>
 				<pubDate>Wed, 20 Jul 2022 00:00:00 -0500</pubDate>
-				<link>https://kattraxler.cloud//aws/cloud/research/2022/07/20/aws-abusing-the-replicator-s3-replication.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//aws/cloud/research/2022/07/20/aws-abusing-the-replicator-s3-replication.html</guid>
+				<link>http://localhost:4000/aws/cloud/research/2022/07/20/aws-abusing-the-replicator-s3-replication.html</link>
+				<guid isPermaLink="true">http://localhost:4000/aws/cloud/research/2022/07/20/aws-abusing-the-replicator-s3-replication.html</guid>
 			</item>
 			
 		
@@ -210,8 +294,8 @@ Read my blog hosted in the &lt;a href=&quot;https://www.vectra.ai/blogpost/log4j
 
 </description>
 				<pubDate>Mon, 20 Dec 2021 00:00:00 -0600</pubDate>
-				<link>https://kattraxler.cloud//misc/cloud/research/2021/12/20/log4j-in-cloud-environments.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//misc/cloud/research/2021/12/20/log4j-in-cloud-environments.html</guid>
+				<link>http://localhost:4000/misc/cloud/research/2021/12/20/log4j-in-cloud-environments.html</link>
+				<guid isPermaLink="true">http://localhost:4000/misc/cloud/research/2021/12/20/log4j-in-cloud-environments.html</guid>
 			</item>
 			
 		
@@ -264,8 +348,8 @@ Special thanks to the Google Engineers that partnered with me over the weekend t
 And to the friends who let me complain to them.&lt;/p&gt;
 </description>
 				<pubDate>Sat, 11 Sep 2021 00:00:00 -0500</pubDate>
-				<link>https://kattraxler.cloud//gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update-copy.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update-copy.html</guid>
+				<link>http://localhost:4000/gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update-copy.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update-copy.html</guid>
 			</item>
 			
 		
@@ -341,8 +425,8 @@ The remaining interesting question for GCP Customers is?,&lt;br /&gt; “Were yo
 
 </description>
 				<pubDate>Fri, 10 Sep 2021 00:00:00 -0500</pubDate>
-				<link>https://kattraxler.cloud//gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html</guid>
+				<link>http://localhost:4000/gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html</guid>
 			</item>
 			
 		
@@ -461,8 +545,8 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 &lt;p&gt;Whether this is by design or because their is a lack of trust, I have no inclanations, but it doesn’t leave me feeling optimistic for the idea that security is a core design principal in GCP.  Or, that when the rubber meets the road, Security @ Google can force different design decisions on behalf of securing their customers workloads.&lt;/p&gt;
 </description>
 				<pubDate>Fri, 01 Jan 2021 00:00:00 -0600</pubDate>
-				<link>https://kattraxler.cloud//gcp/iam/101/2021/01/01/gcp-actas-dday.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2021/01/01/gcp-actas-dday.html</guid>
+				<link>http://localhost:4000/gcp/iam/101/2021/01/01/gcp-actas-dday.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2021/01/01/gcp-actas-dday.html</guid>
 			</item>
 			
 		
@@ -523,8 +607,8 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 
 </description>
 				<pubDate>Fri, 25 Dec 2020 00:00:00 -0600</pubDate>
-				<link>https://kattraxler.cloud//gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</guid>
+				<link>http://localhost:4000/gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</guid>
 			</item>
 			
 		
@@ -566,8 +650,8 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 
 </description>
 				<pubDate>Sat, 05 Dec 2020 00:00:00 -0600</pubDate>
-				<link>https://kattraxler.cloud//gcp/iam/101/2020/12/05/gcp-users-groups-101.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2020/12/05/gcp-users-groups-101.html</guid>
+				<link>http://localhost:4000/gcp/iam/101/2020/12/05/gcp-users-groups-101.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/05/gcp-users-groups-101.html</guid>
 			</item>
 			
 		
@@ -617,8 +701,8 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 
 </description>
 				<pubDate>Tue, 01 Dec 2020 00:00:00 -0600</pubDate>
-				<link>https://kattraxler.cloud//gcp/iam/101/2020/12/01/gcp-service-accounts-101.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2020/12/01/gcp-service-accounts-101.html</guid>
+				<link>http://localhost:4000/gcp/iam/101/2020/12/01/gcp-service-accounts-101.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/01/gcp-service-accounts-101.html</guid>
 			</item>
 			
 		
@@ -642,8 +726,8 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 
 </description>
 				<pubDate>Tue, 01 Dec 2020 00:00:00 -0600</pubDate>
-				<link>https://kattraxler.cloud//gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html</guid>
+				<link>http://localhost:4000/gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html</guid>
 			</item>
 			
 		
@@ -669,8 +753,8 @@ In GCP’s resource hierarchy, each level — be it the top-level organization n
 Permissions are granted to a principal only when a policy is attached/bound to a resource and are inherited to all downstream child resources.&lt;/p&gt;
 </description>
 				<pubDate>Tue, 01 Dec 2020 00:00:00 -0600</pubDate>
-				<link>https://kattraxler.cloud//gcp/iam/101/2020/12/01/gcp-iam-policy-101.html</link>
-				<guid isPermaLink="true">https://kattraxler.cloud//gcp/iam/101/2020/12/01/gcp-iam-policy-101.html</guid>
+				<link>http://localhost:4000/gcp/iam/101/2020/12/01/gcp-iam-policy-101.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/01/gcp-iam-policy-101.html</guid>
 			</item>
 			
 		
