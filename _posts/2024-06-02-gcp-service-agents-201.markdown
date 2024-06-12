@@ -52,7 +52,7 @@ The [Service Agent Manager Service Account](https://cloud.google.com/iam/docs/se
 
 ## But Wait There's More
 
-For more on the risk and potential impact of compromise with Service Agents, stay tuned for the upcoming: "GCP IAM 201 - Service Agent Threat Model".
+For more on the risk and potential impact of compromise with Service Agents, stay tuned for the upcoming: "[GCP IAM 201 - Service Agent Threat Model](../../06/11/gcp-service-agent-threat-model-201.html)".
 
 
 

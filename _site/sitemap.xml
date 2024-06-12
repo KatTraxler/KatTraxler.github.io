@@ -2,8 +2,6 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
     <url>
-<<<<<<< HEAD
-=======
       <loc>http://localhost:4000/gcp/iam/201/2024/06/11/gcp-service-agent-threat-model-201.html</loc>
       
         <lastmod>2024-06-11T00:00:00-05:00</lastmod>
@@ -13,7 +11,6 @@
     </url>
   
     <url>
->>>>>>> gcp-201-series
       <loc>http://localhost:4000/gcp/iam/201/2024/06/02/gcp-service-agents-201.html</loc>
       
         <lastmod>2024-06-02T00:00:00-05:00</lastmod>
@@ -32,11 +29,7 @@
     </url>
   
     <url>
-<<<<<<< HEAD
-      <loc>http://localhost:4000/gcp/iam/101/2024/03/03/gcp-series-101-copy.html</loc>
-=======
       <loc>http://localhost:4000/gcp/iam/101/2024/03/03/gcp-series-101.html</loc>
->>>>>>> gcp-201-series
       
         <lastmod>2024-03-03T00:00:00-06:00</lastmod>
       
