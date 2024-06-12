@@ -53,11 +53,11 @@
 
     <article class="post">
         <header class="post-header">
-            <h2 class="post-title"><a href="/gcp/iam/201/2024/05/17/gcp-when-inheritence-breaks.html">GCP When Inheritance Breaks 201</a></h2>
+            <h2 class="post-title"><a href="/gcp/iam/201/2024/06/11/gcp-when-inheritence-breaks.html">GCP When Inheritance Breaks 201</a></h2>
         </header>
         <section class="post-excerpt">
             <p><br /></p>
- <a class="read-more" href="/gcp/iam/201/2024/05/17/gcp-when-inheritence-breaks.html">&raquo;</a>
+ <a class="read-more" href="/gcp/iam/201/2024/06/11/gcp-when-inheritence-breaks.html">&raquo;</a>
         </section>
         <footer class="post-meta">
             
@@ -67,8 +67,8 @@
              
                 on GCP, IAM, and 201 
             
-            <time class="post-date" datetime="2024-05-17">
-                17 May 2024
+            <time class="post-date" datetime="2024-06-11">
+                11 Jun 2024
             </time> 
         </footer>
     </article>
@@ -77,37 +77,11 @@
 
     <article class="post">
         <header class="post-header">
-            <h2 class="post-title"><a href="/gcp/iam/201/2024/05/17/gcp-service-agents-201.html">GCP IAM 201 - Service Agents</a></h2>
+            <h2 class="post-title"><a href="/gcp/iam/201/2024/05/17/gcp-service-agent-threat-model-201.html">GCP IAM 201 - Service Agents | What Can Go Wrong</a></h2>
         </header>
         <section class="post-excerpt">
             <p><br />
-<a href="https://cloud.google.com/iam/docs/service-agents">Service Agents</a> are nothing more than a type of a <a href="https://cloud.google.com/iam/docs/overview#service_account">Service Account</a>. <br />
-Also known as ‘P4SAs’ (Per-Project, Per-Product Service Account), Service Agents are typically created automatically whenever their associated Google API is enabled in a Project.</p>
- <a class="read-more" href="/gcp/iam/201/2024/05/17/gcp-service-agents-201.html">&raquo;</a>
-        </section>
-        <footer class="post-meta">
-            
-                <img class="author-thumb" src="/assets/images/profile.png" alt="Author's profile picture" nopin="nopin" />
-                Kat Traxler
-            
-             
-                on GCP, IAM, and 201 
-            
-            <time class="post-date" datetime="2024-05-17">
-                17 May 2024
-            </time> 
-        </footer>
-    </article>
-
-    
-
-    <article class="post">
-        <header class="post-header">
-            <h2 class="post-title"><a href="/gcp/iam/201/2024/05/17/gcp-service-agent-threat-model-201.html">GCP IAM 201 - Service Agent Threat Model</a></h2>
-        </header>
-        <section class="post-excerpt">
-            <p><br />
- Before continuing, please be sure to read the introduction the introduction blog post, <a href="./gcp-service-agents-201.html">GCP IAM 201 - Service Agents</a>.</p>
+This post aims to answer the question, ‘What can go wrong?’ when using Google Cloud services that leverage Service Agents/P4SAs. For an introduction to Service Agents, see <a href="./gcp-service-agents-201.html">GCP IAM 201 - Service Agents</a>. Below, is enumerated a set of possible threats to Google Cloud customers due to the presence of Service Agents, organized using the STRIDE framework.</p>
  <a class="read-more" href="/gcp/iam/201/2024/05/17/gcp-service-agent-threat-model-201.html">&raquo;</a>
         </section>
         <footer class="post-meta">
@@ -413,6 +387,31 @@ This vulnerability was awarded $1337.00 by the Google VRP Review Panel.</p>
             
             <time class="post-date" datetime="2020-12-05">
                 05 Dec 2020
+            </time> 
+        </footer>
+    </article>
+
+    
+
+    <article class="post">
+        <header class="post-header">
+            <h2 class="post-title"><a href="/gcp/iam/101/2020/12/01/gcp-service-accounts-101.html">GCP Service Account 101</a></h2>
+        </header>
+        <section class="post-excerpt">
+            <p><strong><a href="https://cloud.google.com/iam/docs/overview#service_account">Service Accounts</a></strong> are identities used for authenticating infrastructure and resources, typically for non-human entities. Service Accounts do not utilize passwords. While you have the option to generate and export a private key for a service account, it’s generally unnecessary and can pose a <a href="https://jryancanty.medium.com/stop-downloading-google-cloud-service-account-keys-1811d44a97d9">security risk</a> in most cases. The only valid scenario where generating and exporting a private key may be necessary is to enable external integrations in instances where <a href="https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-google-cloud-platform">OIDC</a> is not supported.</p>
+
+ <a class="read-more" href="/gcp/iam/101/2020/12/01/gcp-service-accounts-101.html">&raquo;</a>
+        </section>
+        <footer class="post-meta">
+            
+                <img class="author-thumb" src="/assets/images/profile.png" alt="Author's profile picture" nopin="nopin" />
+                Kat Traxler
+            
+             
+                on GCP, IAM, and 101 
+            
+            <time class="post-date" datetime="2020-12-01">
+                01 Dec 2020
             </time> 
         </footer>
     </article>
