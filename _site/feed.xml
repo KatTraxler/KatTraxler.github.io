@@ -8,6 +8,72 @@
 		
 			
 			<item>
+<<<<<<< HEAD
+=======
+				<title>GCP IAM 201 - Service Agents | What Can Go Wrong</title>
+				<description>&lt;p&gt;&lt;br /&gt;
+This post aims to answer the question, ‘What can go wrong when using Google Cloud services that leverage Service Agents/P4SAs?’ For an introduction to Service Agents, see &lt;a href=&quot;../../06/02/gcp-service-agents-201.html&quot;&gt;GCP IAM 201 - Service Agents&lt;/a&gt;. &lt;br /&gt;
+Below, you’ll find an overview of possible threats to Google Cloud customers due to the presence of Service Agents organized around the &lt;a href=&quot;https://owasp.org/www-community/Threat_Modeling_Process#stride&quot;&gt;STRIDE framework&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;spoofing&quot;&gt;Spoofing&lt;/h2&gt;
+
+&lt;p&gt;Managed impersonation brokered via Google Cloud IAM permissions (e.g., &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.getAccessToken&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.getOpenIdToken&lt;/code&gt;) is an abuse path for Service Agents with a presumably high bar to clear and whose controls reside squarely on the provider side of the &lt;a href=&quot;https://cloudsecurityalliance.org/blog/2020/08/26/shared-responsibility-model-explained&quot;&gt;Shared Responsibility Model&lt;/a&gt;. This is due to where Service Agents live in a Google-managed project, and assigning permissions requires &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setIamPolicy&lt;/code&gt; permission within the Google-controlled tenant.&lt;/p&gt;
+
+&lt;p&gt;In addition to managed impersonation, credential hijacking/theft should be considered a possible abuse case for Service Agents. Like all principals, they use OAuth tokens to authenticate to Google Cloud APIs, and spoofing may involve the theft of these temporary bearer tokens.&lt;/p&gt;
+
+&lt;h2 id=&quot;tampering&quot;&gt;Tampering&lt;/h2&gt;
+
+&lt;p&gt;Tampering or maliciously modifying Service Agents would require an attacker to clear the same high bar described in the Spoofing category, as these resources reside within Google-managed projects.&lt;/p&gt;
+
+&lt;h2 id=&quot;repudiation&quot;&gt;Repudiation&lt;/h2&gt;
+
+&lt;p&gt;Non-repudiation refers to the ability to ensure that actions cannot be denied. In the cloud, this often involves ensuring that API calls are properly logged so there is an audit trail verifying what actions were taken and by whom.&lt;/p&gt;
+
+&lt;p&gt;Service Agent activity within a consumer project is logged alongside all other principals’ activities. However, the name of the principal who initiated the transaction is not written in the logs. For instance, an end user may deploy an application that uses a backing Service Agent. When the user creates a resource, the Service Agent may make a series of API calls within the project. Cloud Logging does not record who initiated the actions taken by the Service Agent. Determining this often requires manual log analysis to piece together an educated guess.&lt;/p&gt;
+
+&lt;h2 id=&quot;information-disclosure&quot;&gt;Information Disclosure&lt;/h2&gt;
+
+&lt;p&gt;There is very little sensitive information related to Service Agents/P4SAs themselves other than their credentials. They are constructed in a predictable pattern (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service-PROJECT_NUMBER@SERVICE_NAME.iam.gserviceaccount.com&lt;/code&gt;), auto-assigned known roles, and can be created independently of API enablement with the &lt;a href=&quot;https://cloud.google.com/iam/docs/create-service-agents#create&quot;&gt;Service Usage API&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Information disclosure threats may arise from Service Agents/P4SAs when they are auto-assigned broad access to data.
+For instance, the Compute Engine service agent (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service-PROJECT_NUMBER@compute-system.iam.gserviceaccount.com&lt;/code&gt;) is assigned the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;compute.serviceAgent&lt;/code&gt; role, enabling it to interact with Cloud Storage objects. In scenarios where compute instances retrieve images from a cloud storage source, a malicious actor could utilize this access by leveraging the service agent’s permissions by deploying instances to access data in a Cloud Storage bucket. As described in the repudiation section, tracing such misuse may be either challenging to impossible.&lt;/p&gt;
+
+&lt;h2 id=&quot;denial-of-service&quot;&gt;Denial of Service&lt;/h2&gt;
+
+&lt;p&gt;Denial of Service threats related to Service Agents could encompass removing the permissions assigned to them or the resource entirely. &lt;br /&gt;
+Removing or updating the IAM Roles bound to Service Agents is entirely within the control of consumer projects. In contrast, this risk of Service Agent deletion is considerably less likely since the underlying service account resource lives in a Google-managed project.&lt;/p&gt;
+
+&lt;h2 id=&quot;elevation-of-privilege&quot;&gt;Elevation of Privilege&lt;/h2&gt;
+
+&lt;p&gt;Privilege escalation risks within the Service Agent/P4SA pattern may occur due to unexpected transitive access. 
+Transitive access occurs when a user gains access to resources not directly through their permissions but through the permissions of another entity.&lt;/p&gt;
+
+&lt;p&gt;An example of privilege escalation was outlined in the Information Disclosure section.  Key to this abuse of transitive access is:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Automatic role assignments to Service Agents with excessive (typically project-level) access.&lt;/li&gt;
+  &lt;li&gt;A services workflow exists that takes inputs from the end user.&lt;/li&gt;
+  &lt;li&gt;Initiating a service agent’s actions on ‘X’ only requires Service-level permissions and not permissions on the ‘X’ target.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;a-note-on-impact---limiting-the-blast-radius&quot;&gt;A Note on Impact - Limiting the Blast Radius&lt;/h2&gt;
+
+&lt;p&gt;The P4SA pattern limits cross-tenant impact by confining privilege escalation to the affected customer if a Service Agent/P4SA is compromised, preventing lateral movement between tenants. A compromised Service Agent/P4SA cannot be used as a lateral movement vehicle between multiple tenants through Google-configured access.&lt;/p&gt;
+
+&lt;h2 id=&quot;threat-model-wrap-up&quot;&gt;Threat Model Wrap-Up&lt;/h2&gt;
+
+&lt;p&gt;Successfully executing most threats articulated against the Service Agent/P4SA pattern depends on overcoming controls implemented by the Service Provider. The exception to this high bar may be threats leveraging an indirect/transitive access pattern or inadvertent access to temporary credentials.&lt;/p&gt;
+
+</description>
+				<pubDate>Tue, 11 Jun 2024 00:00:00 -0500</pubDate>
+				<link>http://localhost:4000/gcp/iam/201/2024/06/11/gcp-service-agent-threat-model-201.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/201/2024/06/11/gcp-service-agent-threat-model-201.html</guid>
+			</item>
+			
+		
+			
+			<item>
+>>>>>>> gcp-201-series
 				<title>GCP IAM 201 - Service Agents</title>
 				<description>&lt;p&gt;&lt;br /&gt;
 &lt;a href=&quot;https://cloud.google.com/iam/docs/service-agents&quot;&gt;Service Agents&lt;/a&gt; are nothing more than a type of a &lt;a href=&quot;https://cloud.google.com/iam/docs/overview#service_account&quot;&gt;Service Account&lt;/a&gt;. &lt;br /&gt;
@@ -201,8 +267,13 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 &lt;/ul&gt;
 </description>
 				<pubDate>Sun, 03 Mar 2024 00:00:00 -0600</pubDate>
+<<<<<<< HEAD
 				<link>http://localhost:4000/gcp/iam/101/2024/03/03/gcp-series-101-copy.html</link>
 				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2024/03/03/gcp-series-101-copy.html</guid>
+=======
+				<link>http://localhost:4000/gcp/iam/101/2024/03/03/gcp-series-101.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2024/03/03/gcp-series-101.html</guid>
+>>>>>>> gcp-201-series
 			</item>
 			
 		
