@@ -8,6 +8,65 @@
 		
 			
 			<item>
+				<title>GCP IAM 201 - OAuth Scopes</title>
+				<description>&lt;p&gt;&lt;br /&gt;
+A scope is a feature of the OAuth 2.0 specification used when issuing tokens to limit the extent to which an access token can be used. In the context of authorization in Google-land, a scope defines which of the Google APIs and resources the access token can be used to access.&lt;br /&gt;
+If you only take away one thing about OAuth 2.0 Scopes for Google APIs, it it: &lt;ins&gt;do not use them as an access control mechanism&lt;ins&gt;.&lt;/ins&gt;&lt;/ins&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;google-apis-and-their-scopes&quot;&gt;Google APIs and their Scopes&lt;/h2&gt;
+
+&lt;p&gt;Over 250 &lt;a href=&quot;https://developers.google.com/identity/protocols/oauth2/scopes&quot;&gt;Google APIs&lt;/a&gt; can have their permissions delegated to a requesting application.  Applications and their APIs include well known products like Google Drive, Mail, Google Analytics and the Google Cloud SDK.&lt;/p&gt;
+
+&lt;h2 id=&quot;are-oauth-scopes-good-for-access-control&quot;&gt;Are OAuth Scopes Good For Access Control?&lt;/h2&gt;
+
+&lt;p&gt;Given this potentially new found knowledge about OAuth 2.0 Scopes for Google APIs, you might be wondering if you can use this mechanism in conjunction with or instead of Cloud IAM for access control? My simple plea is, No.  When authorizing against Google Cloud APIs, allow the broad &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://www.googleapis.com/auth/cloud-platform&lt;/code&gt; scope which is inclusive of all Google Cloud APIs and is the default requested when none is specified.&lt;/p&gt;
+
+&lt;h3 id=&quot;scope-restrictions-only-apply-to-access-token&quot;&gt;Scope Restrictions Only Apply to Access Token&lt;/h3&gt;
+
+&lt;p&gt;This may seem obvious but a scope set on an access token only restricts that credentials access to Google APIs.  Other mechanisms for accessing data on Google&lt;/p&gt;
+
+&lt;h2 id=&quot;information-disclosure&quot;&gt;Information Disclosure&lt;/h2&gt;
+
+&lt;p&gt;There is very little sensitive information related to Service Agents/P4SAs themselves other than their credentials. They are constructed in a predictable pattern (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service-PROJECT_NUMBER@SERVICE_NAME.iam.gserviceaccount.com&lt;/code&gt;), auto-assigned known roles, and can be created independently of API enablement with the &lt;a href=&quot;https://cloud.google.com/iam/docs/create-service-agents#create&quot;&gt;Service Usage API&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Information disclosure threats may arise from Service Agents/P4SAs when they are auto-assigned broad access to data.
+For instance, the Compute Engine service agent (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service-PROJECT_NUMBER@compute-system.iam.gserviceaccount.com&lt;/code&gt;) is assigned the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;compute.serviceAgent&lt;/code&gt; role, enabling it to interact with Cloud Storage objects. In scenarios where compute instances retrieve images from a cloud storage source, a malicious actor could utilize this access by leveraging the service agent’s permissions by deploying instances to access data in a Cloud Storage bucket. As described in the repudiation section, tracing such misuse may be either challenging to impossible.&lt;/p&gt;
+
+&lt;h2 id=&quot;denial-of-service&quot;&gt;Denial of Service&lt;/h2&gt;
+
+&lt;p&gt;Denial of Service threats related to Service Agents could encompass removing the permissions assigned to them or the resource entirely. &lt;br /&gt;
+Removing or updating the IAM Roles bound to Service Agents is entirely within the control of consumer projects. In contrast, this risk of Service Agent deletion is considerably less likely since the underlying service account resource lives in a Google-managed project.&lt;/p&gt;
+
+&lt;h2 id=&quot;elevation-of-privilege&quot;&gt;Elevation of Privilege&lt;/h2&gt;
+
+&lt;p&gt;Privilege escalation risks within the Service Agent/P4SA pattern may occur due to unexpected transitive access. 
+Transitive access occurs when a user gains access to resources not directly through their permissions but through the permissions of another entity.&lt;/p&gt;
+
+&lt;p&gt;An example of privilege escalation was outlined in the Information Disclosure section.  Key to this abuse of transitive access is:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Automatic role assignments to Service Agents with excessive (typically project-level) access.&lt;/li&gt;
+  &lt;li&gt;A services workflow exists that takes inputs from the end user.&lt;/li&gt;
+  &lt;li&gt;Initiating a service agent’s actions on ‘X’ only requires Service-level permissions and not permissions on the ‘X’ target.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;a-note-on-impact---limiting-the-blast-radius&quot;&gt;A Note on Impact - Limiting the Blast Radius&lt;/h2&gt;
+
+&lt;p&gt;The P4SA pattern limits cross-tenant impact by confining privilege escalation to the affected customer if a Service Agent/P4SA is compromised, preventing lateral movement between tenants. A compromised Service Agent/P4SA cannot be used as a lateral movement vehicle between multiple tenants through Google-configured access.&lt;/p&gt;
+
+&lt;h2 id=&quot;threat-model-wrap-up&quot;&gt;Threat Model Wrap-Up&lt;/h2&gt;
+
+&lt;p&gt;Successfully executing most threats articulated against the Service Agent/P4SA pattern depends on overcoming controls implemented by the Service Provider. The exception to this high bar may be threats leveraging an indirect/transitive access pattern or inadvertent access to temporary credentials.&lt;/p&gt;
+
+</description>
+				<pubDate>Mon, 29 Jul 2024 00:00:00 -0500</pubDate>
+				<link>http://localhost:4000/gcp/iam/201/2024/07/29/gcp-oauth-scopes-201.html</link>
+				<guid isPermaLink="true">http://localhost:4000/gcp/iam/201/2024/07/29/gcp-oauth-scopes-201.html</guid>
+			</item>
+			
+		
+			
+			<item>
 				<title>Working as Intended - The Unauditable, Unmanageable Keys in Google Cloud</title>
 				<description>&lt;p&gt;&lt;br /&gt;
 This &lt;a href=&quot;https://www.vectra.ai/blog/working-as-intended-the-unauditable-unmanageable-keys-in-google-cloud&quot;&gt;blog&lt;/a&gt; outlines three vulnerabilities with user-associated HMAC keys in Google Cloud.&lt;/p&gt;
@@ -36,7 +95,7 @@ No Google Cloud API is available to administrators, preventing them from auditin
 
 &lt;h5 id=&quot;for-the-full-article-please-refer-to-the-original-posting-at-vectraaiblog&quot;&gt;For the full article please refer to the original posting at &lt;a href=&quot;https://www.vectra.ai/blog/working-as-intended-the-unauditable-unmanageable-keys-in-google-cloud&quot;&gt;vectra.ai/blog&lt;/a&gt;.&lt;/h5&gt;
 </description>
-				<pubDate>Mon, 17 Jun 2024 00:00:00 -0400</pubDate>
+				<pubDate>Mon, 17 Jun 2024 00:00:00 -0500</pubDate>
 				<link>http://localhost:4000/cloudvuln/2024/06/17/unauditable-keys-in-google-cloud.html</link>
 				<guid isPermaLink="true">http://localhost:4000/cloudvuln/2024/06/17/unauditable-keys-in-google-cloud.html</guid>
 			</item>
@@ -99,7 +158,7 @@ Transitive access occurs when a user gains access to resources not directly thro
 &lt;p&gt;Successfully executing most threats articulated against the Service Agent/P4SA pattern depends on overcoming controls implemented by the Service Provider. The exception to this high bar may be threats leveraging an indirect/transitive access pattern or inadvertent access to temporary credentials.&lt;/p&gt;
 
 </description>
-				<pubDate>Tue, 11 Jun 2024 00:00:00 -0400</pubDate>
+				<pubDate>Tue, 11 Jun 2024 00:00:00 -0500</pubDate>
 				<link>http://localhost:4000/gcp/iam/201/2024/06/11/gcp-service-agent-threat-model-201.html</link>
 				<guid isPermaLink="true">http://localhost:4000/gcp/iam/201/2024/06/11/gcp-service-agent-threat-model-201.html</guid>
 			</item>
@@ -183,7 +242,7 @@ Also known as a P4SA (Per-Project, Per-Product; Service Account), a Service Agen
 &lt;p&gt;For more on the risk and potential impact of compromise with Service Agents, stay tuned for the upcoming: “&lt;a href=&quot;../../06/11/gcp-service-agent-threat-model-201.html&quot;&gt;GCP IAM 201 - Service Agent Threat Model&lt;/a&gt;”.&lt;/p&gt;
 
 </description>
-				<pubDate>Sun, 02 Jun 2024 00:00:00 -0400</pubDate>
+				<pubDate>Sun, 02 Jun 2024 00:00:00 -0500</pubDate>
 				<link>http://localhost:4000/gcp/iam/201/2024/06/02/gcp-service-agents-201.html</link>
 				<guid isPermaLink="true">http://localhost:4000/gcp/iam/201/2024/06/02/gcp-service-agents-201.html</guid>
 			</item>
@@ -279,7 +338,7 @@ Remember, presentations unfold in the three-dimensional world, not just within t
 
 &lt;p&gt;Finally, try to have some fun.  It could be worse; you could be in freeze mode in front of an audience trying to demystify Javascript Cryptography to a bunch of nerds. :smirk:&lt;/p&gt;
 </description>
-				<pubDate>Wed, 08 May 2024 00:00:00 -0400</pubDate>
+				<pubDate>Wed, 08 May 2024 00:00:00 -0500</pubDate>
 				<link>http://localhost:4000/musings/2024/05/08/how-i-prep-for-talks.html</link>
 				<guid isPermaLink="true">http://localhost:4000/musings/2024/05/08/how-i-prep-for-talks.html</guid>
 			</item>
@@ -299,7 +358,7 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
   &lt;li&gt;&lt;a href=&quot;https://kattraxler.cloud/gcp/iam/101/2020/12/01/gcp-service-accounts-101.html&quot;&gt;GCP Service Accounts&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-				<pubDate>Sun, 03 Mar 2024 00:00:00 -0500</pubDate>
+				<pubDate>Sun, 03 Mar 2024 00:00:00 -0600</pubDate>
 				<link>http://localhost:4000/gcp/iam/101/2024/03/03/gcp-series-101.html</link>
 				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2024/03/03/gcp-series-101.html</guid>
 			</item>
@@ -327,7 +386,7 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 &lt;/ul&gt;
 
 </description>
-				<pubDate>Wed, 09 Aug 2023 00:00:00 -0400</pubDate>
+				<pubDate>Wed, 09 Aug 2023 00:00:00 -0500</pubDate>
 				<link>http://localhost:4000/cloud/tooling/2023/08/09/attacks-as-a-service-with-the-derf.html</link>
 				<guid isPermaLink="true">http://localhost:4000/cloud/tooling/2023/08/09/attacks-as-a-service-with-the-derf.html</guid>
 			</item>
@@ -345,7 +404,7 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 &lt;p&gt;To conclude, once we establish the unique aspects of cloud environments, I emphasize a cloud-native approach that attackers use to exploit vulnerabilities. I also discuss how defenders should prioritize visibility within the cloud environment.&lt;/p&gt;
 
 </description>
-				<pubDate>Wed, 03 May 2023 00:00:00 -0400</pubDate>
+				<pubDate>Wed, 03 May 2023 00:00:00 -0500</pubDate>
 				<link>http://localhost:4000/misc/cloud/research/2023/05/03/rethinking-your-threatmodels.html</link>
 				<guid isPermaLink="true">http://localhost:4000/misc/cloud/research/2023/05/03/rethinking-your-threatmodels.html</guid>
 			</item>
@@ -361,7 +420,7 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 &lt;p&gt;In my evaluation of publicly available intel, I follow closely the advice given by author of the Pyramid of Pain, David Bianco’s “Whenever you receive new intel on an adversary (whether it be APT1/Comment Crew or any other threat actor), review it carefully against the Pyramid of Pain. For every paragraph, ask yourself ‘Is there anything here I can use to detect the adversary’s activity, and where does this fall on the pyramid?’”&lt;/p&gt;
 
 </description>
-				<pubDate>Tue, 14 Mar 2023 00:00:00 -0400</pubDate>
+				<pubDate>Tue, 14 Mar 2023 00:00:00 -0500</pubDate>
 				<link>http://localhost:4000/misc/cloud/research/2023/03/14/lastpass-breach-pyramid-of-pain.html</link>
 				<guid isPermaLink="true">http://localhost:4000/misc/cloud/research/2023/03/14/lastpass-breach-pyramid-of-pain.html</guid>
 			</item>
@@ -375,7 +434,7 @@ These pages are the TLDR; for Google Cloud IAM, supplemented with links to offic
 &lt;p&gt;In this &lt;a href=&quot;https://www.vectra.ai/blogpost/abusing-the-replicator-silently-exfiltrating-data-with-the-aws-s3-replication-service&quot;&gt;blog post&lt;/a&gt;, I walkthrough a malicious use of the S3 Replication service and how selective data event logging on the S3 service will result in a gap in S3 exfiltration visibility since the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PutObject&lt;/code&gt; event, indicating data movement event will not be written in the Source Account.&lt;/p&gt;
 
 </description>
-				<pubDate>Wed, 20 Jul 2022 00:00:00 -0400</pubDate>
+				<pubDate>Wed, 20 Jul 2022 00:00:00 -0500</pubDate>
 				<link>http://localhost:4000/aws/cloud/research/2022/07/20/aws-abusing-the-replicator-s3-replication.html</link>
 				<guid isPermaLink="true">http://localhost:4000/aws/cloud/research/2022/07/20/aws-abusing-the-replicator-s3-replication.html</guid>
 			</item>
@@ -392,7 +451,7 @@ Read my blog hosted in the &lt;a href=&quot;https://www.vectra.ai/blogpost/log4j
 &lt;p&gt;As ANadditional resources, refer to my &lt;a href=&quot;https://github.com/vectra-ai-research/log4j-aws-sandbox&quot;&gt;Github Repo&lt;/a&gt; which includes a terraform deployment for a log4J testing sandbox complete with vulnerable application and JNDI Exploit Server.&lt;/p&gt;
 
 </description>
-				<pubDate>Mon, 20 Dec 2021 00:00:00 -0500</pubDate>
+				<pubDate>Mon, 20 Dec 2021 00:00:00 -0600</pubDate>
 				<link>http://localhost:4000/misc/cloud/research/2021/12/20/log4j-in-cloud-environments.html</link>
 				<guid isPermaLink="true">http://localhost:4000/misc/cloud/research/2021/12/20/log4j-in-cloud-environments.html</guid>
 			</item>
@@ -446,7 +505,7 @@ I don’t believe so.&lt;br /&gt;&lt;/p&gt;
 Special thanks to the Google Engineers that partnered with me over the weekend to figure out what was going on.&lt;br /&gt;
 And to the friends who let me complain to them.&lt;/p&gt;
 </description>
-				<pubDate>Sat, 11 Sep 2021 00:00:00 -0400</pubDate>
+				<pubDate>Sat, 11 Sep 2021 00:00:00 -0500</pubDate>
 				<link>http://localhost:4000/gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update-copy.html</link>
 				<guid isPermaLink="true">http://localhost:4000/gcp/hacking/2021/09/11/gcp-ai-notebooks-vulnerability-remediation-update-copy.html</guid>
 			</item>
@@ -523,7 +582,7 @@ The remaining interesting question for GCP Customers is?,&lt;br /&gt; “Were yo
 	– 09/11/2021: Informed Google that I agreed their patch plus the expiration of the ‘DATALAB_TUNNEL_TOKEN’ cookie resulted in a complete fix of the issue.&lt;/p&gt;
 
 </description>
-				<pubDate>Fri, 10 Sep 2021 00:00:00 -0400</pubDate>
+				<pubDate>Fri, 10 Sep 2021 00:00:00 -0500</pubDate>
 				<link>http://localhost:4000/gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html</link>
 				<guid isPermaLink="true">http://localhost:4000/gcp/hacking/2021/09/10/gcp-org-policy-bypass-ai-notebooks.html</guid>
 			</item>
@@ -643,7 +702,7 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 
 &lt;p&gt;Whether this is by design or because their is a lack of trust, I have no inclanations, but it doesn’t leave me feeling optimistic for the idea that security is a core design principal in GCP.  Or, that when the rubber meets the road, Security @ Google can force different design decisions on behalf of securing their customers workloads.&lt;/p&gt;
 </description>
-				<pubDate>Fri, 01 Jan 2021 00:00:00 -0500</pubDate>
+				<pubDate>Fri, 01 Jan 2021 00:00:00 -0600</pubDate>
 				<link>http://localhost:4000/gcp/iam/101/2021/01/01/gcp-actas-dday.html</link>
 				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2021/01/01/gcp-actas-dday.html</guid>
 			</item>
@@ -705,7 +764,7 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 &lt;p&gt;&lt;strong&gt;As a best practice, roles should be assigned at the lowest resource level possible to reduce the scope of the permissions.&lt;/strong&gt;&lt;/p&gt;
 
 </description>
-				<pubDate>Fri, 25 Dec 2020 00:00:00 -0500</pubDate>
+				<pubDate>Fri, 25 Dec 2020 00:00:00 -0600</pubDate>
 				<link>http://localhost:4000/gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</link>
 				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/25/gcp-roles-permissions-101.html</guid>
 			</item>
@@ -748,7 +807,7 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 &lt;/ol&gt;
 
 </description>
-				<pubDate>Sat, 05 Dec 2020 00:00:00 -0500</pubDate>
+				<pubDate>Sat, 05 Dec 2020 00:00:00 -0600</pubDate>
 				<link>http://localhost:4000/gcp/iam/101/2020/12/05/gcp-users-groups-101.html</link>
 				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/05/gcp-users-groups-101.html</guid>
 			</item>
@@ -799,7 +858,7 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 &lt;p&gt;In such scenarios, the service account performing the impersonation is the &lt;strong&gt;WHO&lt;/strong&gt;, functioning as an principal. Meanwhile, the service account being impersonated serves as the target resource.&lt;/p&gt;
 
 </description>
-				<pubDate>Tue, 01 Dec 2020 00:00:00 -0500</pubDate>
+				<pubDate>Tue, 01 Dec 2020 00:00:00 -0600</pubDate>
 				<link>http://localhost:4000/gcp/iam/101/2020/12/01/gcp-service-accounts-101.html</link>
 				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/01/gcp-service-accounts-101.html</guid>
 			</item>
@@ -824,7 +883,7 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 &lt;/ol&gt;
 
 </description>
-				<pubDate>Tue, 01 Dec 2020 00:00:00 -0500</pubDate>
+				<pubDate>Tue, 01 Dec 2020 00:00:00 -0600</pubDate>
 				<link>http://localhost:4000/gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html</link>
 				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/01/gcp-resource-hierarchy-101.html</guid>
 			</item>
@@ -851,7 +910,7 @@ That is, the Product Managers for Cloud IAM and the data science PaaS products h
 In GCP’s resource hierarchy, each level — be it the top-level organization node, folder, or project node — is a resource capable of having an IAM policy attached. This applies not only to the organization/folder/project structure but also to all child resources of projects.&lt;br /&gt;
 Permissions are granted to a principal only when a policy is attached/bound to a resource and are inherited to all downstream child resources.&lt;/p&gt;
 </description>
-				<pubDate>Tue, 01 Dec 2020 00:00:00 -0500</pubDate>
+				<pubDate>Tue, 01 Dec 2020 00:00:00 -0600</pubDate>
 				<link>http://localhost:4000/gcp/iam/101/2020/12/01/gcp-iam-policy-101.html</link>
 				<guid isPermaLink="true">http://localhost:4000/gcp/iam/101/2020/12/01/gcp-iam-policy-101.html</guid>
 			</item>
