@@ -27,4 +27,4 @@ whitelist:
   - jekyll-sitemap
 
 jekyll-mentions:
-  base_url: https://twitter.com
+  base_url: https://x.com
